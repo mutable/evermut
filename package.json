@@ -1,11 +1,13 @@
 {
   "name": "evermut",
   "version": "1.0.1",
-  "description": "mut view library",
+  "description": "Mut View Library",
   "main": "dist/evermut.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode production",
+    "build": "webpack --config webpack.config.js",
+    "build:prod": "webpack --config webpack.config.prod.js",
+    "build:dev": "webpack --config webpack.config.dev.js",
     "prepublish": "npm run build"
   },
   "peerDependencies": {

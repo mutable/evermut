@@ -1,26 +1,13 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CompressionPlugin = require("compression-webpack-plugin");
-const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
-  mode: 'production',
   entry: path.resolve(__dirname, './src/index.js'),
   output: {
     path: path.resolve(__dirname, './dist'),
     libraryTarget: 'commonjs2',
     filename: 'evermut.js',
     chunkFilename: '[name].[chunkhash:8].evermut.js',
-  },
-  performance: {
-    maxEntrypointSize: 256000,
-    maxAssetSize: 256000
-  },
-  devtool: 'source-map',
-  resolve: {
-    // symlinks: false
   },
   module: {
     rules: [
@@ -71,33 +58,6 @@ module.exports = {
       },
     ]
   },
-  optimization: {
-    nodeEnv: 'production',
-    minimizer: [
-      new TerserPlugin({
-        parallel: true,
-        sourceMap: true,
-        terserOptions: {
-          ecma: 6,
-          mangle: true,
-          output: {
-            comments: false,
-            ascii_only: true,
-          },
-          compress: {
-            // drop_console: true,
-          },
-        }
-      })
-    ]
-  },
-  plugins: [
-    new CompressionPlugin(),
-    new CleanWebpackPlugin(),
-    new ManifestPlugin({
-      fileName: 'asset-manifest.json',
-    })
-  ],
   externals: {
     'react': 'commonjs react' // this line is just to use the React dependency of our parent-testing-project instead of using our own React.
   }
