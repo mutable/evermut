@@ -1,6 +1,6 @@
 {
   "name": "evermut",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "mut view library",
   "main": "dist/evermut.js",
   "scripts": {

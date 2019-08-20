@@ -12,6 +12,12 @@ class TableComponent extends React.Component {
       headerKeys: props.header ? Object.keys(props.header) : []
     }
   }
+  onSelect(item) {
+    const { onClick } = this.props;
+    if(onClick) {
+      onClick(item);
+    }
+  }
   getTable = () => {
     const { headerKeys } = this.state;
     const { header, body, onClick} = this.props;
@@ -29,7 +35,7 @@ class TableComponent extends React.Component {
         </Table.Head>
         <Table.Body>
           {body.map((item, index) => (
-            <Table.Row key={`body-${index}`} isSelectable onSelect={() => onClick(item)}>
+            <Table.Row key={`body-${index}`} isSelectable={!!onClick} onSelect={() => this.onSelect(item)}>
               {headerKeys.map((key, keyIndex) => (
                 <Table.TextCell key={`cell-${keyIndex}`}>{item[key]}</Table.TextCell>
               ))}
