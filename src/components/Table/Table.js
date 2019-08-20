@@ -14,7 +14,7 @@ class TableComponent extends React.Component {
   }
   getTable = () => {
     const { headerKeys } = this.state;
-    const { header, body } = this.props;
+    const { header, body, onClick} = this.props;
 
     return (
       <Table width='100%'>
@@ -29,7 +29,7 @@ class TableComponent extends React.Component {
         </Table.Head>
         <Table.Body>
           {body.map((item, index) => (
-            <Table.Row key={`body-${index}`}>
+            <Table.Row key={`body-${index}`} isSelectable onSelect={() => onClick(item)}>
               {headerKeys.map((key, keyIndex) => (
                 <Table.TextCell key={`cell-${keyIndex}`}>{item[key]}</Table.TextCell>
               ))}
