@@ -4,6 +4,13 @@ import { Pane, Text, Icon, IconButton, Tooltip } from 'evergreen-ui';
 import Loader from '../Loader';
 
 class StateAction extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      actions: props.details.actions || props.actions
+    }
+  } 
   getIconColor(type) {
     // const array = ['success', 'stop'];
     const actionStuff = { color: 'success', icon: 'stop' };
@@ -25,7 +32,8 @@ class StateAction extends React.Component {
   }
 
   render() {
-    const { actions } = this.props;
+    const { actions } = this.state;
+
     return (
       <Pane>
       {

@@ -18,7 +18,7 @@ class OnClickMenu extends React.Component {
                 menuList && menuList.length && menuList.map((item, index) => {
                   return (
                     <Menu.Item
-                      onSelect={() => this.props.selectedItem(item)}
+                      onSelect={() => this.props.onClick(item)}
                       fontSize={12}
                       color='#425A70'
                       key={`onClickmenuItem-${index}`}

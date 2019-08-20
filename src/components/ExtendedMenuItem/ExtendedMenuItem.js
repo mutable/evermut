@@ -17,7 +17,7 @@ import OnClickMenu from '../OnClickMenu'
 
 class ExtendedMenuItem extends React.Component {
   render() {
-    const { details, menu } = this.props;
+    const { details, selectItemFooter } = this.props;
 
     return (
       <Pane paddingLeft={8}>
@@ -30,12 +30,18 @@ class ExtendedMenuItem extends React.Component {
               </Pane>
             ) : null
           }
-          {menu && <OnClickMenu menuList={menu.list} selectedItem={menu.selectedItem} /> || null}
+          {details.menu && <OnClickMenu menuList={details.menu.list} onClick={details.menu.onClick} /> || null}
         </Pane>
-        {/* // @Anna change footer to dynamic use (actions feature) */}
         <Pane is="footer" display='flex' alignItems="center" justifyContent="space-between">
-          <StateAction actions={details.actions}/>
-          <Button padding={8} lineHeight={0} iconBefore='console' appearance="minimal" color='rgba(67, 90, 111, 0.7)'>Logs</Button>
+        {
+          selectItemFooter && selectItemFooter.length && selectItemFooter.map((item) => {
+            const itemProps = {
+              props: item.props,
+              details
+            }
+            return React.createElement(item.type, itemProps)
+          }) || null
+        }
         </Pane>
       </Pane>
     );

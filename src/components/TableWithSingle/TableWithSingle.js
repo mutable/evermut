@@ -40,7 +40,7 @@ class TableWithSingle extends React.Component {
 
   rowCells = (row, index) => {
     const { basis } = this.props;
-    return Object.values(row).map((value, cellIndex) => {
+    return Object.keys(row).map((key, cellIndex) => {
         const flexProps = {};
         if (cellIndex === 0) {
           flexProps.flexBasis = basis;
@@ -50,29 +50,37 @@ class TableWithSingle extends React.Component {
 
         ++index;
         return (
-          <Table.TextCell key={`${value}-${index}`} {...flexProps}>
-            {cellIndex === Object.values(row).length-1 ? <StateAction actions={value} /> : `${value}`}
-          </Table.TextCell>
+          key !== 'menu' && (<Table.TextCell key={`${row[key]}-${index}`} {...flexProps}>
+           {`${row[key]}`}
+          </Table.TextCell>)
         )
       }
     )
   };
 
-  oneRowCell = (row, index) => {
-    const { basis, listItem, menu } = this.props;
+  oneRowCell = (row) => {
+    const { basis, listItem } = this.props;
 
-    const Cell = listItem;
+    const listItemProps = {
+      ...this.props,
+      details: row
+    }
 
-    ++index;
-    return ( // @Anna
+    return (
       <Table.TextCell flexBasis={basis} flexShrink={0} flexGrow={0}>
-        <Cell
-          key={`${row.company}-${index}`}
-          details={row}
-          menu={menu} // @Anna
-        />
+        {React.createElement(listItem, listItemProps)}
       </Table.TextCell>
     );
+      
+    // return ( // @Anna
+    //   
+    //     <Cell
+    //       key={`${row.company}-${index}`}
+    //       details={row}
+    //       menu={menu} // @Anna
+    //     />
+    //   </Table.TextCell>
+    // );
   };
 
   getTable = () => {
@@ -102,7 +110,7 @@ class TableWithSingle extends React.Component {
       );
     });
 
-    const headCells = rows.length ? Object.keys(rows[0]) : [];
+    const headCells = rows.length ? Object.keys(rows[0]).filter(item => item !== 'menu') : [];
     const table = [
       (<Table
         key="expanded-table"
