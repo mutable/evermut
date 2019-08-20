@@ -1,0 +1,6 @@
+{
+  "main.js": "evermut.js",
+  "main.js.map": "evermut.js.map",
+  "evermut.js.gz": "evermut.js.gz",
+  "evermut.js.map.gz": "evermut.js.map.gz"
+}
