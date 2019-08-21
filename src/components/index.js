@@ -1,11 +1,14 @@
 export { default as ExtendedMenuItem } from './ExtendedMenuItem';
 
 export { default as Loader } from './Loader';
+export { default as Login } from './Login';
 export { default as Logo } from './Logo';
 
 export { default as OnClickMenu } from './OnClickMenu';
 
 export { default as Pagination } from './Pagination';
+
+export { default as Registration } from './Registration';
 
 export { default as StateAction } from './StateAction';
 export { default as StickyMenu } from './StickyMenu';
