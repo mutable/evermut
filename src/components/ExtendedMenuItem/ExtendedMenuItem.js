@@ -12,36 +12,32 @@ import {
   Menu
 } from 'evergreen-ui';
 import Loader from '../Loader';
-import StateAction from '../StateAction'
 import OnClickMenu from '../OnClickMenu'
 
 class ExtendedMenuItem extends React.Component {
   render() {
-    const { details, selectItemFooter } = this.props;
+    const { details } = this.props;
 
     return (
       <Pane paddingLeft={8}>
         <Pane display='flex' justifyContent='space-between'> 
           {
-            details && Object.keys(details).length ? (
-              <Pane>
-                <Heading fontSize={12} lineHeight={2}>{details.title || details.name}</Heading>
-                <Text fontSize={11}>{details.description}</Text>
-              </Pane>
-            ) : null
+            details && Object.keys(details).length && Object.keys(details).map((item) => {
+              if(item !== 'actions' && item !== 'menu') {
+                let drawable = <Text fontSize={11}>{details[item]}</Text>
+                if(item === 'title' || item === 'name') {
+                  drawable = <Heading fontSize={12} lineHeight={2}>{details[item]}</Heading>
+                }
+                return drawable;
+              }
+            }) || null
           }
           {details.menu && <OnClickMenu menuList={details.menu.list} onClick={details.menu.onClick} /> || null}
         </Pane>
         <Pane is="footer" display='flex' alignItems="center" justifyContent="space-between">
-        {
-          selectItemFooter && selectItemFooter.length && selectItemFooter.map((item) => {
-            const itemProps = {
-              props: item.props,
-              details
-            }
-            return React.createElement(item.type, itemProps)
-          }) || null
-        }
+          {
+            details.actions && details.actions.length && details.actions.map((item) => item) || null
+          }
         </Pane>
       </Pane>
     );
@@ -54,3 +50,9 @@ ExtendedMenuItem.propTypes = {
 };
 
 export default ExtendedMenuItem;
+
+// <Pane>
+//                 <Heading fontSize={12} lineHeight={2}>{details.title || details.name}</Heading>
+//                 <Text fontSize={11}>{details.description}</Text>
+//               </Pane>
+//             ) : null

@@ -50,8 +50,8 @@ class TableWithSingle extends React.Component {
 
         ++index;
         return (
-          key !== 'menu' && (<Table.TextCell key={`${row[key]}-${index}`} {...flexProps}>
-           {`${row[key]}`}
+          key !== 'menu' && (<Table.TextCell key={`${key}-${cellIndex}`} {...flexProps}>
+           {row[key]}
           </Table.TextCell>)
         )
       }
@@ -59,10 +59,10 @@ class TableWithSingle extends React.Component {
   };
 
   oneRowCell = (row) => {
-    const { basis, listItem } = this.props;
+    const { basis, listItem, ...others } = this.props;
 
     const listItemProps = {
-      ...this.props,
+      ...others,
       details: row
     }
 
@@ -164,7 +164,7 @@ TableWithSingle.propTypes = {
   menu: PropTypes.oneOfType([
     PropTypes.object
   ]).isRequired,
-  rows: PropTypes.array.isRequired,
+  rows: PropTypes.arrayOf(PropTypes.object) ,
   listItem: PropTypes.elementType.isRequired,
   singleComponent: PropTypes.element.isRequired
 };

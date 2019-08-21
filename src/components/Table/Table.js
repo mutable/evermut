@@ -88,7 +88,7 @@ class TableComponent extends React.Component {
 }
 
 TableComponent.propTypes = {
-  header: PropTypes.array.isRequired,
+  header: PropTypes.object.isRequired,
   body: PropTypes.array.isRequired,
   pagination: PropTypes.object.isRequired,
 };

@@ -40,7 +40,7 @@ class OnClickMenu extends React.Component {
 
 OnClickMenu.propTypes = {
   menuList: PropTypes.array.isRequired,
-  selectedItem: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default OnClickMenu;

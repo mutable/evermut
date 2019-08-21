@@ -1,11 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Pane, Menu } from 'evergreen-ui';
 import Box from 'ui-box';
 import MutMenuItem from './MenuItem';
 
 class StickyMenu extends React.Component {
   render() {
-    const { primaryMenu, secondaryMenu } = this.props;
+    const { primaryMenu, secondaryMenu, stickBottom } = this.props;
 
     return (
       <Box
@@ -28,12 +29,13 @@ class StickyMenu extends React.Component {
           <Menu>
             <Menu.Group>
               {
-                primaryMenu.map(pm => {
+                primaryMenu.map((pm, index) => {
                   const props = {};
                   if (pm.icon) props.icon = pm.icon;
                   const children = pm.logo || pm.name || 'Set name or logo';
                   return (
                     <MutMenuItem
+                      key={`pm-${index}`}
                       props={pm.props}
                       {...props}
                     >{children}</MutMenuItem>
@@ -44,22 +46,25 @@ class StickyMenu extends React.Component {
             {
               secondaryMenu && <>
                 <Menu.Divider />
-                <Menu.Group>
-                  {
-                    secondaryMenu.map(pm => {
-                      const props = {};
-                      if (pm.icon) props.icon = pm.icon;
-                      const children = pm.logo || pm.name || 'Set name or logo';
+                <Pane position='absolute' bottom={stickBottom ? 0 : 'auto'}>
+                  <Menu.Group>
+                    {
+                      secondaryMenu.map((pm, index) => {
+                        const props = {};
+                        if (pm.icon) props.icon = pm.icon;
+                        const children = pm.logo || pm.name || 'Set name or logo';
 
-                      return (
-                        <MutMenuItem
-                          props={pm.props}
-                          {...props}
-                        >{children}</MutMenuItem>
-                      )
-                    })
-                  }
-                </Menu.Group>
+                        return (
+                          <MutMenuItem
+                            key={`pm-${index}`}
+                            props={pm.props}
+                            {...props}
+                          >{children}</MutMenuItem>
+                        )
+                      })
+                    }
+                  </Menu.Group>
+                </Pane>
               </>
             }
           </Menu>
@@ -68,5 +73,11 @@ class StickyMenu extends React.Component {
     );
   }
 }
+
+StickyMenu.propTypes = {
+  primaryMenu: PropTypes.arrayOf(PropTypes.object).isRequired,
+  secondaryMenu: PropTypes.arrayOf(PropTypes.object).isRequired
+};
+
 
 export default StickyMenu;
