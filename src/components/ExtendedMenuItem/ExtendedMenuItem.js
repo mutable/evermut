@@ -19,20 +19,32 @@ class ExtendedMenuItem extends React.Component {
     const { details } = this.props;
 
     return (
-      <Pane paddingLeft={8}>
-        <Pane display='flex' justifyContent='space-between'> 
+      <Pane>
+        <Pane display='flex' justifyContent='space-between'>
+          {
+            (details.title || details.name) &&
+            <Heading fontSize={12} lineHeight={2}>{details.title || details.name}</Heading>
+          }
+          {details.menu && <OnClickMenu menuList={details.menu.list} onClick={details.menu.onClick} /> || null}
+        </Pane> 
+        <Pane textAlign='start'> 
           {
             details && Object.keys(details).length && Object.keys(details).map((item) => {
-              if(item !== 'actions' && item !== 'menu') {
-                let drawable = <Text fontSize={11}>{details[item]}</Text>
-                if(item === 'title' || item === 'name') {
-                  drawable = <Heading fontSize={12} lineHeight={2}>{details[item]}</Heading>
-                }
-                return drawable;
+             if(item !== 'actions' && item !== 'menu' && item !== 'id' && (item !== 'title' && item !== 'name')) {
+              if(typeof details[item] === 'object') {
+                const objectArray =  details[item];
+                return Object.keys(objectArray).map((key, index) => {
+                  const comma = (index !== Object.keys(objectArray).length-1) ? ', ' : '';
+                  return <Text fontSize={11} key={`obj-type-key-${index}`}>{objectArray[key]}{comma}</Text>
+                })
+              }
+                return <Text fontSize={11} display='block'>{details[item]}</Text>
               }
             }) || null
           }
-          {details.menu && <OnClickMenu menuList={details.menu.list} onClick={details.menu.onClick} /> || null}
+        </Pane>
+        <Pane> 
+          {details.id && <Text display='block' fontSize={11} textAlign='start'>ID {details.id}</Text>}
         </Pane>
         <Pane is="footer" display='flex' alignItems="center" justifyContent="space-between">
           {
@@ -45,14 +57,7 @@ class ExtendedMenuItem extends React.Component {
 } 
 
 ExtendedMenuItem.propTypes = {
-  details: PropTypes.object.isRequired,
-  menu: PropTypes.object.isRequired
+  details: PropTypes.object.isRequired
 };
 
 export default ExtendedMenuItem;
-
-// <Pane>
-//                 <Heading fontSize={12} lineHeight={2}>{details.title || details.name}</Heading>
-//                 <Text fontSize={11}>{details.description}</Text>
-//               </Pane>
-//             ) : null

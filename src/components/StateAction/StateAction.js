@@ -32,7 +32,7 @@ class StateAction extends React.Component {
         actions && actions.length && actions.map((item) => {
           const actionStuff = this.getIconColor(item)
           return (
-            <Pane display='flex' alignItems="center">
+            <Pane display='inline-flex' alignItems="center">
               <Tooltip content={item}>
                 <Icon icon="dot" color={actionStuff.color} marginRight={2} size={22} />
               </Tooltip>

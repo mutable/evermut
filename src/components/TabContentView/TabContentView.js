@@ -11,6 +11,7 @@ class TabContentView extends React.Component {
   };
 
   getComponent = () => {
+    const { selectedIndex } = this.state;
     const { tabs } = this.props;
     const truncateProps = {
       // maxWidth: 180,
@@ -41,8 +42,8 @@ class TabContentView extends React.Component {
               id={`panel-${tab}`}
               role="tabpanel"
               aria-labelledby={tab}
-              aria-hidden={index !== this.state.selectedIndex}
-              display={index === this.state.selectedIndex ? 'block' : 'none'}
+              aria-hidden={index !== selectedIndex}
+              display={index === selectedIndex ? 'block' : 'none'}
             >
               {tab.component}
             </Pane>

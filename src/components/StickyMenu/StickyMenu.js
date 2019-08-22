@@ -24,7 +24,8 @@ class StickyMenu extends React.Component {
           position="sticky"
           top="0"
           left="0"
-          height="100vh"
+          height="100vh" 
+          overflowX="hidden"
         >
           <Menu>
             <Menu.Group>

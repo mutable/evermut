@@ -8,7 +8,7 @@ export { default as OnClickMenu } from './OnClickMenu';
 
 export { default as Pagination } from './Pagination';
 
-export { default as Registration } from './Registration';
+// export { default as Registration } from './Registration';
 
 export { default as StateAction } from './StateAction';
 export { default as StickyMenu } from './StickyMenu';
