@@ -30,6 +30,7 @@ ReactDOM.render(
 ###### details
 
 Type: `object`, required
+
 Basic structure:
 ```
 {
@@ -41,6 +42,7 @@ Basic structure:
   menu: `object of objects 'list' and 'onClick'`
 }
 ```
+
 Example:
 ```
 {
@@ -83,28 +85,35 @@ Default: `#f7f8fa`
 ###### logo
 
 Type: `string`
+
 Default: null
+
 Basic structure: `"./logo.svg"`
 
 ###### rounded
 
 Type: `bool`
+
 Default: `false`
+
 Basic structure: `true` or `false`
 
 ###### buttonName
 
 Type: `string`
+
 Default: 'Login'
 
 ###### title
 
 Type: `string`
+
 Default: `''`
 
 ###### login
 
 Type: `func`, required
+
 Basic structure: () => {}
 
 
@@ -115,11 +124,13 @@ Basic structure: () => {}
 ###### src
 
 Type: `string`, required
+
 Basic structure: `"./logo.svg"`
 
 ###### style
 
 Type: `object`
+
 Default: 
 ```
 # based on ui-box, not required
@@ -136,13 +147,17 @@ Default:
 ###### count
 
 Type: `number`, required
+
 Basic structure: `999`
 
 ###### pageLimit
 
 Type: `number`
+
 Default: `10`
+
 Basic structure: `999`
+
 
 ###### currentPage
 
@@ -153,6 +168,7 @@ Basic structure: `999`
 ###### onClick
 
 Type: `func`, required
+
 Basic structure: () => {}
 
 
@@ -162,18 +178,23 @@ Basic structure: () => {}
 ###### actions
 
 Type: `array`, required
+
 Possible values: `'running'`, `'waiting'`, `'warning'`, `'stopped'`
+
 Basic structure: `['running']`
 
 ###### onClick
 
 Type: `func`, required
+
 Basic structure: () => {}
 
 ###### tooltip
 
 Type: `bool`
+
 Default: `false`
+
 Basic structure: `true` or `false`
 
 
@@ -213,13 +234,18 @@ Basic structure:
 ###### secondaryMenu
 
 Type: `array`
+
 Default: `[]`
+
 Basic structure: Same as `primaryMenu`
+
 
 ###### stickBottom
 
 Type: `bool`
+
 Default: `false`
+
 Basic structure: `true` or `false`
 
 
@@ -230,6 +256,7 @@ Basic structure: `true` or `false`
 ###### tabs
 
 Type: `array`, required
+
 Basic structure: 
 ```
 [
@@ -248,6 +275,7 @@ Basic structure:
 ###### header
 
 Type: `object`, required
+
 Example: 
 ```
 {
@@ -260,6 +288,7 @@ Example:
 ###### body
 
 Type: `array`, required
+
 Example:
 ```
 {
@@ -275,6 +304,7 @@ Example:
 ###### pagination
 
 Type: `object`
+
 Look at `Pagination` component for details
 
 
@@ -284,12 +314,14 @@ Look at `Pagination` component for details
 ###### basis
 
 Type: `number`
+
 Default: `300`
 
 
 ###### rows
 
 Type: `array`, required
+
 Example:
 ```
 [
@@ -318,7 +350,9 @@ Example:
 ###### loading
 
 Type: `bool`
+
 Default: `false`
+
 Basic structure: `true` or `false`
 
 
@@ -337,6 +371,7 @@ Type: `elementType`, required
 ###### menuList
 
 Type: `array`, required
+
 Basic structure: 
 ```
 [
@@ -350,6 +385,7 @@ Basic structure:
 ###### onClick
 
 Type: `func`, required
+
 Basic structure: () => {}
 
 
