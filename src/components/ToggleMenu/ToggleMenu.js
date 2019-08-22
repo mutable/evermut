@@ -39,7 +39,7 @@ class ToggleMenu extends React.Component {
 }
 
 ToggleMenu.propTypes = {
-  menuList: PropTypes.array.isRequired,
+  menuList: PropTypes.arrayOf(PropTypes.object).isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

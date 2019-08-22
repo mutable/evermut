@@ -15,18 +15,18 @@ class LoginPage extends React.PureComponent {
   static propTypes = {
     logoBackground: PropTypes.string,
     logo: PropTypes.string,
-    login: PropTypes.func,
+    login: PropTypes.func.isRequired,
     rounded: PropTypes.bool,
     buttonName: PropTypes.string,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string
   }
 
   static defaultProps = {
-    login: () => {},
     logoBackground: '#f7f8fa',
     buttonName: 'Login',
     logo: null,
-    rounded: false
+    rounded: false,
+    title: ''
   }
 
 

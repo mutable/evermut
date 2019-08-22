@@ -145,27 +145,16 @@ class TableWithSingle extends React.Component {
 }
 
 TableWithSingle.defaultProps = {
-  // selected: null,
-  rows: [],
-  details: {},
-  menu: {},
-  basis: 300
+  basis: 300, 
+  loading: false
 };
 
 TableWithSingle.propTypes = {
   basis: PropTypes.number,
-  // selected: PropTypes.oneOfType([
-  //   PropTypes.object
-  // ]).isRequired,
-  details: PropTypes.oneOfType([
-    PropTypes.object
-  ]).isRequired,
-  menu: PropTypes.oneOfType([
-    PropTypes.object
-  ]).isRequired,
-  rows: PropTypes.arrayOf(PropTypes.object) ,
+  rows: PropTypes.arrayOf(PropTypes.object).isRequired,
   listItem: PropTypes.elementType.isRequired,
-  singleComponent: PropTypes.element.isRequired
+  singleComponent: PropTypes.element.isRequired,
+  loading: PropTypes.bool
 };
 
 export default TableWithSingle;

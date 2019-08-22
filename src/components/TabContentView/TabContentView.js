@@ -71,7 +71,10 @@ class TabContentView extends React.Component {
 }
 
 TabContentView.propTypes = {
-  tabs: PropTypes.array.isRequired,
+  tabs: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    component: PropTypes.element.isRequired
+  })).isRequired,
 };
 
 export default TabContentView;

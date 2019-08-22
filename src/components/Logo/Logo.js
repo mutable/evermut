@@ -18,7 +18,8 @@ Logo.defaultProps = {
 }
 
 Logo.propTypes = {
-  src: PropTypes.string.isRequired
+  src: PropTypes.string.isRequired,
+  style: PropTypes.object
 }
 
 export default Logo;

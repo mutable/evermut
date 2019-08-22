@@ -57,7 +57,17 @@ class ExtendedMenuItem extends React.Component {
 } 
 
 ExtendedMenuItem.propTypes = {
-  details: PropTypes.object.isRequired
+  details: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    actions: PropTypes.array.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    tags: PropTypes.array,
+    menu: PropTypes.shape({
+      list: PropTypes.array.isRequired,
+      onClick: PropTypes.func.isRequired
+    })
+  }).isRequired
 };
 
 export default ExtendedMenuItem;
