@@ -5,7 +5,7 @@
   "main": "dist/evermut.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:prod": "webpack --config webpack.config.prod.js --watch",
+    "build:prod": "webpack --config webpack.config.prod.js",
     "build:dev": "webpack --config webpack.config.dev.js",
     "prepublish": "npm run build:prod"
   },
