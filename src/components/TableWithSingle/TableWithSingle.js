@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Pane, Table, Paragraph } from 'evergreen-ui';
 import Loader from '../Loader';
 import Head from './Head';
-import StateAction from '../StateAction'
 
 class TableWithSingle extends React.Component {
   state = {

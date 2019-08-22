@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Pane, Select, option, Button } from 'evergreen-ui';
 import Loader from '../Loader';
 
-const PAGE_LIMIT = 5;
+const PAGE_LIMIT = 10;
 const DEFAULT_PAGE = 1;
 
 class Pagination extends React.Component {
@@ -41,7 +41,7 @@ class Pagination extends React.Component {
 
   clicked(index) {
     const { pageLimit } = this.state;
-    if (this.props.click) this.props.click(index, pageLimit);
+    if (this.props.onClick) this.props.onClick(index, pageLimit);
     this.setState({ pageIndex: index });
   }
 
@@ -83,11 +83,16 @@ class Pagination extends React.Component {
   }
 }
 
+Pagination.defaultProps = {
+  pageLimit: 10,
+  currentPage: 1
+}
+
 Pagination.propTypes = {
   count: PropTypes.number.isRequired,
-  pageLimit: PropTypes.number.isRequired,
-  currentPage: PropTypes.number.isRequired,
-  click: PropTypes.func.isRequired,
+  pageLimit: PropTypes.number,
+  currentPage: PropTypes.number,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Pagination;

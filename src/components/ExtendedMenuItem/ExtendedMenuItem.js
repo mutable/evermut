@@ -12,7 +12,7 @@ import {
   Menu
 } from 'evergreen-ui';
 import Loader from '../Loader';
-import OnClickMenu from '../OnClickMenu'
+import ToggleMenu from '../ToggleMenu'
 
 class ExtendedMenuItem extends React.Component {
   render() {
@@ -25,7 +25,7 @@ class ExtendedMenuItem extends React.Component {
             (details.title || details.name) &&
             <Heading fontSize={12} lineHeight={2}>{details.title || details.name}</Heading>
           }
-          {details.menu && <OnClickMenu menuList={details.menu.list} onClick={details.menu.onClick} /> || null}
+          {details.menu && <ToggleMenu menuList={details.menu.list} onClick={details.menu.onClick} /> || null}
         </Pane> 
         <Pane textAlign='start'> 
           {

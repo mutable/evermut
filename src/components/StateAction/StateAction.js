@@ -23,8 +23,16 @@ class StateAction extends React.Component {
     return actionStuff;
   }
 
+  getTooltip(item, color) {
+    return (
+      <Tooltip content={item}>
+        <Icon icon="dot" color={color} marginRight={2} size={22} />
+      </Tooltip> 
+    );
+  }
+
   render() {
-    const { actions } = this.props;
+    const { actions, tooltip, onClick } = this.props;
 
     return (
       <Pane>
@@ -33,11 +41,14 @@ class StateAction extends React.Component {
           const actionStuff = this.getIconColor(item)
           return (
             <Pane display='inline-flex' alignItems="center">
-              <Tooltip content={item}>
-                <Icon icon="dot" color={actionStuff.color} marginRight={2} size={22} />
-              </Tooltip>
-              <Text fontSize={11}>{item}</Text>
-              <IconButton marginLeft={4} icon={actionStuff.icon} appearance="minimal" />
+              {
+                tooltip && this.getTooltip(item, actionStuff.color)
+                || <>
+                  <Icon icon="dot" color={actionStuff.color} marginRight={2} size={22} />
+                  <Text fontSize={11}>{item}</Text>
+                </>
+              }
+              <IconButton onClick={() => onClick(item)} onmarginLeft={4} icon={actionStuff.icon} appearance="minimal" />
             </Pane>
           );
         })
@@ -47,8 +58,14 @@ class StateAction extends React.Component {
   }
 }
 
+StateAction.defaultProps = {
+  tooltip: false
+}
+
 StateAction.propTypes = {
-  actions: PropTypes.array.isRequired,
+  actions: PropTypes.arrayOf(PropTypes.oneOf(['running', 'waiting', 'warning', 'stopped'])).isRequired,
+  onClick: PropTypes.func.isRequired,
+  tooltip: PropTypes.bool
 };
 
 export default StateAction;

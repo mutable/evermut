@@ -63,7 +63,7 @@ class TableComponent extends React.Component {
           count={totalCount}
           pageLimit={limit}
           currentPage={offset}
-          click={click}
+          onClick={click}
         />
       </Pane>
     );

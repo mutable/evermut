@@ -46,8 +46,8 @@ class StickyMenu extends React.Component {
             </Menu.Group>
             {
               secondaryMenu && <>
-                <Menu.Divider />
                 <Pane position='absolute' bottom={stickBottom ? 0 : 'auto'}>
+                  <Menu.Divider />
                   <Menu.Group>
                     {
                       secondaryMenu.map((pm, index) => {
@@ -75,9 +75,15 @@ class StickyMenu extends React.Component {
   }
 }
 
+StickyMenu.defaultProps = {
+  stickBottom: false,
+  secondaryMenu: []
+}
+
 StickyMenu.propTypes = {
   primaryMenu: PropTypes.arrayOf(PropTypes.object).isRequired,
-  secondaryMenu: PropTypes.arrayOf(PropTypes.object).isRequired
+  secondaryMenu: PropTypes.arrayOf(PropTypes.object),
+  stickBottom: PropTypes.bool
 };
 
 
