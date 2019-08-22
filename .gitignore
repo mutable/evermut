@@ -65,4 +65,4 @@ typings/
 *-lock.json
 
 # ignore compiled files dist/ folder
-dist/
+dist/*

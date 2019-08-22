@@ -26,7 +26,6 @@ ReactDOM.render(
 
 
 #### ExtendedMenuItem
-----
 
 ##### details
 
@@ -68,7 +67,6 @@ Example:
 
 
 #### Loader
-----
 
 There are no props.
 
@@ -76,7 +74,6 @@ There are no props.
 
 
 #### Login
-----
 
 ##### logoBackground
 
@@ -114,7 +111,6 @@ Basic structure: () => {}
 
 
 #### Logo
-----
 
 ##### src
 
@@ -136,7 +132,6 @@ Default:
 
 
 #### Pagination
-----
 
 ##### count
 
@@ -163,7 +158,6 @@ Basic structure: () => {}
 
 
 #### StateAction
-----
 
 ##### actions
 
@@ -185,7 +179,6 @@ Basic structure: `true` or `false`
 
 
 #### StickyMenu
-----
 
 ##### primaryMenu
 
@@ -233,7 +226,6 @@ Basic structure: `true` or `false`
 
 
 #### TabContentView # Coming Soon
-----
 
 ##### tabs
 
@@ -252,7 +244,6 @@ Basic structure:
 
 
 #### Table
-----
 
 ##### header
 
@@ -289,7 +280,6 @@ Look at `Pagination` component for details
 
 
 #### TableWithSingle
-----
 
 ##### basis
 
@@ -343,7 +333,6 @@ Type: `elementType`, required
 
 
 #### ToggleMenu
-----
 
 ##### menuList
 
