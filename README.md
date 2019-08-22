@@ -23,31 +23,116 @@ ReactDOM.render(
 
 ### Components
 
------#### ToggleMenu
 
-##### count
 
-Type: `number`, required
-Basic structure: `999`
+#### ExtendedMenuItem
+----
 
-##### pageLimit
+##### details
 
-Type: `number`
-Default: `10`
-Basic structure: `999`
+Type: `object`, required
+Basic structure:
+```
+{
+  id: `string` or `number`, # required
+  title: `string`, # required
+  description: `string`,
+  tags: `array`,
+  actions: `array`, # required
+  menu: `object of objects 'list' and 'onClick'`
+}
+```
+Example:
+```
+{
+  id: 1,
+  title: "Here Is Your Title",
+  description: "Here Is Your Description",
+  tags: ['some', 'tags', ...],
+  actions: [
+    <StateAction actions={['running']} onClick={this.click} tooltip />,
+    'waiting',
+    ...
+  ],
+  menu: {
+    list: [
+      {name: 'Something', link: '/some'},
+      ...
+    ],
+    onClick: () => {}
+  }
+}
 
-##### currentPage
+```
 
-Type: `number`,
-Default: `1`
-Basic structure: `999`
 
-##### onClick
+
+#### Loader
+----
+
+There are no props.
+
+
+
+
+#### Login
+----
+
+##### logoBackground
+
+Type: `string`
+Default: `#f7f8fa`
+
+##### logo
+
+Type: `string`
+Default: null
+Basic structure: `"./logo.svg"`
+
+##### rounded
+
+Type: `bool`
+Default: `false`
+Basic structure: `true` or `false`
+
+##### buttonName
+
+Type: `string`
+Default: 'Login'
+
+##### title
+
+Type: `string`
+Default: `''`
+
+##### login
 
 Type: `func`, required
 Basic structure: () => {}
+
+
+
+
+#### Logo
 ----
-----
+
+##### src
+
+Type: `string`, required
+Basic structure: `"./logo.svg"`
+
+##### style
+
+Type: `object`
+Default: 
+```
+# based on ui-box, not required
+{
+  height: 60,
+  transform: 'rotate(-45deg) translateX(1px)'
+}
+```
+
 
 
 #### Pagination
@@ -143,6 +228,140 @@ Basic structure: Same as `primaryMenu`
 Type: `bool`
 Default: `false`
 Basic structure: `true` or `false`
+
+
+
+
+#### TabContentView # Coming Soon
+----
+
+##### tabs
+
+Type: `array`, required
+Basic structure: 
+```
+[
+  {
+    name: 'Some menu item',
+    link: '/some-menu-item-link'
+  }
+  ...
+]
+```
+
+
+
+#### Table
+----
+
+##### header
+
+Type: `object`, required
+Example: 
+```
+{
+  "id-key": '`id` column header name',
+  "country-key": "`country` column header name",
+  ...
+}
+```
+
+##### body
+
+Type: `array`, required
+Example:
+```
+{
+  "id": 1,
+  "name": "Taylor",
+  "surname": "Davis",
+  "country": "Netherlands",
+  "position": "DevOps",
+  "email": "taylor.davis@fancygrid.com"
+},
+```
+
+##### pagination
+
+Type: `object`
+Look at `Pagination` component for details
+
+
+
+#### TableWithSingle
+----
+
+##### basis
+
+Type: `number`
+Default: `300`
+
+
+##### rows
+
+Type: `array`, required
+Example:
+```
+[
+  {
+    id: 1,
+    title: "Here Is Your Title",
+    description: "Here Is Your Description",
+    tags: ['some', 'tags', ...],
+    actions: [
+      <StateAction actions={['running']} onClick={this.click} />,
+      'waiting',
+      ...
+    ],
+    menu: {
+      list: [
+        {name: 'Something', link: '/some'},
+        ...
+      ],
+      onClick: () => {}
+    }
+  },
+  ...
+]
+```
+
+##### loading
+
+Type: `bool`
+Default: `false`
+Basic structure: `true` or `false`
+
+
+##### listItem
+
+Type: `elementType`, required
+
+
+##### singleComponent # Coming soon
+
+
+
+
+#### ToggleMenu
+----
+
+##### menuList
+
+Type: `array`, required
+Basic structure: 
+```
+[
+  {
+    name: 'Component name',
+    component: <Component />
+  },
+  ...
+]
+```
+##### onClick
+
+Type: `func`, required
+Basic structure: () => {}
 
 
 
