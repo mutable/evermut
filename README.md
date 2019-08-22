@@ -27,7 +27,7 @@ ReactDOM.render(
 
 #### ExtendedMenuItem
 
-##### details
+###### details
 
 Type: `object`, required
 Basic structure:
@@ -75,34 +75,34 @@ There are no props.
 
 #### Login
 
-##### logoBackground
+###### logoBackground
 
 Type: `string`
 Default: `#f7f8fa`
 
-##### logo
+###### logo
 
 Type: `string`
 Default: null
 Basic structure: `"./logo.svg"`
 
-##### rounded
+###### rounded
 
 Type: `bool`
 Default: `false`
 Basic structure: `true` or `false`
 
-##### buttonName
+###### buttonName
 
 Type: `string`
 Default: 'Login'
 
-##### title
+###### title
 
 Type: `string`
 Default: `''`
 
-##### login
+###### login
 
 Type: `func`, required
 Basic structure: () => {}
@@ -112,12 +112,12 @@ Basic structure: () => {}
 
 #### Logo
 
-##### src
+###### src
 
 Type: `string`, required
 Basic structure: `"./logo.svg"`
 
-##### style
+###### style
 
 Type: `object`
 Default: 
@@ -133,24 +133,24 @@ Default:
 
 #### Pagination
 
-##### count
+###### count
 
 Type: `number`, required
 Basic structure: `999`
 
-##### pageLimit
+###### pageLimit
 
 Type: `number`
 Default: `10`
 Basic structure: `999`
 
-##### currentPage
+###### currentPage
 
 Type: `number`,
 Default: `1`
 Basic structure: `999`
 
-##### onClick
+###### onClick
 
 Type: `func`, required
 Basic structure: () => {}
@@ -159,18 +159,18 @@ Basic structure: () => {}
 
 #### StateAction
 
-##### actions
+###### actions
 
 Type: `array`, required
 Possible values: `'running'`, `'waiting'`, `'warning'`, `'stopped'`
 Basic structure: `['running']`
 
-##### onClick
+###### onClick
 
 Type: `func`, required
 Basic structure: () => {}
 
-##### tooltip
+###### tooltip
 
 Type: `bool`
 Default: `false`
@@ -180,7 +180,7 @@ Basic structure: `true` or `false`
 
 #### StickyMenu
 
-##### primaryMenu
+###### primaryMenu
 
 Type: `array`, required
 
@@ -210,13 +210,13 @@ Basic structure:
   ...
 ]
 ```
-##### secondaryMenu
+###### secondaryMenu
 
 Type: `array`
 Default: `[]`
 Basic structure: Same as `primaryMenu`
 
-##### stickBottom
+###### stickBottom
 
 Type: `bool`
 Default: `false`
@@ -227,7 +227,7 @@ Basic structure: `true` or `false`
 
 #### TabContentView # Coming Soon
 
-##### tabs
+###### tabs
 
 Type: `array`, required
 Basic structure: 
@@ -245,7 +245,7 @@ Basic structure:
 
 #### Table
 
-##### header
+###### header
 
 Type: `object`, required
 Example: 
@@ -257,7 +257,7 @@ Example:
 }
 ```
 
-##### body
+###### body
 
 Type: `array`, required
 Example:
@@ -272,7 +272,7 @@ Example:
 },
 ```
 
-##### pagination
+###### pagination
 
 Type: `object`
 Look at `Pagination` component for details
@@ -281,13 +281,13 @@ Look at `Pagination` component for details
 
 #### TableWithSingle
 
-##### basis
+###### basis
 
 Type: `number`
 Default: `300`
 
 
-##### rows
+###### rows
 
 Type: `array`, required
 Example:
@@ -315,26 +315,26 @@ Example:
 ]
 ```
 
-##### loading
+###### loading
 
 Type: `bool`
 Default: `false`
 Basic structure: `true` or `false`
 
 
-##### listItem
+###### listItem
 
 Type: `elementType`, required
 
 
-##### singleComponent # Coming soon
+###### singleComponent # Coming soon
 
 
 
 
 #### ToggleMenu
 
-##### menuList
+###### menuList
 
 Type: `array`, required
 Basic structure: 
@@ -347,7 +347,7 @@ Basic structure:
   ...
 ]
 ```
-##### onClick
+###### onClick
 
 Type: `func`, required
 Basic structure: () => {}
