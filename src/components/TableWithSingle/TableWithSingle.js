@@ -26,14 +26,20 @@ class TableWithSingle extends React.Component {
   }
 
   selectedView = (rowIndex) => {
+    const { selected } = this.state;
+    const { singleComponent, loading } = this.props;
     let  props = {
       flex: '1 0 0',
       margin: 16
     };
-    const { singleComponent, loading } = this.props;
+
+    const singleComponentProps = {
+      ...singleComponent.props,
+      details: selected
+    }
 
     return (<Pane {...props} key={rowIndex}>
-      {!loading ? singleComponent : <Loader />}
+      {!loading ? React.createElement(singleComponent.type, singleComponentProps) : <Loader />}
     </Pane>)
   }
 
@@ -70,20 +76,10 @@ class TableWithSingle extends React.Component {
         {React.createElement(listItem, listItemProps)}
       </Table.TextCell>
     );
-      
-    // return ( // @Anna
-    //   
-    //     <Cell
-    //       key={`${row.company}-${index}`}
-    //       details={row}
-    //       menu={menu} // @Anna
-    //     />
-    //   </Table.TextCell>
-    // );
   };
 
   getTable = () => {
-    const { rows, basis } = this.props;
+    const { rows, basis, loading } = this.props;
     const { rowProps, selected } = this.state;
     
     const props = {};
@@ -119,6 +115,7 @@ class TableWithSingle extends React.Component {
           cells={headCells}
           selected={selected}
           basis={basis}
+          loading={loading}
         />
         <Table.Body maxHeight={360}>
           {tableRows}
@@ -151,10 +148,13 @@ TableWithSingle.defaultProps = {
 
 TableWithSingle.propTypes = {
   basis: PropTypes.number,
+  loading: PropTypes.bool,
   rows: PropTypes.arrayOf(PropTypes.object).isRequired,
   listItem: PropTypes.elementType.isRequired,
-  singleComponent: PropTypes.element.isRequired,
-  loading: PropTypes.bool
+  singleComponent: PropTypes.shape({
+    type: PropTypes.elementType.isRequired,
+    props: PropTypes.object
+  }).isRequired
 };
 
 export default TableWithSingle;

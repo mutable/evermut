@@ -16,9 +16,9 @@ import ToggleMenu from '../ToggleMenu'
 
 class ExtendedMenuItem extends React.Component {
   render() {
-    const { details } = this.props;
+    const { details, loading } = this.props;
 
-    return (
+    return ( loading ? <Loader /> :
       <Pane>
         <Pane display='flex' justifyContent='space-between'>
           {
@@ -56,7 +56,12 @@ class ExtendedMenuItem extends React.Component {
   }
 } 
 
+ExtendedMenuItem.defaultProps = {
+  loading: false
+}
+
 ExtendedMenuItem.propTypes = {
+  loading: PropTypes.bool,
   details: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     actions: PropTypes.array.isRequired,

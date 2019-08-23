@@ -5,10 +5,10 @@ import Loader from '../Loader';
 
 class ToggleMenu extends React.Component {
   render() {
-    const { menuList } = this.props;
+    const { loading, menuList } = this.props;
 
     return (
-      <Popover
+      loading ? <Loader /> : <Popover
         position='bottom-right'
         minWidth={0}
         content={
@@ -38,7 +38,13 @@ class ToggleMenu extends React.Component {
   }
 }
 
+ToggleMenu.defaultProps = {
+  loading: false
+}
+
+
 ToggleMenu.propTypes = {
+  loading: PropTypes.bool,
   menuList: PropTypes.arrayOf(PropTypes.object).isRequired,
   onClick: PropTypes.func.isRequired,
 };

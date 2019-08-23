@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Pane, Menu } from 'evergreen-ui';
 import Box from 'ui-box';
+import Loader from '../Loader';
 import MutMenuItem from './MenuItem';
 
 class StickyMenu extends React.Component {
   render() {
-    const { primaryMenu, secondaryMenu, stickBottom } = this.props;
+    const { primaryMenu, secondaryMenu, stickBottom, loading } = this.props;
 
-    return (
+    return ( loading ? <Loader /> :
       <Box
         width="80px"
         paddingTop="10px"
@@ -76,11 +77,13 @@ class StickyMenu extends React.Component {
 }
 
 StickyMenu.defaultProps = {
+  loading: false,
   stickBottom: false,
-  secondaryMenu: []
+  secondaryMenu: [],
 }
 
 StickyMenu.propTypes = {
+  loading: PropTypes.bool,
   primaryMenu: PropTypes.arrayOf(PropTypes.object).isRequired,
   secondaryMenu: PropTypes.arrayOf(PropTypes.object),
   stickBottom: PropTypes.bool

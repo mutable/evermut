@@ -41,7 +41,9 @@ class Header extends React.Component {
   }
 
   render() {
-    return this.getHeader();
+    const { loading } = this.props;
+    
+    return loading ? <Loader /> : this.getHeader();
   }
 }
 

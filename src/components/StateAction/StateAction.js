@@ -32,9 +32,9 @@ class StateAction extends React.Component {
   }
 
   render() {
-    const { actions, tooltip, onClick } = this.props;
+    const { actions, tooltip, onClick, loading} = this.props;
 
-    return (
+    return ( loading ? <Loader /> :
       <Pane>
       {
         actions && actions.length && actions.map((item) => {
@@ -59,10 +59,12 @@ class StateAction extends React.Component {
 }
 
 StateAction.defaultProps = {
-  tooltip: false
+  tooltip: false, 
+  loading: false
 }
 
 StateAction.propTypes = {
+  loading: PropTypes.bool,
   actions: PropTypes.arrayOf(PropTypes.oneOf(['running', 'waiting', 'warning', 'stopped'])).isRequired,
   onClick: PropTypes.func.isRequired,
   tooltip: PropTypes.bool

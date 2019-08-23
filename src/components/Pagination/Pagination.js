@@ -47,7 +47,7 @@ class Pagination extends React.Component {
 
   render() {
     const { pageIndex, pageLimit } = this.state;
-    const { count, classes, translate } = this.props;
+    const { count, classes, translate, loading } = this.props;
 
     const countOfPages = Math.ceil(count / pageLimit);
     const pages = this._getPages(countOfPages);
@@ -57,7 +57,7 @@ class Pagination extends React.Component {
     const nextPage = pageIndex + 1;
     const prevPage = pageIndex - 1;
 
-    return (
+    return ( loading ? <Loader /> : 
       <Pane>
         <Button
           disabled={backActive}
@@ -85,10 +85,12 @@ class Pagination extends React.Component {
 
 Pagination.defaultProps = {
   pageLimit: 10,
-  currentPage: 1
+  currentPage: 1,
+  loading: false
 }
 
 Pagination.propTypes = {
+  loading: PropTypes.bool,
   count: PropTypes.number.isRequired,
   pageLimit: PropTypes.number,
   currentPage: PropTypes.number,

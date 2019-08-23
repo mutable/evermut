@@ -10,7 +10,7 @@ class TabContentView extends React.Component {
     selectedIndex: 0
   };
 
-  getComponent = () => {
+  getComponent = (row) => {
     const { selectedIndex } = this.state;
     const { tabs } = this.props;
     const truncateProps = {
@@ -54,7 +54,7 @@ class TabContentView extends React.Component {
   }
 
   render() {
-    const { loading } = this.props;
+    const { loading, details } = this.props;
 
     const props = {
       width: '100%',
@@ -64,7 +64,7 @@ class TabContentView extends React.Component {
 
     return (
       <Pane {...props}>
-        {loading ? <Loader /> : this.getComponent() }
+        {loading ? <Loader /> : this.getComponent(details) }
       </Pane>
     )
   }
