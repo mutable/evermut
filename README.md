@@ -70,7 +70,10 @@ Example:
 
 #### Loader
 
-There are no props.
+###### style
+
+Type: `object` # based on ui-box, not required
+Default: `{}`
 
 
 

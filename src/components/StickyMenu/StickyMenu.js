@@ -7,16 +7,16 @@ import MutMenuItem from './MenuItem';
 
 class StickyMenu extends React.Component {
   render() {
-    const { primaryMenu, secondaryMenu, stickBottom, loading } = this.props;
+    const { primaryMenu, secondaryMenu, stickBottom, loading, ...others } = this.props;
 
-    return ( loading ? <Loader /> :
+    return (
       <Box
         width="80px"
         paddingTop="10px"
         background="#525F7F" // "#FF9A22"
         flexShrink={0}
         zIndex={9}
-        // {...props}
+        {...others}
       >
         <Pane
           display="flex"
@@ -28,25 +28,27 @@ class StickyMenu extends React.Component {
           height="100vh" 
           overflowX="hidden"
         >
-          <Menu>
-            <Menu.Group>
+          {
+            loading ? <Loader style={{spinnerColor: '#ffffff'}} /> :
+            <Menu>
+              <Menu.Group>
+                {
+                  primaryMenu.map((pm, index) => {
+                    const props = {};
+                    if (pm.icon) props.icon = pm.icon;
+                    const children = pm.logo || pm.name || 'Set name or logo';
+                    return (
+                      <MutMenuItem
+                        key={`pm-${index}`}
+                        props={pm.props}
+                        {...props}
+                      >{children}</MutMenuItem>
+                    )
+                  })
+                }
+              </Menu.Group>
               {
-                primaryMenu.map((pm, index) => {
-                  const props = {};
-                  if (pm.icon) props.icon = pm.icon;
-                  const children = pm.logo || pm.name || 'Set name or logo';
-                  return (
-                    <MutMenuItem
-                      key={`pm-${index}`}
-                      props={pm.props}
-                      {...props}
-                    >{children}</MutMenuItem>
-                  )
-                })
-              }
-            </Menu.Group>
-            {
-              secondaryMenu && <>
+                secondaryMenu &&
                 <Pane position='absolute' bottom={stickBottom ? 0 : 'auto'}>
                   <Menu.Divider />
                   <Menu.Group>
@@ -67,9 +69,9 @@ class StickyMenu extends React.Component {
                     }
                   </Menu.Group>
                 </Pane>
-              </>
-            }
-          </Menu>
+              }
+            </Menu>
+          }
         </Pane>
       </Box>
     );
