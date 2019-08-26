@@ -1,6 +1,6 @@
 ### Evermut
 <img src="https://github.com/mutable/evermut/blob/master/logos.png" />
-Mutable with 🌲 Evergreen React UI Framework by Segment https://evergreen.segment.com/
+Mutable with 🌲 Evergreen React UI Framework by Segment
 
 ### Install and use components
 ```
@@ -13,7 +13,7 @@ A working version looks like:
 ```
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Logo } from 'evergreen-ui'
+import { Logo } from 'evermut'
 
 ReactDOM.render(
   <Logo src={<source_path>} />,
