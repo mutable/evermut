@@ -27,6 +27,14 @@ ReactDOM.render(
 
 #### ExtendedMenuItem
 
+###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
 ###### details
 
 Type: `object`, required
@@ -124,6 +132,15 @@ Basic structure: () => {}
 
 #### Logo
 
+
+###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
 ###### src
 
 Type: `string`, required
@@ -146,6 +163,15 @@ Default:
 
 
 #### Pagination
+
+
+###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
 
 ###### count
 
@@ -178,6 +204,15 @@ Basic structure: () => {}
 
 #### StateAction
 
+
+###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
 ###### actions
 
 Type: `array`, required
@@ -203,6 +238,15 @@ Basic structure: `true` or `false`
 
 
 #### StickyMenu
+
+
+###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
 
 ###### primaryMenu
 
@@ -275,6 +319,15 @@ Basic structure:
 
 #### Table
 
+
+###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
 ###### header
 
 Type: `object`, required
@@ -319,7 +372,6 @@ Look at `Pagination` component for details
 Type: `number`
 
 Default: `300`
-
 
 ###### rows
 
@@ -370,6 +422,14 @@ Type: `elementType`, required
 
 
 #### ToggleMenu
+
+###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
 
 ###### menuList
 

@@ -37,10 +37,10 @@ class StateAction extends React.Component {
     return ( loading ? <Loader /> :
       <Pane>
       {
-        actions && actions.length && actions.map((item) => {
+        actions && actions.length && actions.map((item, index) => {
           const actionStuff = this.getIconColor(item)
           return (
-            <Pane display='inline-flex' alignItems="center">
+            <Pane display='inline-flex' alignItems="center" key={`stateAction-${index}`}>
               {
                 tooltip && this.getTooltip(item, actionStuff.color)
                 || <>
@@ -48,7 +48,7 @@ class StateAction extends React.Component {
                   <Text fontSize={11}>{item}</Text>
                 </>
               }
-              <IconButton onClick={() => onClick(item)} onmarginLeft={4} icon={actionStuff.icon} appearance="minimal" />
+              <IconButton onClick={() => onClick(item)} marginLeft={4} icon={actionStuff.icon} appearance="minimal" />
             </Pane>
           );
         })

@@ -55,7 +55,7 @@ class TableComponent extends React.Component {
       paddingBottom: 6
     }
 
-    const { totalCount, offset, limit, click} = this.props.pagination;
+    const { totalCount, offset, limit, click } = this.props.pagination;
 
     return (
       <Pane {...footer}>
@@ -81,7 +81,7 @@ class TableComponent extends React.Component {
     return (
       <Pane {...props}>
         {loading ? <Loader /> : this.getTable()}
-        {pagination ? this.getFooter() : null}
+        {pagination && !loading ? this.getFooter() : null}
       </Pane>
     )
   }
