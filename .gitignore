@@ -66,3 +66,9 @@ typings/
 
 # ignore compiled files dist/ folder
 dist/*
+
+#examples
+/example/node_modules
+/example/dist
+/example/.next
+
