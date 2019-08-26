@@ -457,11 +457,9 @@ Basic structure: () => {}
 
 ## Development
 
-* `yarn build:prod` or `npm run build:prod` transpiles the JavaScript files for production usage
-* `yarn build:dev` or `npm run build:dev` transpiles the JavaScript files for development usage
-* `yarn prepublish` or `npm run prepublish` transpiles the JavaScript files for production usage
+* `yarn build` or `npm run build` transpiles the JavaScript files for production usage
 
 # License
-Evergreen is released under the MIT license.
+Evermut is released under the MIT license.
 
 Copyright © 2019  [mutable.io](https://www.mutable.io/)
