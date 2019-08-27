@@ -1,6 +1,6 @@
 {
   "name": "evermut",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Mut View Library",
   "main": "dist/index.js",
   "contributors": [
