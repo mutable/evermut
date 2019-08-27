@@ -1,10 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
-import { StickyMenu } from 'evermut'
+import { StickyMenu, Logo } from 'evermut'
+import logo from "../logo-light.svg";
 
 const primaryMenu = [
   {
-    // logo: <Logo src={logo} />,
+    logo: <Logo src={logo} style={{transform: 'none'}}/>, // WARNING! do not need for the style={tranform: 'none'} in evermut new version 1.0.10
     props: {
       href: '/',
       target: '_blank',
