@@ -1,3 +1,5 @@
+export { default as BreadCrumbs } from './BreadCrumbs';
+
 export { default as ExtendedMenuItem } from './ExtendedMenuItem';
 
 export { default as Loader } from './Loader';
