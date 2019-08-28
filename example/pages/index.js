@@ -1,7 +1,7 @@
 import React from 'react'
-import Link from 'next/link'
+// import Link from 'next/link'
 import Head from 'next/head'
-import { Pane } from 'evergreen-ui'
+import { Pane, Link } from 'evergreen-ui'
 import Nav from '../components/nav'
 import { Login, TableWithSingle, ExtendedMenuItem, TabContentView, Table, StateAction } from 'evermut'
 import testJson from '../Test/test';
@@ -65,97 +65,89 @@ class Home extends React.Component {
     const onSelect = (name) => {
       console.log('onSelect', name);
     }
+
+    const linkStyle = {
+      textDecoration: 'none',
+      color: 'inherit',
+      outline: 'none'
+    };
+
     return (
-      <Pane>
-        <Head>
-          <title>Home</title>
-        </Head>
+      <div>
+        <Pane
+          display="flex"
+        >
+          <Head>
+            <title>Evermut components</title>
+          </Head>
+          <Nav />
 
-        <Nav />
-
-        <Pane>
-          <Login
-           rounded
-           buttonName="buttonName"
-           logo={logo}
-           logoBackground="black"
-           login={() => {}}
-           // WARNING! to have not rotated icon add style={{transform: 'rotate(-45deg) translateX(1px)'}} in new version of evermoot 1.0.10
-          />
-          <TableWithSingle
-            rows={companies}
-            loading={loading}
-            selectItem={this.selectItem}
-            listItem={ExtendedMenuItem}
-            singleComponent={{
-             type: TabContentView,
-             props: {
-               tabs: [
-                 {name: 'Services', component: 'Services' },
-                 {name: 'Collaborators', component: 'Collaborators' }
-               ],
-             }
+          <Pane
+            style={{
+              width: 'calc(100% - 80px)',
+              display: 'inline-block',
+              verticalAlign: 'top',
+              padding: '20px'
             }}
-          />
-          <Table
-            header={{name: 'Name', id: 'Id'}}
-            body={dataArray}
-            pagination={{totalCount: testJson.data.length, offset , limit , click: this.click}}
-            onClick={this.tableClick}
-          />
+          >
+            <Link
+              style={linkStyle}
+              href="#simple-table-with-pagination"
+              name="simple-table-with-pagination"
+            >Simple Table with pagination</Link>
+            <Table
+              header={{name: 'Name', id: 'Id'}}
+              body={dataArray}
+              pagination={{totalCount: testJson.data.length, offset , limit , click: this.click}}
+              onClick={this.tableClick}
+            />
+            <Link
+              style={linkStyle}
+              href="#advanced-table"
+              name="advanced-table"
+            >Advanced Table</Link>
+            <TableWithSingle
+              rows={companies}
+              loading={loading}
+              selectItem={this.selectItem}
+              listItem={ExtendedMenuItem}
+              singleComponent={{
+               type: TabContentView,
+               props: {
+                 tabs: [
+                   {name: 'Services', component: 'Services' },
+                   {name: 'Collaborators', component: 'Collaborators' }
+                 ],
+               }
+              }}
+            />
+            <Link
+              style={linkStyle}
+              href="#login-form"
+              name="login-form"
+            >Login Form</Link>
+            <Login
+             rounded
+             buttonName="buttonName"
+             logo={logo}
+             logoBackground="black"
+             login={() => {}}
+             // WARNING! to have not rotated icon add style={{transform: 'rotate(-45deg) translateX(1px)'}} in new version of evermoot 1.0.10
+            />
+          </Pane>
         </Pane>
-      </Pane>
+        <style jsx global>{`
+          body {
+            margin: 0;
+            padding: 0;
+          }
+          a:focus {
+            box-shadow: none!important;
+          }
+        `}</style>
+      </div>
     )
   }
 }
 
 export default Home
-
-/*
-<style jsx>{`
-          .hero {
-            width: 100%;
-            color: #333;
-          }
-          .title {
-            margin: 0;
-            width: 100%;
-            padding-top: 80px;
-            line-height: 1.15;
-            font-size: 48px;
-          }
-          .title,
-          .description {
-            text-align: center;
-          }
-          .row {
-            max-width: 880px;
-            margin: 80px auto 40px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-          }
-          .card {
-            padding: 18px 18px 24px;
-            width: 220px;
-            text-align: left;
-            text-decoration: none;
-            color: #434343;
-            border: 1px solid #9b9b9b;
-          }
-          .card:hover {
-            border-color: #067df7;
-          }
-          .card h3 {
-            margin: 0;
-            color: #067df7;
-            font-size: 18px;
-          }
-          .card p {
-            margin: 0;
-            padding: 12px 0 0;
-            font-size: 13px;
-            color: #333;
-          }
-        `}</style>
-*/

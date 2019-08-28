@@ -7,17 +7,31 @@ const primaryMenu = [
   {
     logo: <Logo src={logo} style={{transform: 'none'}}/>, // WARNING! do not need for the style={tranform: 'none'} in evermut new version 1.0.10
     props: {
-      href: '/',
-      target: '_blank',
+      href: '#index',
       paddingTop: 10
     }
   },
   {
-    name: 'Stacks',
-    icon: 'stacked-chart',
+    name: 'Simple Table with pagination',
+    icon: 'join-table',
     props: {
-      href: '/',
-      target: '_blank',
+      href: '#simple-table-with-pagination',
+      paddingTop: 10
+    }
+  },
+  {
+    name: 'Advanced Table',
+    icon: 'panel-table',
+    props: {
+      href: '#advanced-table',
+      paddingTop: 10
+    }
+  },
+  {
+    name: 'Login Form',
+    icon: 'log-in',
+    props: {
+      href: '#login-form',
       paddingTop: 10
     }
   }
@@ -50,6 +64,11 @@ const onSelect = (item) => {
 
 const Nav = () => (
   <StickyMenu
+    style={{
+      width: "80px",
+      display: 'inline-block',
+      verticalAlign: 'top'
+    }}
     primaryMenu={primaryMenu}
     secondaryMenu={secondaryMenu}
   />
