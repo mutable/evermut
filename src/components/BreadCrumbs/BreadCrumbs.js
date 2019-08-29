@@ -11,24 +11,31 @@ class BreadCrumbs extends React.Component {
       selected: false,
       url: ''
     }
+    console.log('constructor')
   }
   click(item) {
-    // console.log('clicked ee', item)
+    console.log('clicked ee', item)
+    // if(item.id !== 'undefined') this.setState({url: url + item.id})
   }
   getAppearance(item, last, index) {
     const { url } = this.state;
-    // this.setState({url: url + item.name})
-    let text = ''
+    console.log('url')
+    let text = '';
+
     if(typeof item.name !== 'string') {
       text = (
         <Select
-          onChange={e => this.click(e)}
+          onChange={(e) => this.click(e)}
         >
-          {item.name.length && item.name.map((value, index) => <option key={`options-${index}`}>{value.name}</option>)}
+          {
+            item.name.length && item.name.map((value, index) => {
+              return <option value={value.name} key={`options-${index}`}>{value.name}</option>
+            })
+          }
         </Select>
       );
     } else {
-      text = <Paragraph is='a' href={item.link}>{item.name}</Paragraph>;
+      text = <Paragraph is='a' onClick={() => this.props.onClick(item)}>{item.name}</Paragraph>;
     }
     return (
       <Text>
@@ -37,6 +44,7 @@ class BreadCrumbs extends React.Component {
       </Text>
     );
   }
+
   render() {
     const { pathArray, loading } = this.props;
 
