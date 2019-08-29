@@ -1,11 +1,15 @@
 import React from 'react'
-// import Link from 'next/link'
 import Head from 'next/head'
-import { Pane, Link } from 'evergreen-ui'
+import {
+  Pane,
+  Paragraph,
+  Link
+} from 'evergreen-ui'
 import Nav from '../components/nav'
 import { Login, TableWithSingle, ExtendedMenuItem, TabContentView, Table, StateAction } from 'evermut'
 import testJson from '../Test/test';
 import logo from "../logo-light.svg";
+import logoDark from "../logo-dark.svg";
 
 class Home extends React.Component {
   constructor() {
@@ -66,14 +70,24 @@ class Home extends React.Component {
       console.log('onSelect', name);
     }
 
+    const extraStyle = {
+      marginBottom: 30,
+      display: 'flex'
+    }
+
     const linkStyle = {
+      marginTop: 28,
+      marginBottom: 16,
+      display: 'flex',
+      fontSize: 28,
       textDecoration: 'none',
       color: 'inherit',
       outline: 'none'
     };
 
+
     return (
-      <div>
+      <>
         <Pane
           display="flex"
         >
@@ -90,50 +104,74 @@ class Home extends React.Component {
               padding: '20px'
             }}
           >
-            <Link
-              style={linkStyle}
-              href="#simple-table-with-pagination"
-              name="simple-table-with-pagination"
-            >Simple Table with pagination</Link>
-            <Table
-              header={{name: 'Name', id: 'Id'}}
-              body={dataArray}
-              pagination={{totalCount: testJson.data.length, offset , limit , click: this.click}}
-              onClick={this.tableClick}
-            />
-            <Link
-              style={linkStyle}
-              href="#advanced-table"
-              name="advanced-table"
-            >Advanced Table</Link>
-            <TableWithSingle
-              rows={companies}
-              loading={loading}
-              selectItem={this.selectItem}
-              listItem={ExtendedMenuItem}
-              singleComponent={{
-               type: TabContentView,
-               props: {
-                 tabs: [
-                   {name: 'Services', component: 'Services' },
-                   {name: 'Collaborators', component: 'Collaborators' }
-                 ],
-               }
-              }}
-            />
-            <Link
-              style={linkStyle}
-              href="#login-form"
-              name="login-form"
-            >Login Form</Link>
-            <Login
-             rounded
-             buttonName="buttonName"
-             logo={logo}
-             logoBackground="black"
-             login={() => {}}
-             // WARNING! to have not rotated icon add style={{transform: 'rotate(-45deg) translateX(1px)'}} in new version of evermoot 1.0.10
-            />
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#simple-table-with-pagination"
+                name="simple-table-with-pagination"
+              >Simple Table with pagination</Link>
+              <Paragraph
+                {...extraStyle}
+              >description of Simple Table with pagination</Paragraph>
+              <Table
+                header={{name: 'Name', id: 'Id'}}
+                body={dataArray}
+                pagination={{totalCount: testJson.data.length, offset , limit , click: this.click}}
+                onClick={this.tableClick}
+              />
+            </Pane>
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#advanced-table"
+                name="advanced-table"
+              >Advanced Table</Link>
+              <Paragraph
+                {...extraStyle}
+              >description of Advanced Table</Paragraph>
+              <TableWithSingle
+                rows={companies}
+                loading={loading}
+                selectItem={this.selectItem}
+                listItem={ExtendedMenuItem}
+                singleComponent={{
+                 type: TabContentView,
+                 props: {
+                   tabs: [
+                     {name: 'Services', component: 'Services' },
+                     {name: 'Collaborators', component: 'Collaborators' }
+                   ],
+                 }
+                }}
+              />
+            </Pane>
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#login-form"
+                name="login-form"
+              >Login Form</Link>
+              <Paragraph
+                {...extraStyle}
+              >description of Login Form</Paragraph>
+              <Login
+                rounded
+                buttonName="Login Button"
+                logo={logoDark}
+                logoBackground="white"
+                login={() => {}}
+                style={{
+                  margin: 'auto'
+                }}
+                // WARNING! to have not rotated icon add style={{transform: 'rotate(-45deg) translateX(1px)'}} in new version of evermoot 1.0.10
+              />
+            </Pane>
           </Pane>
         </Pane>
         <style jsx global>{`
@@ -145,7 +183,7 @@ class Home extends React.Component {
             box-shadow: none!important;
           }
         `}</style>
-      </div>
+      </>
     )
   }
 }
