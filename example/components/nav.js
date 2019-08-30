@@ -5,7 +5,7 @@ import logo from "../logo-light.svg";
 
 const primaryMenu = [
   {
-    logo: <Logo src={logo} style={{transform: 'none'}}/>, // WARNING! do not need for the style={tranform: 'none'} in evermut new version 1.0.10
+    logo: <Logo src={logo} />,
     props: {
       href: '#index',
       paddingTop: 10
