@@ -29,7 +29,7 @@ class StickyMenu extends React.Component {
           overflowX="hidden"
         >
           {
-            loading ? <Loader style={{spinnerColor: '#ffffff'}} /> :
+            loading ? <Loader theme={{spinnerColor: '#ffffff'}} /> :
             <Menu>
               <Menu.Group>
                 {

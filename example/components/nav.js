@@ -12,7 +12,15 @@ const primaryMenu = [
     }
   },
   {
-    name: 'Simple Table with pagination',
+    name: 'Pagination',
+    icon: 'numerical',
+    props: {
+      href: '#pagination',
+      paddingTop: 10
+    }
+  },
+  {
+    name: 'Table',
     icon: 'join-table',
     props: {
       href: '#simple-table-with-pagination',
@@ -39,23 +47,13 @@ const primaryMenu = [
 
 const secondaryMenu = [
   {
-    name: 'Account Settings',
-    icon: 'settings',
+    name: 'Sticky Menu',
+    icon: 'list-detail-view',
     props: {
-      href: '/',
-      target: '_blank',
+      href: '#sticky-menu',
       paddingTop: 10
     }
-  },
-  {
-    name: 'Log-out',
-    icon: 'log-out',
-    props: {
-      href: '#',
-      paddingTop: 10,
-      onSelect: () => onSelect('Logout')
-    }
-  },
+  }
 ]
 
 const onSelect = (item) => {

@@ -3,10 +3,19 @@ import Head from 'next/head'
 import {
   Pane,
   Paragraph,
+  Heading,
   Link
 } from 'evergreen-ui'
 import Nav from '../components/nav'
-import { Login, TableWithSingle, ExtendedMenuItem, TabContentView, Table, StateAction } from 'evermut'
+import {
+  Login,
+  ExtendedMenuItem,
+  Pagination,
+  TableWithSingle,
+  TabContentView,
+  Table,
+  StateAction
+} from 'evermut'
 import testJson from '../Test/test';
 import logo from "../logo-light.svg";
 import logoDark from "../logo-dark.svg";
@@ -85,7 +94,6 @@ class Home extends React.Component {
       outline: 'none'
     };
 
-
     return (
       <>
         <Pane
@@ -104,6 +112,36 @@ class Home extends React.Component {
               padding: '20px'
             }}
           >
+            <Link
+              style={{
+                textDecoration: 'none',
+                outline: 'none'
+              }}
+              href="#index"
+              name="index"
+            >
+              <Heading
+                size={800}
+              >Components</Heading>
+            </Link>
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#pagination"
+                name="pagination"
+              >Pagination</Link>
+              <Paragraph
+                {...extraStyle}
+              >Component renders the pagination to help user to spread data into multiple pages</Paragraph>
+              <Pagination
+                count={testJson.data.length}
+                pageLimit={limit}
+                currentPage={offset}
+                onClick={this.click}
+              />
+            </Pane>
             <Pane
               paddingTop={30}
             >
@@ -111,10 +149,10 @@ class Home extends React.Component {
                 style={linkStyle}
                 href="#simple-table-with-pagination"
                 name="simple-table-with-pagination"
-              >Simple Table with pagination</Link>
+              >Table</Link>
               <Paragraph
                 {...extraStyle}
-              >description of Simple Table with pagination</Paragraph>
+              >Component displays the data in table. Features include `pagination`.</Paragraph>
               <Table
                 header={{name: 'Name', id: 'Id'}}
                 body={dataArray}
@@ -132,7 +170,7 @@ class Home extends React.Component {
               >Advanced Table</Link>
               <Paragraph
                 {...extraStyle}
-              >description of Advanced Table</Paragraph>
+              >Component displays the data in table. Feature includes advanced view of the row.</Paragraph>
               <TableWithSingle
                 rows={companies}
                 loading={loading}
@@ -159,7 +197,7 @@ class Home extends React.Component {
               >Login Form</Link>
               <Paragraph
                 {...extraStyle}
-              >description of Login Form</Paragraph>
+              >Equipped form for user login.</Paragraph>
               <Login
                 rounded
                 buttonName="Login Button"
@@ -171,6 +209,18 @@ class Home extends React.Component {
                 }}
                 // WARNING! to have not rotated icon add style={{transform: 'rotate(-45deg) translateX(1px)'}} in new version of evermoot 1.0.10
               />
+            </Pane>
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#sticky-menu"
+                name="sticky-menu"
+              >Sticky Menu</Link>
+              <Paragraph
+                {...extraStyle}
+              >Component displays two lists of choices ( primary and secondary ) sticked on the left of the surface.</Paragraph>
             </Pane>
           </Pane>
         </Pane>
