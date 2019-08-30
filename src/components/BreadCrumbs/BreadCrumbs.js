@@ -8,34 +8,34 @@ class BreadCrumbs extends React.Component {
   constructor() {
     super()
     this.state = {
-      selected: false,
-      url: ''
+      selected: false
     }
-    console.log('constructor')
   }
-  click(item) {
-    console.log('clicked ee', item)
-    // if(item.id !== 'undefined') this.setState({url: url + item.id})
+  click(event, list) {
+    const { onClick } = this.props;
+    if(onClick) onClick({selected: event.target.value, list});
+
+    this.setState({ selected: event.target.value});
   }
   getAppearance(item, last, index) {
-    const { url } = this.state;
-    console.log('url')
+    const { selected } = this.state;
     let text = '';
 
     if(typeof item.name !== 'string') {
       text = (
         <Select
-          onChange={(e) => this.click(e)}
+          value={selected}
+          onChange={(e) => this.click(e, item.name)}
         >
           {
             item.name.length && item.name.map((value, index) => {
-              return <option value={value.name} key={`options-${index}`}>{value.name}</option>
+              return <option value={value.id} key={`options-${index}`}>{value.name}</option>
             })
           }
         </Select>
       );
     } else {
-      text = <Paragraph is='a' onClick={() => this.props.onClick(item)}>{item.name}</Paragraph>;
+      text = <Paragraph is='a' textDecoration={item.link ? 'underline' : 'none'} cursor={'pointer'} onClick={() => this.props.onClick(item)}>{item.name}</Paragraph>;
     }
     return (
       <Text>
@@ -64,6 +64,8 @@ BreadCrumbs.defaultProps = {
 
 BreadCrumbs.propTypes = {
   loading: PropTypes.bool,
+  pathArray: PropTypes.array.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default BreadCrumbs;
