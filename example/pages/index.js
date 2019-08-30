@@ -205,9 +205,9 @@ class Home extends React.Component {
                 logoBackground="white"
                 login={() => {}}
                 style={{
-                  margin: 'auto'
+                  margin: 'auto',
+                  transform: 'rotate(-45deg) translateX(1px)'
                 }}
-                // WARNING! to have not rotated icon add style={{transform: 'rotate(-45deg) translateX(1px)'}} in new version of evermoot 1.0.10
               />
             </Pane>
             <Pane
