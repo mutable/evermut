@@ -1,5 +1,5 @@
 ### Evermut
-<img src="https://github.com/mutable/evermut/blob/master/logos.png" />
+<img src="https://raw.githubusercontent.com/mutable/evermut/master/logos.png" />
 Mutable with 🌲 Evergreen React UI Framework by Segment
 
 ### Install and use components
