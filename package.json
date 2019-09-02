@@ -1,6 +1,6 @@
 {
   "name": "evermut",
-  "version": "1.1.0",
+  "version": "1.1.6",
   "description": "Mut View Library",
   "main": "dist/index.js",
   "contributors": [
@@ -8,6 +8,7 @@
     "Anna Narimanyan (https://github.com/annanarim)"
   ],
   "scripts": {
+    "dev": "webpack --config webpack.config.js",
     "build": "babel src --out-dir dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,8 +30,13 @@
     "@babel/plugin-transform-arrow-functions": "^7.2.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "core-js": "^3.2.1",
+    "mini-css-extract-plugin": "^0.8.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "webpack": "^4.39.3",
+    "webpack-cli": "^3.3.7"
   },
   "browserslist": "> 0.25%, not dead",
   "files": [
