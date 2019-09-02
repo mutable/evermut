@@ -13,8 +13,7 @@ const Logo = ({ src, style, loading }) => {
 
 Logo.defaultProps = {
   style: {
-    height: 60,
-    transform: 'rotate(-45deg) translateX(1px)'
+    height: 60
   },
   loading: false
 }

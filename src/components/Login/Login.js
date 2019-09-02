@@ -113,7 +113,7 @@ class LoginPage extends React.PureComponent {
   }
 
   getLoginForm = () => {
-    const { buttonName } = this.props;
+    const { buttonName, style } = this.props;
     const {
       email,
       emailIsValid,
@@ -137,6 +137,7 @@ class LoginPage extends React.PureComponent {
         backgroundColor="white"
         alignSelf="center"
         width={450}
+        {...style}
       >
         {this.loginHeader()}
         <Pane

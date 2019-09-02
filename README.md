@@ -1,5 +1,5 @@
 ### Evermut
-<img src="https://github.com/mutable/evermut/blob/master/logos.png" />
+<img src="https://raw.githubusercontent.com/mutable/evermut/master/logos.png" />
 Mutable with 🌲 Evergreen React UI Framework by Segment
 
 ### Install and use components
@@ -23,6 +23,8 @@ ReactDOM.render(
 
 ### Components
 
+<br />
+<br />
 
 
 #### ExtendedMenuItem
@@ -74,6 +76,7 @@ Example:
 
 ```
 
+<br />
 
 
 #### Loader
@@ -84,6 +87,7 @@ Type: `object` # based on ui-box, not required
 Default: `{}`
 
 
+<br />
 
 
 #### Login
@@ -128,6 +132,7 @@ Type: `func`, required
 Basic structure: () => {}
 
 
+<br />
 
 
 #### Logo
@@ -160,6 +165,7 @@ Default:
 }
 ```
 
+<br />
 
 
 #### Pagination
@@ -201,6 +207,8 @@ Type: `func`, required
 Basic structure: () => {}
 
 
+<br />
+
 
 #### StateAction
 
@@ -235,6 +243,8 @@ Default: `false`
 
 Basic structure: `true` or `false`
 
+
+<br />
 
 
 #### StickyMenu
@@ -296,6 +306,7 @@ Default: `false`
 Basic structure: `true` or `false`
 
 
+<br />
 
 
 #### TabContentView # Coming Soon
@@ -315,6 +326,7 @@ Basic structure:
 ]
 ```
 
+<br />
 
 
 #### Table
@@ -419,6 +431,7 @@ Type: `elementType`, required
 ###### singleComponent # Coming soon
 
 
+<br />
 
 
 #### ToggleMenu
@@ -452,6 +465,8 @@ Type: `func`, required
 Basic structure: () => {}
 
 
+
+<br />
 
 
 
