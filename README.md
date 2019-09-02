@@ -27,6 +27,68 @@ ReactDOM.render(
 <br />
 
 
+#### BreadCrumbs
+
+###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
+###### crumbs
+
+Type: `array`, required
+
+Basic structure:
+```
+{
+  crumb: `string` or `array`, # required
+  route: `string` or `object`, # required
+}
+```
+Basic structure of `crumb` if
+
+* string
+```
+  crumb: `string`, # required 
+```
+* obejct
+```
+-- string
+  crumb: [
+    {
+      name: `string`, # required ,
+      id: `string` or `number`, # required 
+    }, 
+    ...
+  ]
+```
+
+Basic structure of `route` if
+
+* string
+```
+ route: `string`, # required 
+```
+* obejct
+```
+-- string
+  route: {
+    name: `string`, # required ,
+    id: `string` or `number`, # required 
+  }
+```
+
+###### onClick
+
+Type: `func`, required
+
+Basic structure: () => {}
+
+
+
 #### ExtendedMenuItem
 
 ###### loading
