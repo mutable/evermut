@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Pane, Text, Icon, IconButton, Button, Paragraph, Select } from 'evergreen-ui';
 import Loader from '../Loader';
-import ToggleMenu from '../ToggleMenu';
 
 class BreadCrumbs extends React.Component {
   constructor() {
@@ -11,7 +10,7 @@ class BreadCrumbs extends React.Component {
       selected: false
     }
   }
-  click(event, list) {
+  handleClick(event, list) {
     const { onClick } = this.props;
     if(onClick) onClick({selected: event.target.value, list});
 
@@ -21,15 +20,15 @@ class BreadCrumbs extends React.Component {
     const { selected } = this.state;
     let text = '';
 
-    if(typeof item.name !== 'string') {
+    if(typeof item.crumb !== 'string') {
       text = (
         <Select
           value={selected}
-          onChange={(e) => this.click(e, item.name)}
+          onChange={(e) => this.handleClick(e, item.crumb)}
         >
           {
-            item.name.length && item.name.map((value, index) => {
-              return <option value={value.id} key={`options-${index}`}>{value.name}</option>
+            item.crumb.length && item.crumb.map((value, i) => {
+              return <option value={value.id} key={`options-${i}`}>{value.name}</option>
             })
           }
         </Select>
@@ -37,10 +36,11 @@ class BreadCrumbs extends React.Component {
     } else {
       text = <Paragraph
         is='a'
-        textDecoration={item.link ? 'underline' : 'none'}
-        cursor={'pointer'} onClick={() => this.props.onClick(item)}
+        textDecoration={item.route ? 'underline' : 'none'}
+        cursor={'pointer'}
+        onClick={() => this.props.onClick(item)}
       >
-        {item.name}
+        {item.crumb}
       </Paragraph>;
     }
     return (
@@ -52,12 +52,12 @@ class BreadCrumbs extends React.Component {
   }
 
   render() {
-    const { pathArray, loading } = this.props;
+    const { crumbs, loading } = this.props;
 
     return ( loading ? <Loader /> :
       <Pane>
-        {pathArray && pathArray.length && pathArray.map((item, index) => {
-          return this.getAppearance(item, index === pathArray.length - 1, index);
+        {crumbs && crumbs.length && crumbs.map((item, index) => {
+          return this.getAppearance(item, index === crumbs.length - 1, index);
         })}
       </Pane>
     )
@@ -70,7 +70,16 @@ BreadCrumbs.defaultProps = {
 
 BreadCrumbs.propTypes = {
   loading: PropTypes.bool,
-  pathArray: PropTypes.array.isRequired,
+  crumbs: PropTypes.arrayOf(PropTypes.shape({
+    crumb: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+    }))]).isRequired,
+    route: PropTypes.oneOfType([PropTypes.string, PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+    })])
+  })).isRequired,
   onClick: PropTypes.func.isRequired
 };
 
