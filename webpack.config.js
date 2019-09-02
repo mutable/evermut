@@ -12,7 +12,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, './dist'),
     libraryTarget: 'commonjs2',
-    filename: 'evermut.js',
+    filename: 'index.js',
     chunkFilename: '[name].[chunkhash:8].evermut.js',
   },
   module: {
