@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Pane, Text, Icon, IconButton, Button, Paragraph, Select } from 'evergreen-ui';
+import { Pane, Text, Paragraph, Select } from 'evergreen-ui';
 import Loader from '../Loader';
 
 class BreadCrumbs extends React.Component {

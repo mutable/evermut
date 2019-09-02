@@ -54,9 +54,8 @@ Basic structure of `crumb` if
 ```
   crumb: `string`, # required 
 ```
-* obejct
+* object
 ```
--- string
   crumb: [
     {
       name: `string`, # required ,
@@ -72,9 +71,8 @@ Basic structure of `route` if
 ```
  route: `string`, # required 
 ```
-* obejct
+* object
 ```
--- string
   route: {
     name: `string`, # required ,
     id: `string` or `number`, # required 
