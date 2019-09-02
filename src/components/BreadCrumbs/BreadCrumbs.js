@@ -35,10 +35,16 @@ class BreadCrumbs extends React.Component {
         </Select>
       );
     } else {
-      text = <Paragraph is='a' textDecoration={item.link ? 'underline' : 'none'} cursor={'pointer'} onClick={() => this.props.onClick(item)}>{item.name}</Paragraph>;
+      text = <Paragraph
+        is='a'
+        textDecoration={item.link ? 'underline' : 'none'}
+        cursor={'pointer'} onClick={() => this.props.onClick(item)}
+      >
+        {item.name}
+      </Paragraph>;
     }
     return (
-      <Text>
+      <Text key={`text-${index}`}>
         {text}
         {!last ? '/ ' : ''}
       </Text>
