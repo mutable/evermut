@@ -20,12 +20,10 @@ ReactDOM.render(
   document.getElementById('root')
 )
 ```
+<br />
+<br />
 
 ### Components
-
-<br />
-<br />
-
 
 #### BreadCrumbs
 
