@@ -25,7 +25,6 @@ ReactDOM.render(
 
 ### Components
 
-<br />
 
 #### BreadCrumbs
 
