@@ -25,6 +25,8 @@ ReactDOM.render(
 
 ### Components
 
+<br />
+
 #### BreadCrumbs
 
 ###### loading
@@ -83,7 +85,7 @@ Type: `func`, required
 
 Basic structure: () => {}
 
-
+<br />
 
 #### ExtendedMenuItem
 
