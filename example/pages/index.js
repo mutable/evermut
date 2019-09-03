@@ -15,7 +15,8 @@ import {
   TabContentView,
   Table,
   StateAction,
-  BreadCrumbs
+  BreadCrumbs,
+  Steps
 } from 'evermut'
 import testJson from '../Test/test';
 import logo from "../logo-light.svg";
@@ -129,6 +130,23 @@ class Home extends React.Component {
                 size={800}
               >Components</Heading>
             </Link>
+
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#steps"
+                name="steps"
+              >Steps</Link>
+              <Paragraph
+                {...extraStyle}
+              >Component regulates user flow</Paragraph>
+              <Steps
+              />
+            </Pane>
+
+
             <Pane
               paddingTop={30}
             >

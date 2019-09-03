@@ -10,6 +10,7 @@ export { default as Logo } from './Logo';
 export { default as Pagination } from './Pagination';
 
 export { default as StateAction } from './StateAction';
+export { default as Steps } from './Steps';
 export { default as StickyMenu } from './StickyMenu';
 
 export { default as TabContentView } from './TabContentView';
