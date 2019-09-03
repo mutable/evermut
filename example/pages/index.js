@@ -14,7 +14,8 @@ import {
   TableWithSingle,
   TabContentView,
   Table,
-  StateAction
+  StateAction,
+  BreadCrumbs
 } from 'evermut'
 import testJson from '../Test/test';
 import logo from "../logo-light.svg";
@@ -54,6 +55,10 @@ class Home extends React.Component {
     console.log('clicked action', item)
   }
 
+  breadCrumbsClick(item) {
+    console.log('breadCrumbsClick', item)
+  }
+
   click = (offset, limit, count = testJson.data.length) => {
     const array = [];
     for(let i = (offset-1)*limit; (i < offset*limit) && (i < count); i++) {
@@ -66,7 +71,7 @@ class Home extends React.Component {
 
   render() {
     const companies = [
-      {id: 1, title: "title 1", description: "description 1", tags: ['some', 'tags'], actions: [<StateAction actions={['running']} onClick={this.click} tooltip />, 'waiting'], menu: { list: [{name: 'Something', link: '/some'}, {name: 'Logs', link: '/logs'}], onClick: this.selectedMenuItem }},
+      {id: 1, title: "title 1", description: "description 1", tags: ['some', 'tags'], actions: [<StateAction key='stateActionkey' actions={['running']} onClick={this.click} tooltip />, 'waiting'], menu: { list: [{name: 'Something', link: '/some'}, {name: 'Logs', link: '/logs'}], onClick: this.selectedMenuItem }},
       {id: 2, title: "title 2", description: "description 2", tags: ['some', 'tags'], actions: ['waiting'], menu: { list: [{name: 'New', link: '/new'}], onClick: this.selectedMenuItem}},
       {id: 3, title: "title 3", description: "description 3", tags: ['some', 'tags'], actions: ['stopped'], menu: { list: [{name: 'delete', link: '/delete'}], onClick: this.selectedMenuItem}},
       {id: 4, title: "title 4", description: "description 4", tags: ['some', 'tags'], actions: ['warning'], menu: { list: [{name: 'edit', link: '/edit'}], onClick: this.selectedMenuItem}}
@@ -147,6 +152,28 @@ class Home extends React.Component {
             >
               <Link
                 style={linkStyle}
+                href="#bread-crumbs"
+                name="bread-crumbs"
+              >BreadCrumbs</Link>
+              <Paragraph
+                {...extraStyle}
+              >Component helps to navigate between pages.</Paragraph>
+              <BreadCrumbs
+                crumbs={
+                  [
+                    {crumb: 'Stack1', route: '/stack1'},
+                    {crumb: 'Stack2'},
+                    {crumb: [{id: '3', name: 'Stack3'}, {id: '4', name: 'Stack4'}], route: {id: '4', name: 'Stack4'}},
+                  ]
+                }
+                onClick={this.breadCrumbsClick}
+              />
+            </Pane>
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
                 href="#simple-table-with-pagination"
                 name="simple-table-with-pagination"
               >Table</Link>
@@ -202,11 +229,14 @@ class Home extends React.Component {
                 rounded
                 buttonName="Login Button"
                 logo={logoDark}
+                logoStyle={{
+                  background: 'white',
+                  transform: 'rotate(-45deg) translateX(1px)'
+                }}
                 logoBackground="white"
                 login={() => {}}
                 style={{
-                  margin: 'auto',
-                  transform: 'rotate(-45deg) translateX(1px)'
+                  margin: 'auto'
                 }}
               />
             </Pane>

@@ -13,7 +13,8 @@ class LoginPage extends React.PureComponent {
   }
   
   static propTypes = {
-    logoBackground: PropTypes.string,
+    // logoBackground: PropTypes.string,
+    logoStyle: PropTypes.object,
     logo: PropTypes.string,
     login: PropTypes.func.isRequired,
     rounded: PropTypes.bool,
@@ -22,7 +23,7 @@ class LoginPage extends React.PureComponent {
   }
 
   static defaultProps = {
-    logoBackground: '#f7f8fa',
+    // logoBackground: '#f7f8fa',
     buttonName: 'Login',
     logo: null,
     rounded: false,
@@ -52,7 +53,7 @@ class LoginPage extends React.PureComponent {
   }
 
   loginHeader = () => {
-    const { logo, rounded, title, logoBackground } = this.props;
+    const { logo, rounded, title, logoStyle, logoBackground } = this.props;
 
     let logoComponent = null;
     if (logo) {
@@ -72,12 +73,12 @@ class LoginPage extends React.PureComponent {
         borderLeftColor: "transparent",
         borderStyle: 'solid',
         borderWidth: 1,
-        background: logoBackground
+        backgroundColor: logoBackground
       };
 
       const style = {
         height: 60,
-        transform: 'rotate(-45deg) translateX(1px)'
+        ...logoStyle
       };
 
       if (rounded) props.borderRadius = '100%';

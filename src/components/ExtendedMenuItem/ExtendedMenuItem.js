@@ -29,7 +29,7 @@ class ExtendedMenuItem extends React.Component {
         </Pane> 
         <Pane textAlign='start'> 
           {
-            details && Object.keys(details).length && Object.keys(details).map((item) => {
+            details && Object.keys(details).length && Object.keys(details).map((item, i) => {
              if(item !== 'actions' && item !== 'menu' && item !== 'id' && (item !== 'title' && item !== 'name')) {
               if(typeof details[item] === 'object') {
                 const objectArray =  details[item];
@@ -38,7 +38,7 @@ class ExtendedMenuItem extends React.Component {
                   return <Text fontSize={11} key={`obj-type-key-${index}`}>{objectArray[key]}{comma}</Text>
                 })
               }
-                return <Text fontSize={11} display='block'>{details[item]}</Text>
+                return <Text key={`text-key-${i}`} fontSize={11} display='block'>{details[item]}</Text>
               }
             }) || null
           }

@@ -20,6 +20,14 @@ const primaryMenu = [
     }
   },
   {
+    name: 'Breadcrumbs',
+    icon: 'layout-linear',
+    props: {
+      href: '#bread-crumbs',
+      paddingTop: 10
+    }
+  },
+  {
     name: 'Table',
     icon: 'join-table',
     props: {
