@@ -16,7 +16,7 @@ import {
   Table,
   StateAction,
   BreadCrumbs,
-  Steps
+  Stepper
 } from 'evermut'
 import testJson from '../Test/test';
 import logo from "../logo-light.svg";
@@ -59,6 +59,14 @@ class Home extends React.Component {
   breadCrumbsClick(item) {
     console.log('breadCrumbsClick', item)
   }
+  
+  stepperFunc(item) {
+    console.log('stepperFunc', item)
+  }
+
+  stepFunc(item) {
+    console.log('stepFunc', item)
+  }
 
   click = (offset, limit, count = testJson.data.length) => {
     const array = [];
@@ -76,7 +84,13 @@ class Home extends React.Component {
       {id: 2, title: "title 2", description: "description 2", tags: ['some', 'tags'], actions: ['waiting'], menu: { list: [{name: 'New', link: '/new'}], onClick: this.selectedMenuItem}},
       {id: 3, title: "title 3", description: "description 3", tags: ['some', 'tags'], actions: ['stopped'], menu: { list: [{name: 'delete', link: '/delete'}], onClick: this.selectedMenuItem}},
       {id: 4, title: "title 4", description: "description 4", tags: ['some', 'tags'], actions: ['warning'], menu: { list: [{name: 'edit', link: '/edit'}], onClick: this.selectedMenuItem}}
-    ]
+    ];
+
+    const steps = [
+      {link: {name: 'Repo', path: '#repo'}, component: 'Repo Component', func: this.stepFunc},
+      {link: {name: 'Branch', path: '#branch'}, component: 'Branch Component', func: this.stepFunc},
+      {link: {name: 'File', path: '#file'}, component: 'File Component', func: this.stepFunc},
+    ];
     const { dataArray, limit, offset } = this.state;
 
     const loading = false;
@@ -136,13 +150,15 @@ class Home extends React.Component {
             >
               <Link
                 style={linkStyle}
-                href="#steps"
-                name="steps"
-              >Steps</Link>
+                href="#stepper"
+                name="stepper"
+              >Stepper</Link>
               <Paragraph
                 {...extraStyle}
               >Component regulates user flow</Paragraph>
-              <Steps
+              <Stepper
+                func={(item) => this.stepperFunc(item)}
+                steps={steps}
               />
             </Pane>
 
