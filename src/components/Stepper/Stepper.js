@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Pane, Text, Button, IconButton, Popover, Menu } from 'evergreen-ui';
+import { Pane, Text, Button, IconButton, Popover, Menu, Table } from 'evergreen-ui';
 import Loader from '../Loader';
 
 class Stepper extends React.Component {
@@ -8,11 +8,26 @@ class Stepper extends React.Component {
 		super();
 
 		this.state = {
-			index: 0
+			index: 0,
+			popoverOpened: false
 		}
 	}
 	showList() {
-		return (<Text>asd</Text>);
+		const { index } = this.state;
+		const { steps } = this.props;
+		return (
+			<Pane>
+			  {steps && steps.length && steps.map((item, _index) => {
+      		return (
+				  	<Table.Row key={`step-shown-menu-${_index}`} isSelectable isSelected={_index === index} onSelect={() => this.menuAction(_index)} borderBottom='default' height="auto" paddingY={12}>
+			        <Table.TextCell>
+			          {item.link.name}
+			        </Table.TextCell>
+					  </Table.Row>
+				  );
+      	})}			    
+			</Pane>
+		);
 	}
 
 	onClickNext(isNext) {
@@ -28,12 +43,25 @@ class Stepper extends React.Component {
 		this.setState({ index: _index })
 	}
 
+	menuAction(index) {
+		this.setState({ index, popoverOpened: false });
+	}
+
+	openPopover() {
+		const { popoverOpened } = this.state;
+		this.setState({ popoverOpened: !popoverOpened });
+	}
+
 	getStepMenu() {
+		const { popoverOpened } = this.state;
 		const { steps } = this.props;
 
 		return (
 			<Popover
 			  position='bottom-left'
+			  isShown={popoverOpened}
+			  onOpen={() => this.openPopover()}
+			  shouldCloseOnExternalClick
 			  content={
 			    <Menu>
 			      <Menu.Group>
@@ -41,9 +69,9 @@ class Stepper extends React.Component {
 			      		return (
 					        <Menu.Item
 					        	key={`step-menu-${index}`}
-					          onSelect={() => toaster.notify('Share')}
+					          onSelect={() => this.menuAction(index)}
 					        >
-					          {item.link.name}
+					         {item.link.name}
 					        </Menu.Item>
 					      );
 			      	})}
@@ -60,8 +88,8 @@ class Stepper extends React.Component {
 		const { index } = this.state;
 		const { steps, show } = this.props;
 		return (
-			<Pane border="default">
-				<Pane display='flex' alignItems='center' width='100%' backgroundColor='#F5F6F7' padding={8} borderBottom='1px solid #E4E7EB'>
+			<Pane border="default" width="100%">
+				<Pane display='flex' alignItems='center' width='100%' backgroundColor='#F5F6F7' padding={8} borderBottom='default'>
 					<Text width='10%' color='black'>{index + 1}/{steps.length}</Text>
 					<Text textAlign='end'>
 						<Text color='black' display='block'>{steps[index].link && steps[index].link.name}</Text>
@@ -69,10 +97,10 @@ class Stepper extends React.Component {
 					</Text>
 					{!show && this.getStepMenu() || null}
 				</Pane>
-				<Pane marginTop={8} margin={8}>
+				<Pane marginTop={8} margin={8} height={300}>
 					{steps[index].component}
 				</Pane>
-				<Pane padding={8} display='flex' backgroundColor='#F5F6F7' borderTop='1px solid #E4E7EB' justifyContent='space-between'>
+				<Pane padding={8} display='flex' backgroundColor='#F5F6F7' borderTop='default' justifyContent='space-between'>
 					<Button onClick={() => this.onClickNext()} disabled={index === 0}>Back</Button>
 					<Button onClick={() => this.onClickNext(true)}>{(index + 1 !== steps.length) ? 'Next' : 'Finish'}</Button>
 				</Pane>
@@ -82,13 +110,9 @@ class Stepper extends React.Component {
 
   render() {
     const { show, loading, steps, func } = this.props;
-    // const paneStyle = {
-    // 	border: '1px solid black',
-    // 	padding: '8px',
-    // }
     return ( loading ? <Loader /> :
-      <Pane>
-        {show && <Pane>{this.showList()}</Pane> || null}
+      <Pane display='flex'>
+        {show && <Pane width="auto" backgroundColor='#F5F6F7' borderTop="default" borderBottom="default" borderLeft="default">{this.showList()}</Pane> || null}
         {steps && steps.length && this.displayContent()}
       </Pane>
     )

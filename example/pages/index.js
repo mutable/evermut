@@ -87,7 +87,7 @@ class Home extends React.Component {
     ];
 
     const steps = [
-      {link: {name: 'Repo', path: '#repo'}, component: 'Repo Component', func: this.stepFunc},
+      {link: {name: 'Repo with longer name', path: '#repo'}, component: 'Repo Component', func: this.stepFunc},
       {link: {name: 'Branch', path: '#branch'}, component: 'Branch Component', func: this.stepFunc},
       {link: {name: 'File', path: '#file'}, component: 'File Component', func: this.stepFunc},
     ];
@@ -157,12 +157,11 @@ class Home extends React.Component {
                 {...extraStyle}
               >Component regulates user flow</Paragraph>
               <Stepper
+                show
                 func={(item) => this.stepperFunc(item)}
                 steps={steps}
               />
             </Pane>
-
-
             <Pane
               paddingTop={30}
             >
