@@ -16,7 +16,8 @@ import {
   Table,
   StateAction,
   BreadCrumbs,
-  Stepper
+  Stepper,
+  CircularProgressBar
 } from 'evermut'
 import testJson from '../Test/test';
 import logo from "../logo-light.svg";
@@ -144,7 +145,24 @@ class Home extends React.Component {
                 size={800}
               >Components</Heading>
             </Link>
-
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#circularProgress"
+                name="circularProgress"
+              >Circular progress</Link>
+              <Paragraph
+                {...extraStyle}
+              >Component shows a progress in circular form</Paragraph>
+              <CircularProgressBar 
+                size={100}
+                strokeWidth={10}
+                strokeColor='#525F7F'
+                percentage={20}
+              />
+            </Pane>
             <Pane
               paddingTop={30}
             >

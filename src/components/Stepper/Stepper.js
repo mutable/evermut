@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Pane, Text, Button, IconButton, Popover, Menu, Table } from 'evergreen-ui';
 import Loader from '../Loader';
+import CircularProgressBar from '../CircularProgressBar'
 
 class Stepper extends React.Component {
 	constructor() {
@@ -90,8 +91,13 @@ class Stepper extends React.Component {
 		return (
 			<Pane border="default" width="100%">
 				<Pane display='flex' alignItems='center' width='100%' backgroundColor='#F5F6F7' padding={8} borderBottom='default'>
-					<Text width='10%' color='black'>{index + 1}/{steps.length}</Text>
-					<Text textAlign='end'>
+					<CircularProgressBar 
+	          size={50}
+	          strokeWidth={5}
+	          strokeColor='#525F7F'
+	          percentage={Math.floor(index/steps.length*100)}
+	        />
+					<Text textAlign='end' marginLeft={16}>
 						<Text color='black' display='block'>{steps[index].link && steps[index].link.name}</Text>
 						{(index + 1 !== steps.length) && <Text color='black'>Next: {steps[index+1].link && steps[index+1].link.name}</Text> || null}
 					</Text>
