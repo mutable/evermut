@@ -95,7 +95,9 @@ class Stepper extends React.Component {
 	          size={50}
 	          strokeWidth={5}
 	          strokeColor='#525F7F'
-	          percentage={Math.floor(index/steps.length*100)}
+	          secondaryStrokeColor='#99a5c2'
+	          // percentage={Math.floor(index/steps.length*100)}
+	          step={{current: index+1, count: steps.length }}
 	        />
 					<Text textAlign='end' marginLeft={16}>
 						<Text color='black' display='block'>{steps[index].link && steps[index].link.name}</Text>

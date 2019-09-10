@@ -4,12 +4,19 @@ import { Pane, Heading, TextInputField, Button } from 'evergreen-ui';
 
 class CircularProgressBar extends React.Component {  
   render() {
-  	const { size, strokeWidth, strokeColor, percentage } = this.props;
+  	const { size, strokeWidth, strokeColor, secondaryStrokeColor, percentage, step } = this.props;
+  	const text = step ? `${step.current}/${step.count}` : `${percentage}%`;
     const radius = (size - strokeWidth) / 2;
     const viewBox = `0 0 ${size} ${size}`;
-    const dashArray = radius * Math.PI * 2;
-    const dashOffset = dashArray - dashArray * percentage / 100;
-
+    const lengthOfCirle = radius * Math.PI * 2;
+    
+    const percent = step ? Math.floor((step.current-1)/step.count * 100) : percentage;
+    let offset = lengthOfCirle - lengthOfCirle * percent / 100;
+    if(step && step.current === step.count) {
+    	offset = 0
+    }
+    const percentNew = step ? Math.floor((step.current)/step.count * 100) : percentage;
+    const offsetNew = lengthOfCirle - lengthOfCirle * percentNew / 100;
     return (
   		<svg
         width={size}
@@ -17,34 +24,46 @@ class CircularProgressBar extends React.Component {
         viewBox={viewBox}
       >
         <circle
-          className="circle-background"
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          stroke='#ddd'
-          fill='none'
-          strokeWidth={`${strokeWidth}px`} />
+	        className="circle-background"
+	        cx={size / 2}
+	        cy={size / 2}
+	        r={radius}
+	        stroke='#ddd'
+	        fill='none'
+	        strokeWidth={`${strokeWidth}px`} />
         <circle
-          className="circle-progress"
+          className="circle-advance-progress"
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke={strokeColor}
+          stroke={secondaryStrokeColor}
+	        transform={`rotate(-90 ${size / 2} ${size / 2})`}
           fill='none'
-          strokeWidth={`${strokeWidth}px`}
-          transform={`rotate(-90 ${size / 2} ${size / 2})`}
           style={{
-            strokeDasharray: dashArray,
-            strokeDashoffset: dashOffset
-          }} />
-        	<text
-            className="circle-text"
-            x="50%"
-            y="50%"
-            dy=".3em"
-            textAnchor="middle">
-            {`${percentage}%`}
-          </text>
+            strokeDasharray: lengthOfCirle,
+            strokeDashoffset: offsetNew
+          }}
+          strokeWidth={`${strokeWidth}px`} />
+         <circle
+	        className="circle-progress"
+	        cx={size / 2}
+	        cy={size / 2}
+	        r={radius}
+	        stroke={strokeColor}
+	        fill='none'
+	        strokeWidth={`${strokeWidth}px`}
+	        transform={`rotate(-90 ${size / 2} ${size / 2})`}
+	        style={{
+	          strokeDasharray: lengthOfCirle,
+	          strokeDashoffset: offset }} />
+      	<text
+          className="circle-text"
+          x="50%"
+          y="50%"
+          dy=".3em"
+          textAnchor="middle">
+          {offset === 0 ? 'Done' : text}
+        </text>
       </svg>
     );
   }
@@ -62,3 +81,4 @@ CircularProgressBar.propTypes = {
 };
 
 export default CircularProgressBar;
+     
