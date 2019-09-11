@@ -91,6 +91,7 @@ class Home extends React.Component {
       {link: {name: 'Repo with longer name', path: '#repo'}, component: 'Repo Component', func: this.stepFunc},
       {link: {name: 'Branch', path: '#branch'}, component: 'Branch Component', func: this.stepFunc},
       {link: {name: 'File', path: '#file'}, component: 'File Component', func: this.stepFunc},
+      {link: {name: 'You have finished', path: '#finsih'}, component: 'Successfully finished', func: this.stepFunc},
     ];
     const { dataArray, limit, offset } = this.state;
 

@@ -19,19 +19,21 @@ class Stepper extends React.Component {
 		return (
 			<Pane>
 			  {steps && steps.length && steps.map((item, _index) => {
-      		return (
-				  	<Table.Row key={`step-shown-menu-${_index}`} isSelectable isSelected={_index === index} onSelect={() => this.menuAction(_index)} borderBottom='default' height="auto" paddingY={12}>
-			        <Table.TextCell>
-			          {item.link.name}
-			        </Table.TextCell>
-					  </Table.Row>
-				  );
+      		if (_index + 1 !== steps.length) {
+      			return (
+					  	<Table.Row key={`step-shown-menu-${_index}`} isSelectable isSelected={_index === index} onSelect={() => this.menuAction(_index)} borderBottom='default' height="auto" paddingY={12}>
+				        <Table.TextCell>
+				          {item.link.name}
+				        </Table.TextCell>
+						  </Table.Row>
+					  );
+					} else return null;
       	})}			    
 			</Pane>
 		);
 	}
 
-	onClickNext(isNext) {
+	onClickNext(e, isNext) {
 		const { index } = this.state;
 		const { steps } = this.props;
 
@@ -41,7 +43,8 @@ class Stepper extends React.Component {
 		} else {
 			_index = !isNext ? index - 1 : index;
 		}
-		this.setState({ index: _index })
+		this.setState({ index: _index });
+		if (steps[index].func) steps[index].func(e);
 	}
 
 	menuAction(index) {
@@ -67,14 +70,16 @@ class Stepper extends React.Component {
 			    <Menu>
 			      <Menu.Group>
 			      	{steps && steps.length && steps.map((item, index) => {
-			      		return (
-					        <Menu.Item
-					        	key={`step-menu-${index}`}
-					          onSelect={() => this.menuAction(index)}
-					        >
-					         {item.link.name}
-					        </Menu.Item>
-					      );
+			      		if (index + 1 !== steps.length) {
+				      		return (
+						        <Menu.Item
+						        	key={`step-menu-${index}`}
+						          onSelect={() => this.menuAction(index)}
+						        >
+						         {item.link.name}
+						        </Menu.Item>
+						      );
+				      	} else return null;
 			      	})}
 			      </Menu.Group>
 			    </Menu>
@@ -88,6 +93,11 @@ class Stepper extends React.Component {
 	displayContent = () => {
 		const { index } = this.state;
 		const { steps, show } = this.props;
+		let nextButtonText = 'Next';
+		if(index + 2 === steps.length) {
+			nextButtonText = 'Finish';
+		} else if (index + 1 === steps.length) nextButtonText = '';
+
 		return (
 			<Pane border="default" width="100%">
 				<Pane display='flex' alignItems='center' width='100%' backgroundColor='#F5F6F7' padding={8} borderBottom='default'>
@@ -97,21 +107,23 @@ class Stepper extends React.Component {
 	          strokeColor='#525F7F'
 	          secondaryStrokeColor='#99a5c2'
 	          // percentage={Math.floor(index/steps.length*100)}
-	          step={{current: index+1, count: steps.length }}
+	          step={{current: index+1, count: steps.length-1 }}
 	        />
 					<Text textAlign='end' marginLeft={16}>
 						<Text color='black' display='block'>{steps[index].link && steps[index].link.name}</Text>
-						{(index + 1 !== steps.length) && <Text color='black'>Next: {steps[index+1].link && steps[index+1].link.name}</Text> || null}
+						{(index + 2 <= steps.length) && <Text color='black'>Next: {steps[index+1].link && steps[index+1].link.name}</Text> || null}
 					</Text>
 					{!show && this.getStepMenu() || null}
 				</Pane>
 				<Pane marginTop={8} margin={8} height={300}>
 					{steps[index].component}
 				</Pane>
-				<Pane padding={8} display='flex' backgroundColor='#F5F6F7' borderTop='default' justifyContent='space-between'>
-					<Button onClick={() => this.onClickNext()} disabled={index === 0}>Back</Button>
-					<Button onClick={() => this.onClickNext(true)}>{(index + 1 !== steps.length) ? 'Next' : 'Finish'}</Button>
-				</Pane>
+				{nextButtonText && (
+					<Pane padding={8} display='flex' backgroundColor='#F5F6F7' borderTop='default' justifyContent='space-between'>
+						<Button onClick={(e) => this.onClickNext(e)} disabled={index === 0}>Back</Button>
+						 <Button onClick={(e) => this.onClickNext(e, true)}>{nextButtonText}</Button>
+					</Pane>
+				)}
 			</Pane>
 		);
 	}

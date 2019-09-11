@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Pane, Heading, TextInputField, Button } from 'evergreen-ui';
+import { Icon } from 'evergreen-ui';
 
 class CircularProgressBar extends React.Component {  
   render() {
@@ -12,11 +12,10 @@ class CircularProgressBar extends React.Component {
     
     const percent = step ? Math.floor((step.current-1)/step.count * 100) : percentage;
     let offset = lengthOfCirle - lengthOfCirle * percent / 100;
-    if(step && step.current === step.count) {
-    	offset = 0
-    }
+
     const percentNew = step ? Math.floor((step.current)/step.count * 100) : percentage;
     const offsetNew = lengthOfCirle - lengthOfCirle * percentNew / 100;
+    
     return (
   		<svg
         width={size}
@@ -62,7 +61,7 @@ class CircularProgressBar extends React.Component {
           y="50%"
           dy=".3em"
           textAnchor="middle">
-          {offset === 0 ? 'Done' : text}
+          {offset === 0 ? "Done" : text}
         </text>
       </svg>
     );
