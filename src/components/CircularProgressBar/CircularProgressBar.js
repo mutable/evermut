@@ -5,16 +5,17 @@ import { Icon } from 'evergreen-ui';
 class CircularProgressBar extends React.Component {  
   render() {
   	const { size, strokeWidth, strokeColor, secondaryStrokeColor, percentage, step } = this.props;
-  	const text = step ? `${step.current}/${step.count}` : `${percentage}%`;
     const radius = (size - strokeWidth) / 2;
     const viewBox = `0 0 ${size} ${size}`;
     const lengthOfCirle = radius * Math.PI * 2;
     
-    const percent = step ? Math.floor((step.current-1)/step.count * 100) : percentage;
+    const percent = step && Math.floor((step.current-1)/step.count * 100);
     let offset = lengthOfCirle - lengthOfCirle * percent / 100;
 
-    const percentNew = step ? Math.floor((step.current)/step.count * 100) : percentage;
+    const percentNew = step && Math.floor((step.current)/step.count * 100);
     const offsetNew = lengthOfCirle - lengthOfCirle * percentNew / 100;
+
+  	const text = (percentage && step) ? ( percentNew + '%') : `${step.current}/${step.count}`;
     
     return (
   		<svg
@@ -69,14 +70,20 @@ class CircularProgressBar extends React.Component {
 }
 
 CircularProgressBar.defaultProps = {
-  strokeColor: 'black'
+  strokeColor: 'black',
+  percentage: false
 }
 
 CircularProgressBar.propTypes = {
   size: PropTypes.number.isRequired,
   strokeWidth: PropTypes.number.isRequired,
   strokeColor: PropTypes.string.isRequired,
-  percentage: PropTypes.number.isRequired
+  secondaryStrokeColor: PropTypes.string.isRequired,
+  percentage: PropTypes.bool,
+  step: PropTypes.shape({
+  	current: PropTypes.number.isRequired,
+  	count: PropTypes.number.isRequired
+  }).isRequired
 };
 
 export default CircularProgressBar;

@@ -161,7 +161,9 @@ class Home extends React.Component {
                 size={100}
                 strokeWidth={10}
                 strokeColor='#525F7F'
-                percentage={20}
+                secondaryStrokeColor='#99a5c2'
+                percentage
+                step={{current: 2, count: 4 }}
               />
             </Pane>
             <Pane
