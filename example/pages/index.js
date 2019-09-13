@@ -157,14 +157,30 @@ class Home extends React.Component {
               <Paragraph
                 {...extraStyle}
               >Component shows a progress in circular form</Paragraph>
-              <CircularProgressBar 
-                size={100}
-                strokeWidth={10}
-                strokeColor='#525F7F'
-                secondaryStrokeColor='#99a5c2'
-                percentage
-                step={{current: 2, count: 4 }}
-              />
+              <Pane display='flex' justifyContent='space-between'>
+                <CircularProgressBar 
+                  size={100}
+                  strokeWidth={10}
+                  strokeColor='#525F7F'
+                  secondaryStrokeColor='#99a5c2'
+                  percentage
+                  step={{current: 1, count: 4 }}
+                />
+                <CircularProgressBar 
+                  size={100}
+                  strokeWidth={10}
+                  strokeColor='#525F7F'
+                  secondaryStrokeColor='#99a5c2'
+                  step={{current: 2, count: 4 }}
+                />
+                <CircularProgressBar 
+                  size={100}
+                  strokeWidth={10}
+                  strokeColor='#525F7F'
+                  secondaryStrokeColor='#99a5c2'
+                  step={{current: 5, count: 4 }}
+                />
+              </Pane>
             </Pane>
             <Pane
               paddingTop={30}
@@ -177,11 +193,17 @@ class Home extends React.Component {
               <Paragraph
                 {...extraStyle}
               >Component regulates user flow</Paragraph>
-              <Stepper
-                show
-                func={(item) => this.stepperFunc(item)}
-                steps={steps}
-              />
+              <Pane display='flex' justifyContent='space-between'>
+                <Stepper
+                  func={(item) => this.stepperFunc(item)}
+                  steps={steps}
+                />
+                <Stepper
+                  show
+                  func={(item) => this.stepperFunc(item)}
+                  steps={steps}
+                />
+              </Pane>
             </Pane>
             <Pane
               paddingTop={30}

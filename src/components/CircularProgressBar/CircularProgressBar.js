@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from 'evergreen-ui';
+import { Pane, Text } from 'evergreen-ui';
 
 class CircularProgressBar extends React.Component {  
   render() {
@@ -18,53 +18,48 @@ class CircularProgressBar extends React.Component {
   	const text = (percentage && step) ? ( percentNew + '%') : `${step.current}/${step.count}`;
     
     return (
-  		<svg
-        width={size}
-        height={size}
-        viewBox={viewBox}
-      >
-        <circle
-	        className="circle-background"
-	        cx={size / 2}
-	        cy={size / 2}
-	        r={radius}
-	        stroke='#ddd'
-	        fill='none'
-	        strokeWidth={`${strokeWidth}px`} />
-        <circle
-          className="circle-advance-progress"
-          cx={size / 2}
-          cy={size / 2}
-          r={radius}
-          stroke={secondaryStrokeColor}
-	        transform={`rotate(-90 ${size / 2} ${size / 2})`}
-          fill='none'
-          style={{
-            strokeDasharray: lengthOfCirle,
-            strokeDashoffset: offsetNew
-          }}
-          strokeWidth={`${strokeWidth}px`} />
-         <circle
-	        className="circle-progress"
-	        cx={size / 2}
-	        cy={size / 2}
-	        r={radius}
-	        stroke={strokeColor}
-	        fill='none'
-	        strokeWidth={`${strokeWidth}px`}
-	        transform={`rotate(-90 ${size / 2} ${size / 2})`}
-	        style={{
-	          strokeDasharray: lengthOfCirle,
-	          strokeDashoffset: offset }} />
-      	<text
-          className="circle-text"
-          x="50%"
-          y="50%"
-          dy=".3em"
-          textAnchor="middle">
-          {offset === 0 ? "Done" : text}
-        </text>
-      </svg>
+    	<Pane position='relative' display='flex' alignItems='center' justifyContent='center'>
+	  		<svg
+	        width={size}
+	        height={size}
+	        viewBox={viewBox}
+	      >
+	        <circle
+		        className="circle-background"
+		        cx={size / 2}
+		        cy={size / 2}
+		        r={radius}
+		        stroke='#ddd'
+		        fill='none'
+		        strokeWidth={`${strokeWidth}px`} />
+	        <circle
+	          className="circle-advance-progress"
+	          cx={size / 2}
+	          cy={size / 2}
+	          r={radius}
+	          stroke={secondaryStrokeColor}
+		        transform={`rotate(-90 ${size / 2} ${size / 2})`}
+	          fill='none'
+	          style={{
+	            strokeDasharray: lengthOfCirle,
+	            strokeDashoffset: offsetNew
+	          }}
+	          strokeWidth={`${strokeWidth}px`} />
+	         <circle
+		        className="circle-progress"
+		        cx={size / 2}
+		        cy={size / 2}
+		        r={radius}
+		        stroke={strokeColor}
+		        fill='none'
+		        strokeWidth={`${strokeWidth}px`}
+		        transform={`rotate(-90 ${size / 2} ${size / 2})`}
+		        style={{
+		          strokeDasharray: lengthOfCirle,
+		          strokeDashoffset: offset }} />
+	      </svg>
+	      <Text position='absolute'>{offset === 0 ? "Done" : text}</Text>
+	    </Pane>
     );
   }
 }

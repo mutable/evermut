@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Pane, Text, Button, IconButton, Popover, Menu, Table } from 'evergreen-ui';
+import { Pane, Text, Button, IconButton, Popover, Table } from 'evergreen-ui';
 import Loader from '../Loader';
 import CircularProgressBar from '../CircularProgressBar'
 
@@ -79,7 +79,7 @@ class Stepper extends React.Component {
 	}
 
 	getStepMenu() {
-		const { popoverOpened } = this.state;
+		const { popoverOpened, prevIndexes, index } = this.state;
 		const { steps } = this.props;
 
 		return (
@@ -89,22 +89,24 @@ class Stepper extends React.Component {
 			  onOpen={() => this.openPopover()}
 			  shouldCloseOnExternalClick
 			  content={
-			    <Menu>
-			      <Menu.Group>
-			      	{steps && steps.length && steps.map((item, index) => {
-			      		if (index + 1 !== steps.length) {
-				      		return (
-						        <Menu.Item
-						        	key={`step-menu-${index}`}
-						          onSelect={() => this.menuAction(index)}
-						        >
-						         {item.link.name}
-						        </Menu.Item>
-						      );
-				      	} else return null;
-			      	})}
-			      </Menu.Group>
-			    </Menu>
+			    <Table>
+		      	{steps && steps.length && steps.map((item, _index) => {
+		      		if (_index + 1 !== steps.length) {
+			      		return (
+			      			<Table.Row
+							  		key={`step-shown-menu-${_index}`}
+							  		isSelectable={prevIndexes.includes(_index) && (index < steps.length-1)}
+							  		onSelect={() => this.menuAction(_index)}
+							  		borderBottom='default' height="auto" paddingY={12}
+							  	>
+						        <Table.TextCell>
+						          {item.link.name}
+						        </Table.TextCell>
+								  </Table.Row>
+					      );
+			      	} else return null;
+		      	})}
+			    </Table>
 			  }
 			>
 				<IconButton appearance="minimal" icon="caret-down" iconSize={16} />
