@@ -10,18 +10,26 @@ class Stepper extends React.Component {
 
 		this.state = {
 			index: 0,
+			prevIndexes: [0],
 			popoverOpened: false
 		}
 	}
 	showList() {
-		const { index } = this.state;
+		const { index, prevIndexes } = this.state;
 		const { steps } = this.props;
+
 		return (
 			<Pane>
 			  {steps && steps.length && steps.map((item, _index) => {
       		if (_index + 1 !== steps.length) {
       			return (
-					  	<Table.Row key={`step-shown-menu-${_index}`} isSelectable isSelected={_index === index} onSelect={() => this.menuAction(_index)} borderBottom='default' height="auto" paddingY={12}>
+					  	<Table.Row
+					  		key={`step-shown-menu-${_index}`}
+					  		isSelectable={prevIndexes.includes(_index) && (index < steps.length-1)}
+					  		isSelected={_index === index}
+					  		onSelect={() => this.menuAction(_index)}
+					  		borderBottom='default' height="auto" paddingY={12}
+					  	>
 				        <Table.TextCell>
 				          {item.link.name}
 				        </Table.TextCell>
@@ -34,7 +42,7 @@ class Stepper extends React.Component {
 	}
 
 	onClickNext(e, isNext) {
-		const { index } = this.state;
+		const { index, prevIndexes } = this.state;
 		const { steps } = this.props;
 
 		let _index = index;
@@ -43,12 +51,26 @@ class Stepper extends React.Component {
 		} else {
 			_index = !isNext ? index - 1 : index;
 		}
-		this.setState({ index: _index });
+
+		const _prevIndexes = prevIndexes;
+		if(isNext) {
+			if (!prevIndexes.includes(_index)) {
+				_prevIndexes.push(_index);
+			}
+		}
+
+		this.setState({ index: _index, prevIndexes: _prevIndexes });
+
 		if (steps[index].func) steps[index].func(e);
 	}
 
-	menuAction(index) {
-		this.setState({ index, popoverOpened: false });
+	menuAction(i) {
+		const { index } = this.state;
+		const { steps } = this.props;
+
+		let _index = i;
+		if (index >= steps.length-1) _index = index;
+		this.setState({ index: _index, popoverOpened: false });
 	}
 
 	openPopover() {
@@ -140,7 +162,7 @@ class Stepper extends React.Component {
 }
 
 Stepper.defaultProps = {
-  loading: false, 
+  loading: false,
   show: false
 }
 
