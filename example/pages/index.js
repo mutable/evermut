@@ -157,7 +157,7 @@ class Home extends React.Component {
               <Paragraph
                 {...extraStyle}
               >Component shows a progress in circular form</Paragraph>
-              <Pane display='flex' justifyContent='space-between'>
+              <Pane display='flex' justifyContent='space-evenly'>
                 <CircularProgressBar 
                   size={100}
                   strokeWidth={10}
@@ -193,11 +193,15 @@ class Home extends React.Component {
               <Paragraph
                 {...extraStyle}
               >Component regulates user flow</Paragraph>
-              <Pane display='flex' justifyContent='space-between'>
+              <Pane marginBottom={16}>
+                <Paragraph>#Stepper with drop-down list</Paragraph>
                 <Stepper
                   func={(item) => this.stepperFunc(item)}
                   steps={steps}
                 />
+              </Pane>
+              <Pane>
+                <Paragraph>#Stepper with the list on the left</Paragraph>
                 <Stepper
                   show
                   func={(item) => this.stepperFunc(item)}

@@ -407,7 +407,8 @@ Examples:
   {
     link: {
       name: 'Sme name',
-      path: '#name'},
+      path: '#name'
+    },
     component: 'Name Component',
     func: this.nameFunction
   },
