@@ -86,6 +86,63 @@ Basic structure: () => {}
 
 <br />
 
+#### CircularProgressBar
+
+###### size
+
+Type: `number`, required
+
+Basic structure: `999`
+
+###### strokeWidth
+
+Type: `number`, required
+
+Basic structure: `999`
+
+###### strokeColor
+
+Type: `string`, required
+
+Basic structure: `#525F7F`
+
+###### secondaryStrokeColor
+
+Type: `string`, required
+
+Basic structure: `#99a5c2`
+
+###### percentage
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
+###### step 
+
+Type: `object`, required
+
+Basic structure: 
+```
+{
+  current: `number`, # required
+  count: `number`, # required
+}
+```
+
+Example:
+```
+{
+  current: 2,
+  count: 10
+}
+```
+
+<br />
+
+
 #### ExtendedMenuItem
 
 ###### loading
@@ -306,6 +363,68 @@ Basic structure: `true` or `false`
 <br />
 
 
+#### Stepper
+
+###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
+###### show
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
+###### steps
+
+Type: `array`, required
+
+
+Basic structure: 
+```
+[
+  {
+    link: {
+      name: `string`,
+      path: `string`
+    },
+    component: <Component />,
+    func: `func`,
+  },
+  ...
+]
+```
+
+Examples: 
+```
+[
+  {
+    link: {
+      name: 'Sme name',
+      path: '#name'
+    },
+    component: 'Name Component',
+    func: this.nameFunction
+  },
+  ...
+]
+
+```
+###### func
+
+Type: `func`, required
+
+Basic structure: () => {}
+
+<br />
+
+
 #### StickyMenu
 
 
@@ -333,7 +452,7 @@ Basic structure:
       ...style # style props based on ui-box
     }
   },
-  #or
+  # or
   {
     name: 'Name',
     icon: 'icon-name', # based on ui-box, not required

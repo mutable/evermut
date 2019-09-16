@@ -12,6 +12,22 @@ const primaryMenu = [
     }
   },
   {
+    name: 'Circular Progress',
+    icon: 'doughnut-chart',
+    props: {
+      href: '#circularProgress',
+      paddingTop: 10
+    }
+  },
+  {
+    name: 'Stepper',
+    icon: 'exchange',
+    props: {
+      href: '#stepper',
+      paddingTop: 10
+    }
+  },
+  {
     name: 'Pagination',
     icon: 'numerical',
     props: {

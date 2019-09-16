@@ -15,7 +15,9 @@ import {
   TabContentView,
   Table,
   StateAction,
-  BreadCrumbs
+  BreadCrumbs,
+  Stepper,
+  CircularProgressBar
 } from 'evermut'
 import testJson from '../Test/test';
 import logo from "../logo-light.svg";
@@ -58,6 +60,14 @@ class Home extends React.Component {
   breadCrumbsClick(item) {
     console.log('breadCrumbsClick', item)
   }
+  
+  stepperFunc(item) {
+    console.log('stepperFunc', item)
+  }
+
+  stepFunc(item) {
+    console.log('stepFunc', item)
+  }
 
   click = (offset, limit, count = testJson.data.length) => {
     const array = [];
@@ -75,7 +85,14 @@ class Home extends React.Component {
       {id: 2, title: "title 2", description: "description 2", tags: ['some', 'tags'], actions: ['waiting'], menu: { list: [{name: 'New', link: '/new'}], onClick: this.selectedMenuItem}},
       {id: 3, title: "title 3", description: "description 3", tags: ['some', 'tags'], actions: ['stopped'], menu: { list: [{name: 'delete', link: '/delete'}], onClick: this.selectedMenuItem}},
       {id: 4, title: "title 4", description: "description 4", tags: ['some', 'tags'], actions: ['warning'], menu: { list: [{name: 'edit', link: '/edit'}], onClick: this.selectedMenuItem}}
-    ]
+    ];
+
+    const steps = [
+      {link: {name: 'Repo with longer name', path: '#repo'}, component: 'Repo Component', func: this.stepFunc},
+      {link: {name: 'Branch', path: '#branch'}, component: 'Branch Component', func: this.stepFunc},
+      {link: {name: 'File', path: '#file'}, component: 'File Component', func: this.stepFunc},
+      {link: {name: 'You have finished', path: '#finsih'}, component: 'Successfully finished', func: this.stepFunc},
+    ];
     const { dataArray, limit, offset } = this.state;
 
     const loading = false;
@@ -129,6 +146,69 @@ class Home extends React.Component {
                 size={800}
               >Components</Heading>
             </Link>
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#circularProgress"
+                name="circularProgress"
+              >Circular progress</Link>
+              <Paragraph
+                {...extraStyle}
+              >Component shows a progress in circular form</Paragraph>
+              <Pane display='flex' justifyContent='space-evenly'>
+                <CircularProgressBar 
+                  size={100}
+                  strokeWidth={10}
+                  strokeColor='#525F7F'
+                  secondaryStrokeColor='#99a5c2'
+                  percentage
+                  step={{current: 1, count: 4 }}
+                />
+                <CircularProgressBar 
+                  size={100}
+                  strokeWidth={10}
+                  strokeColor='#525F7F'
+                  secondaryStrokeColor='#99a5c2'
+                  step={{current: 2, count: 4 }}
+                />
+                <CircularProgressBar 
+                  size={100}
+                  strokeWidth={10}
+                  strokeColor='#525F7F'
+                  secondaryStrokeColor='#99a5c2'
+                  step={{current: 5, count: 4 }}
+                />
+              </Pane>
+            </Pane>
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#stepper"
+                name="stepper"
+              >Stepper</Link>
+              <Paragraph
+                {...extraStyle}
+              >Component regulates user flow</Paragraph>
+              <Pane marginBottom={16}>
+                <Paragraph>#Stepper with drop-down list</Paragraph>
+                <Stepper
+                  func={(item) => this.stepperFunc(item)}
+                  steps={steps}
+                />
+              </Pane>
+              <Pane>
+                <Paragraph>#Stepper with the list on the left</Paragraph>
+                <Stepper
+                  show
+                  func={(item) => this.stepperFunc(item)}
+                  steps={steps}
+                />
+              </Pane>
+            </Pane>
             <Pane
               paddingTop={30}
             >
