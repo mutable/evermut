@@ -202,6 +202,10 @@ Example:
 Type: `object` # based on ui-box, not required
 Default: `{}`
 
+###### height
+
+Type: `string`
+Default: `100vh`
 
 <br />
 
@@ -301,7 +305,7 @@ Type: `number`, required
 
 Basic structure: `999`
 
-###### pageLimit
+###### limit
 
 Type: `number`
 
@@ -310,7 +314,7 @@ Default: `10`
 Basic structure: `999`
 
 
-###### currentPage
+###### pageIndex
 
 Type: `number`,
 Default: `1`
@@ -518,33 +522,36 @@ Default: `false`
 
 Basic structure: `true` or `false`
 
-###### header
+###### headerNames
 
-Type: `object`, required
+Type: `array`, required
 
 Example: 
 ```
-{
-  "id-key": '`id` column header name',
-  "country-key": "`country` column header name",
+[
+  {name: 'Owner', icon: 'arrow-up', func: (item) => this.sort(item)}, {name: 'Updated'},
+  {name: 'Id'},
   ...
-}
+]
 ```
 
-###### body
+###### list
 
 Type: `array`, required
 
 Example:
 ```
-{
-  "id": 1,
-  "name": "Taylor",
-  "surname": "Davis",
-  "country": "Netherlands",
-  "position": "DevOps",
-  "email": "taylor.davis@fancygrid.com"
-},
+[
+  {
+    "id": 1,
+    "name": "Taylor",
+    "surname": "Davis",
+    "country": "Netherlands",
+    "position": "DevOps",
+    "email": "taylor.davis@fancygrid.com"
+  },
+  ...
+]
 ```
 
 ###### pagination
@@ -553,9 +560,18 @@ Type: `object`
 
 Look at `Pagination` component for details
 
+###### search
+
+Type: `function`, required
+
+###### onClick
+
+Type: `function`, required
+
 
 
 #### TableWithSingle
+
 
 ###### basis
 

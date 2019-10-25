@@ -61,4 +61,17 @@ class TableComponent extends React.Component {
   }
 }
 
+TableComponent.defaultProps = {
+  loading: false
+}
+
+TableComponent.propTypes = {
+  loading: PropTypes.bool,
+  headerNames: PropTypes.array.isRequired,
+  list: PropTypes.array.isRequired,
+  pagination: PropTypes.object.isRequired,
+  search: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired
+};
+
 export default TableComponent;

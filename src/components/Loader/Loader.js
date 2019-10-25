@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Pane, Spinner } from 'evergreen-ui';
 
-const Loader = ({ style }) => {
+const Loader = ({ style, height }) => {
   const props = Object.keys(style).length ? { theme: style } : {};
 
   return (
@@ -11,7 +11,7 @@ const Loader = ({ style }) => {
       alignItems="center"
       justifyContent="center"
       flex={1}
-      height='100vh'
+      height={height}
       width='100%'
     >
       <Spinner {...props} />
@@ -20,11 +20,13 @@ const Loader = ({ style }) => {
 }
 
 Loader.propTypes = {
-  style: PropTypes.object
+  style: PropTypes.object,
+  height: PropTypes.string
 }
 
 Loader.defaultProps = {
-  style: {}
+  style: {},
+  height: '100vh'
 }
 
 export default Loader;
