@@ -8,7 +8,6 @@ const MARGIN = 15;
 const HEIGHT = 25;
 const COLOR = '425a70';
 
-
 class Pagination extends React.Component {
   constructor(props) {
     super(props);
