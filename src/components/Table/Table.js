@@ -14,7 +14,8 @@ class TableComponent extends React.Component {
 
     return (
       <Pane
-        position='relative' background='white'
+        position='relative'
+        background='white'
         border='default'
       >
         <Table>
@@ -40,9 +41,13 @@ class TableComponent extends React.Component {
                 delete clonedItem.id;
                 const keys = Object.keys(clonedItem);
                 return (
-                  <Table.Row key={`collab-${index}`}
-                    alignItems='center' paddingTop={DISTANCE} paddingBottom={DISTANCE}
-                    isSelectable onSelect={() => onClick(item)}
+                  <Table.Row
+                    key={`collab-${index}`}
+                    alignItems='center'
+                    paddingTop={DISTANCE}
+                    paddingBottom={DISTANCE}
+                    isSelectable
+                    onSelect={() => onClick(item)}
                   >
                     {keys && keys.length && keys.map((key, index) =>
                       <Table.TextCell>{item[key] || '-'}</Table.TextCell>
@@ -54,9 +59,12 @@ class TableComponent extends React.Component {
           </Table.Body>
         </Table>
         <Pane
-          width='100%' background='white'
-          display='flex' justifyContent='flex-end' 
-          paddingTop={DISTANCE} paddingBottom={DISTANCE}
+          width='100%'
+          background='white'
+          display='flex'
+          justifyContent='flex-end' 
+          paddingTop={DISTANCE}
+          paddingBottom={DISTANCE}
         >
           <Pagination
             count={pagination.count}
