@@ -84,7 +84,12 @@ TableComponent.defaultProps = {
 
 TableComponent.propTypes = {
   loading: PropTypes.bool,
-  headerNames: PropTypes.array.isRequired,
+  headerNames: PropTypes.shape({
+    name: PropTypes.elementType.isRequired,
+    icon: PropTypes.string,
+    func: PropTypes.func,
+    helper: PropTypes.string
+  }),
   list: PropTypes.array.isRequired,
   pagination: PropTypes.object.isRequired,
   search: PropTypes.func.isRequired,

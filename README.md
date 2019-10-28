@@ -531,7 +531,8 @@ Type: `array`, required
 Example: 
 ```
 [
-  {name: 'Owner', icon: 'arrow-up', func: (item) => this.sort(item)}, {name: 'Updated'},
+  {name: 'Owner', icon: 'arrow-up', func: (item) => this.sort(item)},
+  {name: 'Containers', helper: 'min/max'},
   {name: 'Id'},
   ...
 ]
