@@ -133,8 +133,6 @@ class Home extends React.Component {
       return (({ name, position, id }) => ({ name, position, visibleId: id, id }))(item);
     })
 
-    console.log('asdadaaaa', overallCount)
-
     return (
       <>
         <Pane

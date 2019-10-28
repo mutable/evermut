@@ -1,9 +1,7 @@
 import React from 'react';
-import { Pane, Select, option, Button, IconButton, Text } from 'evergreen-ui';
+import { Pane, Button, IconButton, Text } from 'evergreen-ui';
+import PropTypes from 'prop-types';
 import Loader from '../Loader';
-
-const PAGE_LIMIT = 10;
-const DEFAULT_PAGE = 1;
 
 class Pagination extends React.Component {
   constructor(props) {
@@ -139,6 +137,18 @@ class Pagination extends React.Component {
       </Pane>
     );
   }
+}
+
+Pagination.defaultProps = {
+  limit: 10,
+  pageIndex: 1
+}
+
+Pagination.propTypes = {
+  count: PropTypes.number.isRequired,
+  limit: PropTypes.number,
+  pageIndex: PropTypes.number,
+  onClick: PropTypes.func.isRequired
 }
 
 export default Pagination;
