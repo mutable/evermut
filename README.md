@@ -202,6 +202,10 @@ Example:
 Type: `object` # based on ui-box, not required
 Default: `{}`
 
+###### height
+
+Type: `string`
+Default: `100vh`
 
 <br />
 
@@ -301,7 +305,7 @@ Type: `number`, required
 
 Basic structure: `999`
 
-###### pageLimit
+###### limit
 
 Type: `number`
 
@@ -310,10 +314,12 @@ Default: `10`
 Basic structure: `999`
 
 
-###### currentPage
+###### pageIndex
 
-Type: `number`,
+Type: `number`
+
 Default: `1`
+
 Basic structure: `999`
 
 ###### onClick
@@ -518,33 +524,35 @@ Default: `false`
 
 Basic structure: `true` or `false`
 
-###### header
+###### headerNames
 
-Type: `object`, required
+Type: `array`, required
 
 Example: 
 ```
-{
-  "id-key": '`id` column header name',
-  "country-key": "`country` column header name",
+[
+  {name: 'Owner', icon: 'arrow-up', func: (item) => this.sort(item)},
+  {name: 'Containers', helper: 'min/max'},
+  {name: 'Id'},
   ...
-}
+]
 ```
 
-###### body
+###### list
 
 Type: `array`, required
 
 Example:
 ```
-{
-  "id": 1,
-  "name": "Taylor",
-  "surname": "Davis",
-  "country": "Netherlands",
-  "position": "DevOps",
-  "email": "taylor.davis@fancygrid.com"
-},
+[
+  {
+    "id": itemId,
+    "visibleId": itemId, # please note that if you need the ID to be visible in the table you need to pass it with different property name, as word 'id' is reserved
+    "name": "itemName",
+    ...
+  },
+  ...
+]
 ```
 
 ###### pagination
@@ -553,9 +561,22 @@ Type: `object`
 
 Look at `Pagination` component for details
 
+###### search
+
+Type: `function`, required
+
+Basic structure: () => {}
+
+###### onClick
+
+Type: `function`, required
+
+Basic structure: () => {}
+
 
 
 #### TableWithSingle
+
 
 ###### basis
 

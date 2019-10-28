@@ -29,15 +29,17 @@ class Home extends React.Component {
 
     const _dataArray = [];
     const _offset = 1;
-    const _limit = 6;
+    const _limit = 4;
     for(let i = _offset-1; i < _limit; i++) {
       _dataArray.push(testJson.data[i]);
     }
 
     this.state = {
       dataArray: _dataArray,
+      filteredArray: _dataArray,
       limit: _limit,
-      offset: _offset
+      offset: _offset,
+      overallCount: testJson.data.length
     }
   }
 
@@ -69,7 +71,18 @@ class Home extends React.Component {
     console.log('stepFunc', item)
   }
 
-  click = (offset, limit, count = testJson.data.length) => {
+  searchTable(value) {
+    const { dataArray } = this.state;
+    let filtered =  testJson.data.filter(item => item.name.startsWith(value));
+    let filteredLength = filtered.length
+    if (filtered.length === testJson.data.length) {
+      filtered = dataArray;
+      filteredLength = testJson.data.length;
+    }
+    this.setState({ filteredArray: filtered, overallCount: filteredLength });
+  }
+
+  click = (offset, limit = this.state.limit, count = testJson.data.length) => {
     const array = [];
     for(let i = (offset-1)*limit; (i < offset*limit) && (i < count); i++) {
       if(offset + limit <= count) {
@@ -93,7 +106,7 @@ class Home extends React.Component {
       {link: {name: 'File', path: '#file'}, component: 'File Component', func: this.stepFunc},
       {link: {name: 'You have finished', path: '#finsih'}, component: 'Successfully finished', func: this.stepFunc},
     ];
-    const { dataArray, limit, offset } = this.state;
+    const { dataArray, limit, offset, filteredArray, overallCount } = this.state;
 
     const loading = false;
 
@@ -115,6 +128,10 @@ class Home extends React.Component {
       color: 'inherit',
       outline: 'none'
     };
+
+    const list = filteredArray.map(item => {
+      return (({ name, position, id }) => ({ name, position, visibleId: id, id }))(item);
+    })
 
     return (
       <>
@@ -261,10 +278,12 @@ class Home extends React.Component {
                 {...extraStyle}
               >Component displays the data in table. Features include `pagination`.</Paragraph>
               <Table
-                header={{name: 'Name', id: 'Id'}}
-                body={dataArray}
-                pagination={{totalCount: testJson.data.length, offset , limit , click: this.click}}
-                onClick={this.tableClick}
+                loading={loading}
+                search={(value) => this.searchTable(value)}
+                headerNames={[{name: 'Position' }, {name: 'Id'}]}
+                list={list}
+                pagination={{count: overallCount, pageIndex: offset, limit , onClick: (index) => this.click(index)}}
+                onClick={(item) => this.tableClick(item)} 
               />
             </Pane>
             <Pane
