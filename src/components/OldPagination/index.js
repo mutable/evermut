@@ -1,3 +1,3 @@
-import Pagination from './Pagination';
+// import OldPagination from './Pagination';
 
-export default Pagination;
+// export default OldPagination;
