@@ -20,14 +20,15 @@ const Loader = ({ style, height, ...rest }) => {
   )
 }
 
+Loader.defaultProps = {
+  style: {},
+  height: '100vh'
+}
+
 Loader.propTypes = {
   style: PropTypes.object,
   height: PropTypes.string
 }
 
-Loader.defaultProps = {
-  style: {},
-  height: '100vh'
-}
 
 export default Loader;

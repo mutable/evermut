@@ -153,7 +153,6 @@ Pagination.defaultProps = {
 }
 
 Pagination.propTypes = {
-  loading: PropTypes.bool,
   count: PropTypes.number.isRequired,
   limit: PropTypes.number,
   pageIndex: PropTypes.number,

@@ -577,6 +577,8 @@ Type: `function`, required
 
 Basic structure: () => {}
 
+
+
 #### TableWithSingle
 
 
