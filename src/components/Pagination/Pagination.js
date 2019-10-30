@@ -1,22 +1,22 @@
 import React from 'react';
-import { Pane, Select, option, Button, IconButton, Text } from 'evergreen-ui';
+import PropTypes from 'prop-types';
+import { Pane, Button, IconButton, Text } from 'evergreen-ui';
 import Loader from '../Loader';
 
-const PAGE_LIMIT = 10;
-const DEFAULT_PAGE = 1;
+const DISTANCE = 10;
+const MARGIN = 15;
+const HEIGHT = 25;
+const COLOR = '#425a70';
+const FONT = 11;
 
 class Pagination extends React.Component {
   constructor(props) {
     super(props);
 
-		const pageLimit = props.limit || PAGE_LIMIT
-		const pageIndex = props.pageIndex || DEFAULT_PAGE
-    const countOfPages = Math.ceil(props.count / pageLimit);
-
     this.state = {
-      pageIndex,
-      pageLimit,
-      countOfPages,
+      pageIndex: props.pageIndex,
+      pageLimit: props.limit,
+      countOfPages: Math.ceil(props.count / props.limit),
       count: props.count,
       pages: [],
       front: '',
@@ -91,8 +91,13 @@ class Pagination extends React.Component {
       background={pageIndex === number ? "#edf0f2" : 'white'}
       appearance="minimal"
       onClick={() => this.clicked(number)}
-      paddingLeft={10} paddingRight={10} marginLeft={5} marginRight={5} height={25}
-      fontSize={11} color='#425a70'
+      paddingLeft={DISTANCE}
+      paddingRight={DISTANCE}
+      marginLeft={DISTANCE/2}
+      marginRight={DISTANCE/2}
+      height={HEIGHT}
+      fontSize={FONT}
+      color={COLOR}
     >
       {number}
     </Button>
@@ -119,26 +124,40 @@ class Pagination extends React.Component {
     const _pages = this._getPages(pageIndex);
 
     return ( loading ? <Loader /> : 
-      <Pane display='inline-flex' marginRight={15}>
-        <IconButton appearance="minimal" height={25} disabled={backActive} onClick={() => this.clicked(prevPage)} icon="chevron-left" />
+      <Pane display='inline-flex' marginRight={MARGIN}>
+        <IconButton appearance="minimal" height={HEIGHT} disabled={backActive} onClick={() => this.clicked(prevPage)} icon="chevron-left" />
         <Pane>
         	{countOfPages <= 4 && _pages.map(page => this.pageButton(page))}
         	{countOfPages > 4 &&
         		<Pane>
 	        		{this.isIncluded(_pages, 1) && this.pageButton(1)}
-		        	<Text fontSize={11} color='#425a70'>{front}</Text>
+		        	<Text fontSize={FONT} color={COLOR}>{front}</Text>
 		        	 {
 		        		_pages.map(page => this.pageButton(page))
 							 }
-		        	<Text fontSize={11} color='#425a70'>{back}</Text>
+		        	<Text fontSize={FONT} color={COLOR}>{back}</Text>
 					    {this.isIncluded(_pages, countOfPages) && this.pageButton(countOfPages)}
 		        </Pane>
 	        }
         </Pane>
-        <IconButton appearance="minimal" height={25} fontSize={11} disabled={nextActive} onClick={() => this.clicked(nextPage)} icon="chevron-right" />
+        <IconButton appearance="minimal" height={HEIGHT} fontSize={FONT} disabled={nextActive} onClick={() => this.clicked(nextPage)} icon="chevron-right" />
       </Pane>
     );
   }
+}
+
+Pagination.defaultProps = {
+  limit: 10,
+  pageIndex: 1,
+  loading: false
+}
+
+Pagination.propTypes = {
+  loading: PropTypes.bool,
+  count: PropTypes.number.isRequired,
+  limit: PropTypes.number,
+  pageIndex: PropTypes.number,
+  onClick: PropTypes.func.isRequired
 }
 
 export default Pagination;

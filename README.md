@@ -207,6 +207,10 @@ Default: `{}`
 Type: `string`
 Default: `100vh`
 
+
+you can add other styles regarding the Loader container other than `height` property
+
+
 <br />
 
 
@@ -316,8 +320,10 @@ Basic structure: `999`
 
 ###### pageIndex
 
-Type: `number`,
+Type: `number`
+
 Default: `1`
+
 Basic structure: `999`
 
 ###### onClick
@@ -529,7 +535,8 @@ Type: `array`, required
 Example: 
 ```
 [
-  {name: 'Owner', icon: 'arrow-up', func: (item) => this.sort(item)}, {name: 'Updated'},
+  {name: 'Owner', icon: 'arrow-up', func: (item) => this.sort(item)},
+  {name: 'Containers', helper: 'min/max'},
   {name: 'Id'},
   ...
 ]
@@ -543,12 +550,10 @@ Example:
 ```
 [
   {
-    "id": 1,
-    "name": "Taylor",
-    "surname": "Davis",
-    "country": "Netherlands",
-    "position": "DevOps",
-    "email": "taylor.davis@fancygrid.com"
+    "id": itemId,
+    "visibleId": itemId, # please note that if you need the ID to be visible in the table you need to pass it with different property name, as word 'id' is reserved
+    "name": "itemName",
+    ...
   },
   ...
 ]
@@ -564,11 +569,13 @@ Look at `Pagination` component for details
 
 Type: `function`, required
 
+Basic structure: () => {}
+
 ###### onClick
 
 Type: `function`, required
 
-
+Basic structure: () => {}
 
 #### TableWithSingle
 

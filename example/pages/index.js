@@ -8,6 +8,7 @@ import {
 } from 'evergreen-ui'
 import Nav from '../components/nav'
 import {
+  Loader,
   Login,
   ExtendedMenuItem,
   Pagination,
@@ -133,8 +134,6 @@ class Home extends React.Component {
       return (({ name, position, id }) => ({ name, position, visibleId: id, id }))(item);
     })
 
-    console.log('asdadaaaa', overallCount)
-
     return (
       <>
         <Pane
@@ -165,6 +164,17 @@ class Home extends React.Component {
                 size={800}
               >Components</Heading>
             </Link>
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#loader"
+                name="loader"
+              >Loader</Link>
+              <Paragraph {...extraStyle}>Loader</Paragraph>
+              <Loader height='100px' />
+            </Pane>
             <Pane
               paddingTop={30}
             >
