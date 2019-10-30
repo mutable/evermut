@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Pane, Text, IconButton, Table } from 'evergreen-ui'
+import { Pane, Text, IconButton, Table } from 'evergreen-ui';
 import Loader from '../Loader';
 import Pagination from '../Pagination';
 
