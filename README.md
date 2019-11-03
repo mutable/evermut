@@ -526,7 +526,9 @@ Basic structure: `true` or `false`
 
 ###### headerNames
 
-Type: `array`, required
+Type: `array`
+
+Default: `[]`
 
 Example: 
 ```
