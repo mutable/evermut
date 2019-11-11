@@ -207,6 +207,10 @@ Default: `{}`
 Type: `string`
 Default: `100vh`
 
+
+you can add other styles regarding the Loader container other than `height` property
+
+
 <br />
 
 

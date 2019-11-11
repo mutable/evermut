@@ -20,11 +20,11 @@ class TableComponent extends React.Component {
       >
         <Table>
           <Table.Head backgroundColor='white' height='auto' paddingTop={DISTANCE} paddingBottom={DISTANCE}>
-            {search && <Table.SearchHeaderCell onChange={search} height={HEIGHT} />}
+            {search && <Table.SearchHeaderCell onChange={search} height={HEIGHT}/>}
             {headerNames && headerNames.length && headerNames.map((item, index) => 
-              <Table.TextHeaderCell paddingLeft={DISTANCE/2} height={HEIGHT}>
+              <Table.TextHeaderCell paddingLeft={DISTANCE/2} height={HEIGHT} key={`headerName-${index}`}>
                 <Text display="flex" alignItems='center' fontWeight="bold">
-                  {item.name || '-'}
+                  {item.name || ''}
                   {item.icon && <IconButton appearance="minimal" icon={item.icon} onClick={() => item.func(item)}/>}
                 </Text>
                 <Text display='block' fontSize={FONT_SIZE}>
@@ -42,7 +42,7 @@ class TableComponent extends React.Component {
                 const keys = Object.keys(clonedItem);
                 return (
                   <Table.Row
-                    key={`collab-${index}`}
+                    key={`rowItem-${index}`}
                     alignItems='center'
                     paddingTop={DISTANCE}
                     paddingBottom={DISTANCE}
@@ -50,7 +50,7 @@ class TableComponent extends React.Component {
                     onSelect={() => onClick(item)}
                   >
                     {keys && keys.length && keys.map((key, index) =>
-                      <Table.TextCell>{item[key] || '-'}</Table.TextCell>
+                      <Table.TextCell key={`cellItem-${index}`}>{item[key] || '-'}</Table.TextCell>
                     )}
                   </Table.Row>
                 )
@@ -62,7 +62,7 @@ class TableComponent extends React.Component {
           width='100%'
           background='white'
           display='flex'
-          justifyContent='flex-end' 
+          justifyContent='flex-end'
           paddingTop={DISTANCE}
           paddingBottom={DISTANCE}
         >
@@ -85,12 +85,14 @@ TableComponent.defaultProps = {
 
 TableComponent.propTypes = {
   loading: PropTypes.bool,
-  headerNames: PropTypes.shape({
-    name: PropTypes.elementType.isRequired,
-    icon: PropTypes.string,
-    func: PropTypes.func,
-    helper: PropTypes.string
-  }),
+  headerNames: PropTypes.arrayOf(
+    PropPropTypes.shape({
+      name: PropTypes.elementType.isRequired,
+      icon: PropTypes.string,
+      func: PropTypes.func,
+      helper: PropTypes.string
+    })
+  ),
   list: PropTypes.array.isRequired,
   pagination: PropTypes.object.isRequired,
   search: PropTypes.func.isRequired,

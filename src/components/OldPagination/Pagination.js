@@ -6,7 +6,7 @@ import Loader from '../Loader';
 const PAGE_LIMIT = 10;
 const DEFAULT_PAGE = 1;
 
-class Pagination extends React.Component {
+class OldPagination extends React.Component {
   constructor(props) {
     super(props);
 
@@ -83,13 +83,13 @@ class Pagination extends React.Component {
   }
 }
 
-Pagination.defaultProps = {
+OldPagination.defaultProps = {
   pageLimit: 10,
   currentPage: 1,
   loading: false
 }
 
-Pagination.propTypes = {
+OldPagination.propTypes = {
   loading: PropTypes.bool,
   count: PropTypes.number.isRequired,
   pageLimit: PropTypes.number,
@@ -97,4 +97,4 @@ Pagination.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-export default Pagination;
+export default OldPagination;
