@@ -90,7 +90,7 @@ class Home extends React.Component {
         array.push(testJson.data[i]);
       } else break;
     }
-    this.setState({dataArray: array})
+    this.setState({filteredArray: array})
   }
 
   render() {

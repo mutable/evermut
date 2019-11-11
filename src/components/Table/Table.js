@@ -24,7 +24,7 @@ class TableComponent extends React.Component {
             {headerNames && headerNames.length && headerNames.map((item, index) => 
               <Table.TextHeaderCell paddingLeft={DISTANCE/2} height={HEIGHT} key={`headerName-${index}`}>
                 <Text display="flex" alignItems='center' fontWeight="bold">
-                  {item.name || '-'}
+                  {item.name || ''}
                   {item.icon && <IconButton appearance="minimal" icon={item.icon} onClick={() => item.func(item)}/>}
                 </Text>
                 <Text display='block' fontSize={FONT_SIZE}>
@@ -85,12 +85,14 @@ TableComponent.defaultProps = {
 
 TableComponent.propTypes = {
   loading: PropTypes.bool,
-  headerNames: PropTypes.shape({
-    name: PropTypes.elementType.isRequired,
-    icon: PropTypes.string,
-    func: PropTypes.func,
-    helper: PropTypes.string
-  }).isRequired,
+  headerNames: PropTypes.arrayOf(
+    PropPropTypes.shape({
+      name: PropTypes.elementType.isRequired,
+      icon: PropTypes.string,
+      func: PropTypes.func,
+      helper: PropTypes.string
+    })
+  ),
   list: PropTypes.array.isRequired,
   pagination: PropTypes.object.isRequired,
   search: PropTypes.func.isRequired,

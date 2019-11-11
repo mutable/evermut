@@ -39,13 +39,6 @@ class Pagination extends React.Component {
     this.setState({ pageIndex: index });
   }
 
-  clickedDouble(isNext) {
-  	const { countOfPages, pageLimit } = this.state;
-  	const pageIndex = isNext ? countOfPages : 1;
-    if (this.props.onClick) this.props.onClick(pageIndex, pageLimit);
-  	this.setState({ pageIndex });
-  }
-
   _getEllipses(index) {
   	const { countOfPages } = this.state;
   	let front = '...'
@@ -86,6 +79,7 @@ class Pagination extends React.Component {
   pageButton(number) {
     const  { countOfPages, pageIndex } = this.state;
     return <Button
+      key={`page-${number}`}
       disabled={countOfPages < 2}
       fontWeight={pageIndex === number ? "bold" : 'normal'}
       background={pageIndex === number ? "#edf0f2" : 'white'}
