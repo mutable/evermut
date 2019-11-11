@@ -31,7 +31,7 @@ class TableComponent extends React.Component {
                   {item.helper || ''}
                 </Text>
               </Table.TextHeaderCell>
-            )}
+            ) || null}
           </Table.Head>
           <Table.Body>
             {loading && <Loader /> ||
@@ -79,7 +79,8 @@ class TableComponent extends React.Component {
 }
 
 TableComponent.defaultProps = {
-  loading: false
+  loading: false, 
+  headerNames: []
 }
 
 TableComponent.propTypes = {
