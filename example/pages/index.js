@@ -133,7 +133,7 @@ class Home extends React.Component {
     const list = filteredArray.map(item => {
       return (({ name, position, id }) => ({ name, position, visibleId: id, id }))(item);
     })
-
+    console.log('list', list)
     return (
       <>
         <Pane

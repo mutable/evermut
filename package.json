@@ -8,6 +8,7 @@
     "Anna Narimanyan (https://github.com/annanarim)"
   ],
   "scripts": {
+    "storybook": "start-storybook",
     "dev": "webpack --config webpack.config.js",
     "build": "babel src --out-dir dist",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +20,7 @@
   "dependencies": {
     "evergreen-ui": "^4.20.0",
     "prop-types": "^15.7.2",
+    "storybook-chromatic": "^3.1.0",
     "ui-box": "^3.0.1"
   },
   "devDependencies": {
@@ -30,6 +32,10 @@
     "@babel/plugin-transform-arrow-functions": "^7.2.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^5.2.6",
+    "@storybook/addon-knobs": "^5.2.6",
+    "@storybook/addon-links": "^5.2.6",
+    "@storybook/react": "^5.2.6",
     "babel-loader": "^8.0.6",
     "core-js": "^3.2.1",
     "mini-css-extract-plugin": "^0.8.0",

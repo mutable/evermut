@@ -86,7 +86,7 @@ TableComponent.defaultProps = {
 TableComponent.propTypes = {
   loading: PropTypes.bool,
   headerNames: PropTypes.arrayOf(
-    PropPropTypes.shape({
+    PropTypes.shape({
       name: PropTypes.elementType.isRequired,
       icon: PropTypes.string,
       func: PropTypes.func,
