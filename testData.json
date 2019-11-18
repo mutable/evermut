@@ -1,11 +1,5 @@
-import React from 'react';
-import { storiesOf, forceReRender } from '@storybook/react';
-import { action } from "@storybook/addon-actions";
-import { withKnobs, number, array, object } from "@storybook/addon-knobs";
-
-import Table from '../components/Table';
-
-const list = [
+{
+  "data": [
     {"id": 1, "name": "Taylor", "surname": "Davis", "country": "Netherlands", "position": "DevOps", "email": "taylor.davis@fancygrid.com"},
     {"id": 2, "name": "Isabella", "surname": "Scott", "country": "Australia", "position": "PHP Developer", "email": "isabella.scott@fancygrid.com"},
     {"id": 3, "name": "Chloe", "surname": "Woods", "country": "Sweden", "position": "C++ Developer", "email": "chloe.woods@fancygrid.com"},
@@ -26,69 +20,5 @@ const list = [
     {"id": 18, "name": "Jacob", "surname": "Hill", "country": "Japan", "position": "Python Developer", "email": "jacob.hill@fancygrid.com"},
     {"id": 19, "name": "Paula", "surname": "Scott", "country": "Netherlands", "position": "Data Science Engineer", "email": "paula.scott@fancygrid.com"},
     {"id": 20, "name": "Lily", "surname": "Miller", "country": "Austria", "position": "JavaScript Developer", "email": "lily.miller@fancygrid.com"}
-  ];
-
-let _count = list.length;
-const _offset = 1;
-const _limit = 5;
-
-let _list = [];
-for(let i = _offset-1; i < _limit; i++) {
-  _list.push(list[i]);
-}
-
-function click(offset, limit = _limit, count = list.length) {
-  const array = [];
-
-  for(let i = (offset-1)*limit; (i < offset*limit) && (i < count); i++) {
-    if(offset + limit <= count) {
-      array.push(list[i]);
-    } else break;
-  }
-  _list = array;
-  forceReRender();
-}
-
-function search(value) {
-  let filtered =  list.filter(item => item.name.startsWith(value));
-  let filteredLength = filtered.length
-  if (filtered.length === list.length) {
-    filtered = list;
-    filteredLength = list.length;
-  }
-
-  _list = filtered;
-  _count = filteredLength;
-  forceReRender();
-}
-
-storiesOf("Table", module)
-.addDecorator(withKnobs)
-.add("default", () => {
-
-  const ht = [
-    {name: 'Last Name'},
-    {name: 'Country'},
-    {name: 'Position'},
-    {name: 'Email'}
   ]
-
-  const pagination = {
-    count: _count,
-    pageIndex: _offset,
-    limit: _limit,
-    onClick: (index) => click(index)
-  };
-
-  return (
-    <Table
-      loading={false}
-      headerNames={ht}
-      list={_list}
-      onClick={action('on Click')}
-      search={(item) => search(item)}
-      // search={action('search filtering')}
-      pagination={pagination}
-    />
-  )
-})
+}

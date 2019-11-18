@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loader /> component render correctly 1`] = `
+<div
+  className="css-nil 📦dspl_flex 📦algn-itms_center 📦just-cnt_center 📦flx_1 📦h_100vh 📦w_100prcnt 📦box-szg_border-box"
+>
+  <div
+    className="📦w_40px 📦h_40px 📦ln-ht_0 📦box-szg_border-box"
+    delay={0}
+  >
+    <svg
+      className="css-11r1ktn 📦box-szg_border-box"
+      viewBox="0 0 150 150"
+      x="0px"
+      y="0px"
+    >
+      <circle
+        className="css-1ipoqbj 📦box-szg_border-box"
+        cx="75"
+        cy="75"
+        r="60"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`<Loader /> with the changed height of wrapper 1`] = `
+<div
+  className="css-nil 📦dspl_flex 📦algn-itms_center 📦just-cnt_center 📦flx_1 📦h_100px 📦w_100prcnt 📦box-szg_border-box"
+>
+  <div
+    className="📦w_40px 📦h_40px 📦ln-ht_0 📦box-szg_border-box"
+    delay={0}
+  >
+    <svg
+      className="css-11r1ktn 📦box-szg_border-box"
+      viewBox="0 0 150 150"
+      x="0px"
+      y="0px"
+    >
+      <circle
+        className="css-1ipoqbj 📦box-szg_border-box"
+        cx="75"
+        cy="75"
+        r="60"
+      />
+    </svg>
+  </div>
+</div>
+`;

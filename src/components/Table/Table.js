@@ -19,7 +19,7 @@ class TableComponent extends React.Component {
         border='default'
       >
         <Table>
-          <Table.Head backgroundColor='white' height='auto' paddingTop={DISTANCE} paddingBottom={DISTANCE}>
+          <Table.Head accountForScrollbar={false} backgroundColor='white' height='auto' paddingTop={DISTANCE} paddingBottom={DISTANCE}>
             {search && <Table.SearchHeaderCell onChange={search} height={HEIGHT}/>}
             {headerNames && headerNames.length && headerNames.map((item, index) => 
               <Table.TextHeaderCell paddingLeft={DISTANCE/2} height={HEIGHT} key={`headerName-${index}`}>

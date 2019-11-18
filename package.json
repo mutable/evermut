@@ -8,10 +8,12 @@
     "Anna Narimanyan (https://github.com/annanarim)"
   ],
   "scripts": {
+    "test:generate-output": "jest --json --outputFile=.jest-test-results.json",
+    "test": "jest",
+    "prebuild:storybook": "npm run test:generate-output",
     "storybook": "start-storybook",
     "dev": "webpack --config webpack.config.js",
-    "build": "babel src --out-dir dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src --out-dir dist"
   },
   "peerDependencies": {
     "react": "^16.8.6",
@@ -29,17 +31,22 @@
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
     "@babel/plugin-transform-arrow-functions": "^7.2.0",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "@storybook/addon-a11y": "^5.2.6",
     "@storybook/addon-actions": "^5.2.6",
+    "@storybook/addon-jest": "^5.2.6",
     "@storybook/addon-knobs": "^5.2.6",
     "@storybook/addon-links": "^5.2.6",
     "@storybook/react": "^5.2.6",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "core-js": "^3.2.1",
+    "jest": "^24.9.0",
     "mini-css-extract-plugin": "^0.8.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-test-renderer": "^16.11.0",
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7"
   },

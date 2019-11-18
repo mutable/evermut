@@ -55,7 +55,7 @@ class Pagination extends React.Component {
   }
 
   _getPages(index) {
-  	const { countOfPages, pageIndex, count } = this.state;
+  	const { countOfPages, count } = this.state;
   	const pages = [];
     
     if(count === 0) {
@@ -97,18 +97,16 @@ class Pagination extends React.Component {
     </Button>
   }
 
-	isIncluded(array, n){
-		const { pages, countOfPages } = this.state;
-
+	isIncluded(array, n) {
 		const item = array.findIndex(i => (i === n))
 
-		if (item !== -1 ) return false;
+		if (item !== -1) return false;
 		return true;
 	}
 
   render() {
-    const { pageIndex, pageLimit, countOfPages, pages, front, back } = this.state;
-    const { count, classes, translate, loading } = this.props;
+    const { pageIndex, countOfPages, front, back } = this.state;
+    const { loading } = this.props;
 
     const backActive = (pageIndex <= 1);
     const nextActive = (pageIndex >= countOfPages);

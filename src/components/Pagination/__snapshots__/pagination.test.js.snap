@@ -1,0 +1,166 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Pagination /> component advanced render correctly 1`] = `
+<div
+  className="css-nil 📦dspl_inline-flex 📦mr_15px 📦box-szg_border-box"
+>
+  <button
+    className="css-1ii3p2c 📦fnt-fam_b77syt 📦mt_0px 📦fnt-sze_12px 📦f-wght_500 📦ln-ht_25px 📦ltr-spc_0 📦btrr_3px 📦bbrr_3px 📦btlr_3px 📦bblr_3px 📦pt_0px 📦pb_0px 📦pr_0px 📦pl_0px 📦ml_0px 📦mr_0px 📦mb_0px 📦h_25px 📦pst_relative 📦dspl_flex 📦algn-itms_center 📦flx-wrap_nowrap 📦w_25px 📦just-cnt_center 📦box-szg_border-box"
+    onClick={[Function]}
+  >
+    <svg
+      className="📦w_12px 📦h_12px 📦box-szg_border-box"
+      data-icon="chevron-left"
+      style={
+        Object {
+          "fill": "#66788A",
+        }
+      }
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M7.41 8l3.29-3.29c.19-.18.3-.43.3-.71a1.003 1.003 0 00-1.71-.71l-4 4C5.11 7.47 5 7.72 5 8c0 .28.11.53.29.71l4 4a1.003 1.003 0 001.42-1.42L7.41 8z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </button>
+  <div
+    className="css-nil 📦box-szg_border-box"
+  >
+    <div
+      className="css-nil 📦box-szg_border-box"
+    >
+      <button
+        className="css-1ii3p2c 📦color_425a70 📦fnt-fam_b77syt 📦mt_0px 📦fnt-sze_11px 📦f-wght_normal 📦ln-ht_25px 📦ltr-spc_0 📦btrr_3px 📦bbrr_3px 📦btlr_3px 📦bblr_3px 📦pt_0px 📦pb_0px 📦pr_10px 📦pl_10px 📦ml_5px 📦mr_5px 📦mb_0px 📦h_25px 📦pst_relative 📦dspl_inline-flex 📦algn-itms_center 📦flx-wrap_nowrap 📦bg_11ev722 📦box-szg_border-box"
+        onClick={[Function]}
+      >
+        1
+      </button>
+      <span
+        className="📦color_425a70 📦fnt-fam_b77syt 📦fnt-sze_11px 📦f-wght_400 📦ln-ht_20px 📦ltr-spc_-0-05px 📦box-szg_border-box"
+      >
+        
+      </span>
+      <button
+        className="css-1ii3p2c 📦color_425a70 📦fnt-fam_b77syt 📦mt_0px 📦fnt-sze_11px 📦f-wght_normal 📦ln-ht_25px 📦ltr-spc_0 📦btrr_3px 📦bbrr_3px 📦btlr_3px 📦bblr_3px 📦pt_0px 📦pb_0px 📦pr_10px 📦pl_10px 📦ml_5px 📦mr_5px 📦mb_0px 📦h_25px 📦pst_relative 📦dspl_inline-flex 📦algn-itms_center 📦flx-wrap_nowrap 📦bg_11ev722 📦box-szg_border-box"
+        onClick={[Function]}
+      >
+        2
+      </button>
+      <button
+        className="css-1ii3p2c 📦color_425a70 📦fnt-fam_b77syt 📦mt_0px 📦fnt-sze_11px 📦f-wght_bold 📦ln-ht_25px 📦ltr-spc_0 📦btrr_3px 📦bbrr_3px 📦btlr_3px 📦bblr_3px 📦pt_0px 📦pb_0px 📦pr_10px 📦pl_10px 📦ml_5px 📦mr_5px 📦mb_0px 📦h_25px 📦pst_relative 📦dspl_inline-flex 📦algn-itms_center 📦flx-wrap_nowrap 📦bg_1ofpdvj 📦box-szg_border-box"
+        onClick={[Function]}
+      >
+        3
+      </button>
+      <button
+        className="css-1ii3p2c 📦color_425a70 📦fnt-fam_b77syt 📦mt_0px 📦fnt-sze_11px 📦f-wght_normal 📦ln-ht_25px 📦ltr-spc_0 📦btrr_3px 📦bbrr_3px 📦btlr_3px 📦bblr_3px 📦pt_0px 📦pb_0px 📦pr_10px 📦pl_10px 📦ml_5px 📦mr_5px 📦mb_0px 📦h_25px 📦pst_relative 📦dspl_inline-flex 📦algn-itms_center 📦flx-wrap_nowrap 📦bg_11ev722 📦box-szg_border-box"
+        onClick={[Function]}
+      >
+        4
+      </button>
+      <span
+        className="📦color_425a70 📦fnt-fam_b77syt 📦fnt-sze_11px 📦f-wght_400 📦ln-ht_20px 📦ltr-spc_-0-05px 📦box-szg_border-box"
+      >
+        ...
+      </span>
+      <button
+        className="css-1ii3p2c 📦color_425a70 📦fnt-fam_b77syt 📦mt_0px 📦fnt-sze_11px 📦f-wght_normal 📦ln-ht_25px 📦ltr-spc_0 📦btrr_3px 📦bbrr_3px 📦btlr_3px 📦bblr_3px 📦pt_0px 📦pb_0px 📦pr_10px 📦pl_10px 📦ml_5px 📦mr_5px 📦mb_0px 📦h_25px 📦pst_relative 📦dspl_inline-flex 📦algn-itms_center 📦flx-wrap_nowrap 📦bg_11ev722 📦box-szg_border-box"
+        onClick={[Function]}
+      >
+        12
+      </button>
+    </div>
+  </div>
+  <button
+    className="css-1ii3p2c 📦fnt-fam_b77syt 📦mt_0px 📦fnt-sze_11px 📦f-wght_500 📦ln-ht_25px 📦ltr-spc_0 📦btrr_3px 📦bbrr_3px 📦btlr_3px 📦bblr_3px 📦pt_0px 📦pb_0px 📦pr_0px 📦pl_0px 📦ml_0px 📦mr_0px 📦mb_0px 📦h_25px 📦pst_relative 📦dspl_flex 📦algn-itms_center 📦flx-wrap_nowrap 📦w_25px 📦just-cnt_center 📦box-szg_border-box"
+    onClick={[Function]}
+  >
+    <svg
+      className="📦w_12px 📦h_12px 📦box-szg_border-box"
+      data-icon="chevron-right"
+      style={
+        Object {
+          "fill": "#66788A",
+        }
+      }
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M10.71 7.29l-4-4a1.003 1.003 0 00-1.42 1.42L8.59 8 5.3 11.29c-.19.18-.3.43-.3.71a1.003 1.003 0 001.71.71l4-4c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`<Pagination /> component with min requirements render correctly 1`] = `
+<div
+  className="css-nil 📦dspl_inline-flex 📦mr_15px 📦box-szg_border-box"
+>
+  <button
+    className="css-1ii3p2c 📦fnt-fam_b77syt 📦mt_0px 📦fnt-sze_12px 📦f-wght_500 📦ln-ht_25px 📦ltr-spc_0 📦btrr_3px 📦bbrr_3px 📦btlr_3px 📦bblr_3px 📦pt_0px 📦pb_0px 📦pr_0px 📦pl_0px 📦ml_0px 📦mr_0px 📦mb_0px 📦h_25px 📦pst_relative 📦dspl_flex 📦algn-itms_center 📦flx-wrap_nowrap 📦w_25px 📦just-cnt_center 📦box-szg_border-box"
+    disabled={true}
+    onClick={[Function]}
+  >
+    <svg
+      className="📦w_12px 📦h_12px 📦box-szg_border-box"
+      data-icon="chevron-left"
+      style={
+        Object {
+          "fill": "#66788A",
+        }
+      }
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M7.41 8l3.29-3.29c.19-.18.3-.43.3-.71a1.003 1.003 0 00-1.71-.71l-4 4C5.11 7.47 5 7.72 5 8c0 .28.11.53.29.71l4 4a1.003 1.003 0 001.42-1.42L7.41 8z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </button>
+  <div
+    className="css-nil 📦box-szg_border-box"
+  >
+    <button
+      className="css-1ii3p2c 📦color_425a70 📦fnt-fam_b77syt 📦mt_0px 📦fnt-sze_11px 📦f-wght_bold 📦ln-ht_25px 📦ltr-spc_0 📦btrr_3px 📦bbrr_3px 📦btlr_3px 📦bblr_3px 📦pt_0px 📦pb_0px 📦pr_10px 📦pl_10px 📦ml_5px 📦mr_5px 📦mb_0px 📦h_25px 📦pst_relative 📦dspl_inline-flex 📦algn-itms_center 📦flx-wrap_nowrap 📦bg_1ofpdvj 📦box-szg_border-box"
+      onClick={[Function]}
+    >
+      1
+    </button>
+    <button
+      className="css-1ii3p2c 📦color_425a70 📦fnt-fam_b77syt 📦mt_0px 📦fnt-sze_11px 📦f-wght_normal 📦ln-ht_25px 📦ltr-spc_0 📦btrr_3px 📦bbrr_3px 📦btlr_3px 📦bblr_3px 📦pt_0px 📦pb_0px 📦pr_10px 📦pl_10px 📦ml_5px 📦mr_5px 📦mb_0px 📦h_25px 📦pst_relative 📦dspl_inline-flex 📦algn-itms_center 📦flx-wrap_nowrap 📦bg_11ev722 📦box-szg_border-box"
+      onClick={[Function]}
+    >
+      2
+    </button>
+    <button
+      className="css-1ii3p2c 📦color_425a70 📦fnt-fam_b77syt 📦mt_0px 📦fnt-sze_11px 📦f-wght_normal 📦ln-ht_25px 📦ltr-spc_0 📦btrr_3px 📦bbrr_3px 📦btlr_3px 📦bblr_3px 📦pt_0px 📦pb_0px 📦pr_10px 📦pl_10px 📦ml_5px 📦mr_5px 📦mb_0px 📦h_25px 📦pst_relative 📦dspl_inline-flex 📦algn-itms_center 📦flx-wrap_nowrap 📦bg_11ev722 📦box-szg_border-box"
+      onClick={[Function]}
+    >
+      3
+    </button>
+  </div>
+  <button
+    className="css-1ii3p2c 📦fnt-fam_b77syt 📦mt_0px 📦fnt-sze_11px 📦f-wght_500 📦ln-ht_25px 📦ltr-spc_0 📦btrr_3px 📦bbrr_3px 📦btlr_3px 📦bblr_3px 📦pt_0px 📦pb_0px 📦pr_0px 📦pl_0px 📦ml_0px 📦mr_0px 📦mb_0px 📦h_25px 📦pst_relative 📦dspl_flex 📦algn-itms_center 📦flx-wrap_nowrap 📦w_25px 📦just-cnt_center 📦box-szg_border-box"
+    onClick={[Function]}
+  >
+    <svg
+      className="📦w_12px 📦h_12px 📦box-szg_border-box"
+      data-icon="chevron-right"
+      style={
+        Object {
+          "fill": "#66788A",
+        }
+      }
+      viewBox="0 0 16 16"
+    >
+      <path
+        d="M10.71 7.29l-4-4a1.003 1.003 0 00-1.42 1.42L8.59 8 5.3 11.29c-.19.18-.3.43-.3.71a1.003 1.003 0 001.71.71l4-4c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </button>
+</div>
+`;
