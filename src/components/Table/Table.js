@@ -46,8 +46,8 @@ class TableComponent extends React.Component {
                     alignItems='center'
                     paddingTop={DISTANCE}
                     paddingBottom={DISTANCE}
-                    isSelectable
-                    onSelect={() => onClick(item)}
+                    isSelectable={!!onClick}
+                    onSelect={onClick ? () => onClick(item) : () => {}}
                   >
                     {keys && keys.length && keys.map((key, index) =>
                       <Table.TextCell key={`cellItem-${index}`}>{item[key] || '-'}</Table.TextCell>
@@ -58,21 +58,24 @@ class TableComponent extends React.Component {
             }
           </Table.Body>
         </Table>
-        <Pane
-          width='100%'
-          background='white'
-          display='flex'
-          justifyContent='flex-end'
-          paddingTop={DISTANCE}
-          paddingBottom={DISTANCE}
-        >
-          <Pagination
-            count={pagination.count}
-            pageIndex={pagination.pageIndex}
-            onClick={index => pagination.onClick(index)}
-            limit={pagination.limit}
-          />
-        </Pane>
+        {(pagination && (
+          <Pane
+            width='100%'
+            background='white'
+            display='flex'
+            justifyContent='flex-end'
+            paddingTop={DISTANCE}
+            paddingBottom={DISTANCE}
+          >
+            <Pagination
+              count={pagination.count}
+              pageIndex={pagination.pageIndex}
+              onClick={index => pagination.onClick(index)}
+              limit={pagination.limit}
+            />
+          </Pane>
+          )) || null
+        }
       </Pane>
     );
   }
