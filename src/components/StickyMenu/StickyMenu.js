@@ -6,14 +6,27 @@ import Loader from '../Loader';
 import MutMenuItem from './MenuItem';
 
 class StickyMenu extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      selected: ''
+    }
+  }
+
+  changeSelectedColor = (item) => {
+    this.setState({ selected: item});
+  }
+
   render() {
-    const { primaryMenu, secondaryMenu, stickBottom, loading, ...others } = this.props;
+    const { selected } = this.state;
+    const { primaryMenu, secondaryMenu, stickBottom, loading, selectedColor, ...others } = this.props;
 
     return (
       <Box
         width="80px"
         paddingTop="10px"
-        background="#525F7F" // "#FF9A22"
+        background="#525F7F"
         flexShrink={0}
         zIndex={9}
         {...others}
@@ -40,8 +53,12 @@ class StickyMenu extends React.Component {
                     return (
                       <MutMenuItem
                         key={`pm-${index}`}
+                        active={pm.active}
                         props={pm.props}
                         {...props}
+                        selected={selected}
+                        selectedColor={selectedColor}
+                        changeSelectedColor={(item) => this.changeSelectedColor(item)}
                       >{children}</MutMenuItem>
                     )
                   })
@@ -62,6 +79,10 @@ class StickyMenu extends React.Component {
                           <MutMenuItem
                             key={`pm-${index}`}
                             props={pm.props}
+                            active={pm.active}
+                            selected={selected}
+                            selectedColor={selectedColor}
+                            changeSelectedColor={(item) => this.changeSelectedColor(item)}
                             {...props}
                           >{children}</MutMenuItem>
                         )
