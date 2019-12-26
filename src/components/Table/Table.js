@@ -16,7 +16,8 @@ class TableComponent extends React.Component {
       <Pane
         position='relative'
         background='white'
-        border='default'
+        border='none'
+        elevation={0}
       >
         <Table>
           <Table.Head backgroundColor='white' height='auto' paddingTop={DISTANCE} paddingBottom={DISTANCE}>
@@ -42,7 +43,7 @@ class TableComponent extends React.Component {
                 const keys = Object.keys(clonedItem);
                 return (
                   <Table.Row
-                    key={`rowItem-${index}`}
+                    key={`row-${index}`}
                     alignItems='center'
                     paddingTop={DISTANCE}
                     paddingBottom={DISTANCE}
@@ -50,7 +51,7 @@ class TableComponent extends React.Component {
                     onSelect={onClick ? () => onClick(item) : () => {}}
                   >
                     {keys && keys.length && keys.map((key, index) =>
-                      <Table.TextCell key={`cellItem-${index}`}>{item[key] || '-'}</Table.TextCell>
+                      <Table.TextCell key={`text-cell-${index}`}>{item[key] || '-'}</Table.TextCell>
                     )}
                   </Table.Row>
                 )
