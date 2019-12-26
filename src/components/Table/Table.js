@@ -98,8 +98,8 @@ TableComponent.propTypes = {
   ),
   list: PropTypes.array.isRequired,
   pagination: PropTypes.object.isRequired,
-  search: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired
+  search: PropTypes.func,
+  onClick: PropTypes.func
 };
 
 export default TableComponent;

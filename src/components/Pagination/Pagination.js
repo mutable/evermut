@@ -8,13 +8,16 @@ const MARGIN = 15;
 const HEIGHT = 25;
 const COLOR = '#425a70';
 const FONT = 11;
+const DEFAULT_PAGE = 1;
 
 class Pagination extends React.Component {
   constructor(props) {
     super(props);
 
+    const pageIndex = props.pageIndex || DEFAULT_PAGE; 
+
     this.state = {
-      pageIndex: props.pageIndex,
+      pageIndex,
       pageLimit: props.limit,
       countOfPages: Math.ceil(props.count / props.limit),
       count: props.count,

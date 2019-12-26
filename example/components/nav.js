@@ -9,7 +9,8 @@ const primaryMenu = [
     props: {
       href: '#index',
       paddingTop: 10
-    }
+    },
+    active: false
   },
   {
     name: 'Circular Progress',
@@ -17,7 +18,8 @@ const primaryMenu = [
     props: {
       href: '#circularProgress',
       paddingTop: 10
-    }
+    },
+    active: false
   },
   {
     name: 'Stepper',
@@ -25,7 +27,8 @@ const primaryMenu = [
     props: {
       href: '#stepper',
       paddingTop: 10
-    }
+    },
+    active: true
   },
   {
     name: 'Pagination',
@@ -33,7 +36,8 @@ const primaryMenu = [
     props: {
       href: '#pagination',
       paddingTop: 10
-    }
+    },
+    active: false
   },
   {
     name: 'Breadcrumbs',
@@ -41,7 +45,8 @@ const primaryMenu = [
     props: {
       href: '#bread-crumbs',
       paddingTop: 10
-    }
+    },
+    active: false
   },
   {
     name: 'Table',
@@ -49,7 +54,8 @@ const primaryMenu = [
     props: {
       href: '#simple-table-with-pagination',
       paddingTop: 10
-    }
+    },
+    active: false
   },
   {
     name: 'Advanced Table',
@@ -57,7 +63,8 @@ const primaryMenu = [
     props: {
       href: '#advanced-table',
       paddingTop: 10
-    }
+    },
+    active: false
   },
   {
     name: 'Login Form',
@@ -65,7 +72,8 @@ const primaryMenu = [
     props: {
       href: '#login-form',
       paddingTop: 10
-    }
+    },
+    active: false
   }
 ];
 
@@ -76,13 +84,10 @@ const secondaryMenu = [
     props: {
       href: '#sticky-menu',
       paddingTop: 10
-    }
+    },
+    active: false
   }
 ]
-
-const onSelect = (item) => {
-  console.log('item', item)
-}
 
 const Nav = () => (
   <StickyMenu
@@ -93,6 +98,7 @@ const Nav = () => (
     }}
     primaryMenu={primaryMenu}
     secondaryMenu={secondaryMenu}
+    selectedColor='#6c7896'
   />
 )
 
