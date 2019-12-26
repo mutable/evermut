@@ -6,24 +6,17 @@ class MutMenuItem extends React.Component {
     super(props);
 
     this.state = {
-      hovered: false,
-      active: props.active
+      hovered: false
     }
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    console.log('nextProps', nextProps, prevState);
-    return null;
-  }
-
   render() {
-    const { hovered, active } = this.state;
-    const { children, icon, props, changeSelectedColor, selectedColor } = this.props;
+    const { hovered } = this.state;
+    const { children, active, icon, props, changeSelectedColor, selectedColor } = this.props;
     const prop = props && Object.keys(props) && Object.keys(props).length ? props : null;
     const pr = icon ? (<Icon size={24} color="#ffffff" icon={icon} />) : null;
     let backgroundColor = 'transparent';
-    if(hovered) backgroundColor = selectedColor;
-    // if(hovered || active) backgroundColor = selectedColor;
+    if(hovered || active) backgroundColor = selectedColor;
 
     return (
       <Menu.Item
