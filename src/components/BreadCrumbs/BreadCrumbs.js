@@ -1,66 +1,78 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Pane, Text, Paragraph, Select } from 'evergreen-ui';
-import Loader from '../Loader';
+import { Pane, Text, Paragraph, Select, Combobox } from 'evergreen-ui';
 
 class BreadCrumbs extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      selected: false
-    }
-  }
-  handleClick(event, list) {
+  handleClick(event, list, index) {
     const { onClick } = this.props;
-    if(onClick) onClick({selected: event.target.value, list});
-
-    this.setState({ selected: event.target.value});
+    const selected = list.crumb.filter(it => it.id === event.target.value)[0];
+    if(onClick) onClick({ crumb: list.crumb, route: selected }, index);
   }
-  getAppearance(item, last, index) {
-    const { selected } = this.state;
+
+  handleClickCombo(selected, list, index) {
+    const { onClick } = this.props;
+
+    if(onClick && selected !== null) onClick({ crumb: list.crumb, route: selected }, index);
+  }
+
+  getAppearance(cr, index) {
+    const { loading } = this.props;
+
     let text = '';
 
-    if(typeof item.crumb !== 'string') {
+    if(typeof cr.crumb !== 'string') {
       text = (
-        <Select
-          value={selected}
-          onChange={(e) => this.handleClick(e, item.crumb)}
-        >
-          {
-            item.crumb.length && item.crumb.map((value, i) => {
-              return <option value={value.id} key={`options-${i}`}>{value.name}</option>
-            })
-          }
-        </Select>
+        <Combobox
+          initialSelectedItem={cr.route}
+          selectedItem={cr.route || null}
+          items={cr.crumb}
+          isLoading={loading}
+          itemToString={item => item ? item.name : ''}
+          onChange={selected => this.handleClickCombo(selected, cr, index)}
+        />
       );
     } else {
       text = <Paragraph
         is='a'
-        textDecoration={item.route ? 'underline' : 'none'}
-        cursor={'pointer'}
-        onClick={() => this.props.onClick(item)}
-      >
-        {item.crumb}
-      </Paragraph>;
+        textDecoration={cr.route ? 'underline' : 'none'}
+        cursor={cr.route ? 'pointer' : 'default'}
+        disabled={!cr.route}
+        onClick={() => this.props.onClick(cr, index)}
+      >{cr.crumb}</Paragraph>;
     }
+
     return (
-      <Text key={`text-${index}`}>
+      <Text
+        lineHeight={2}
+        key={`breadcrumb-path-${index}`}
+      >
         {text}
-        {!last ? '/ ' : ''}
       </Text>
     );
   }
 
   render() {
-    const { crumbs, loading } = this.props;
+    const { crumbs } = this.props;
 
-    return ( loading ? <Loader /> :
-      <Pane>
+    return (
+      <Pane display="flex" flexDirection="row">
         {crumbs && crumbs.length && crumbs.map((item, index) => {
-          return this.getAppearance(item, index === crumbs.length - 1, index);
+          return (<React.Fragment key={`breadcrumb-${index}`} >
+            {this.getAppearance(item, index)}
+            {
+              !(index === crumbs.length - 1) ? (
+                <Text
+                width="10px"
+                textAlign="center"
+                lineHeight={2}
+                key={`breadcrumb-slash-${index}`}
+              >/</Text>
+              ) : ''
+            }
+          </React.Fragment>)
         })}
       </Pane>
-    )
+    );
   }
 }
 
