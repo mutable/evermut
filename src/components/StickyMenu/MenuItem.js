@@ -16,15 +16,12 @@ class MutMenuItem extends React.Component {
     const prop = props && Object.keys(props) && Object.keys(props).length ? props : null;
     const pr = icon ? (<Icon size={24} color="#ffffff" icon={icon} />) : null;
     let backgroundColor = 'transparent';
-    let shadow = false;
 
     if(hovered || active) backgroundColor = selectedColor;
     
-    if(active) shadow = true;
-
     const style = { backgroundColor };
 
-    if (shadow) {
+    if (active) {
       style.boxShadow = "inset 0px 0px 2px 0px rgba(0,0,0,0.15)";
     }
 
