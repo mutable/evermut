@@ -20,7 +20,7 @@ class BreadCrumbs extends React.Component {
 
     let text = '';
     let cursor = cr.route ? 'pointer' : 'default';
-    cursor = disable && 'not-allowed' || cursor;
+    cursor = disable ? 'not-allowed' : cursor;
 
     if(typeof cr.crumb !== 'string') {
       text = (
