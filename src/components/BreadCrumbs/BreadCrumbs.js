@@ -16,9 +16,11 @@ class BreadCrumbs extends React.Component {
   }
 
   getAppearance(cr, index) {
-    const { loading } = this.props;
+    const { loading, disable } = this.props;
 
     let text = '';
+    let cursor = cr.route ? 'pointer' : 'default';
+    cursor = disable && 'not-allowed' || cursor;
 
     if(typeof cr.crumb !== 'string') {
       text = (
@@ -26,6 +28,7 @@ class BreadCrumbs extends React.Component {
           initialSelectedItem={cr.route}
           selectedItem={cr.route || null}
           items={cr.crumb}
+          disabled={disable}
           isLoading={loading}
           itemToString={item => item ? item.name : ''}
           onChange={selected => this.handleClickCombo(selected, cr, index)}
@@ -35,9 +38,9 @@ class BreadCrumbs extends React.Component {
       text = <Paragraph
         is='a'
         textDecoration={cr.route ? 'underline' : 'none'}
-        cursor={cr.route ? 'pointer' : 'default'}
+        cursor={cursor}
         disabled={!cr.route}
-        onClick={() => this.props.onClick(cr, index)}
+        onClick={() => disable ? {} : this.props.onClick(cr, index)}
       >{cr.crumb}</Paragraph>;
     }
 
@@ -77,11 +80,13 @@ class BreadCrumbs extends React.Component {
 }
 
 BreadCrumbs.defaultProps = {
-  loading: false
+  loading: false,
+  disable: false
 }
 
 BreadCrumbs.propTypes = {
   loading: PropTypes.bool,
+  disable: PropTypes.bool,
   crumbs: PropTypes.arrayOf(PropTypes.shape({
     crumb: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.shape({
       name: PropTypes.string.isRequired,
