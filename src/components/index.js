@@ -1,3 +1,4 @@
+export { default as BackButton } from './BackButton';
 export { default as BreadCrumbs } from './BreadCrumbs';
 
 export { default as CircularProgressBar } from './CircularProgressBar';
