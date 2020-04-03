@@ -8,6 +8,7 @@ import {
 } from 'evergreen-ui'
 import Nav from '../components/nav'
 import {
+  BackButton,
   Loader,
   Login,
   ExtendedMenuItem,
@@ -19,7 +20,7 @@ import {
   BreadCrumbs,
   Stepper,
   CircularProgressBar
-} from 'evermut'
+} from 'evermut';
 import testJson from '../Test/test';
 import logo from "../logo-light.svg";
 import logoDark from "../logo-dark.svg";
@@ -93,6 +94,10 @@ class Home extends React.Component {
     this.setState({filteredArray: array})
   }
 
+  goBack = () => {
+    console.log('back button clicked');
+  }
+
   render() {
     const companies = [
       {id: 1, title: "title 1", description: "description 1", tags: ['some', 'tags'], actions: [<StateAction key='stateActionkey' actions={['running']} onClick={this.click} tooltip />, 'waiting'], menu: { list: [{name: 'Something', link: '/some'}, {name: 'Logs', link: '/logs'}], onClick: this.selectedMenuItem }},
@@ -164,6 +169,17 @@ class Home extends React.Component {
                 size={800}
               >Components</Heading>
             </Link>
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#backButton"
+                name="backButton"
+              >Back Button</Link>
+              <Paragraph {...extraStyle}>Back Button</Paragraph>
+              <BackButton goBack={() => this.goBack()} />
+            </Pane>
             <Pane
               paddingTop={30}
             >
