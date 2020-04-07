@@ -8,6 +8,7 @@ import {
 } from 'evergreen-ui'
 import Nav from '../components/nav'
 import {
+  HorizontalMenu,
   BackButton,
   Loader,
   Login,
@@ -148,7 +149,7 @@ class Home extends React.Component {
             <title>Evermut components</title>
           </Head>
           <Nav />
-
+          <HorizontalMenu path='/'/>
           <Pane
             style={{
               width: 'calc(100% - 80px)',
