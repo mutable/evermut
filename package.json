@@ -1,6 +1,6 @@
 {
   "name": "evermut",
-  "version": "1.4.0-beta1",
+  "version": "1.4.1-beta1",
   "description": "Mut View Library",
   "main": "dist/index.js",
   "contributors": [
@@ -13,30 +13,31 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "evergreen-ui": "^4.20.0",
+    "evergreen-ui": "^4.24.0",
     "prop-types": "^15.7.2",
-    "ui-box": "^3.0.1"
+    "ui-box": "^3.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/plugin-proposal-decorators": "^7.4.4",
-    "@babel/plugin-proposal-export-namespace-from": "^7.5.2",
-    "@babel/plugin-transform-arrow-functions": "^7.2.0",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.6",
-    "core-js": "^3.2.1",
-    "mini-css-extract-plugin": "^0.8.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.7"
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/plugin-proposal-export-namespace-from": "^7.8.3",
+    "@babel/plugin-transform-arrow-functions": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
+    "babel-loader": "^8.1.0",
+    "core-js": "^3.6.4",
+    "mini-css-extract-plugin": "^0.9.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-dropzone": "^10.2.2",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
   },
   "browserslist": "> 0.25%, not dead",
   "files": [
