@@ -5,6 +5,8 @@ export { default as CircularProgressBar } from './CircularProgressBar';
 
 export { default as ExtendedMenuItem } from './ExtendedMenuItem';
 
+export { default as HorizontalMenu } from './HorizontalMenu';
+
 export { default as Loader } from './Loader';
 export { default as Login } from './Login';
 export { default as Logo } from './Logo';

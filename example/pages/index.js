@@ -8,6 +8,8 @@ import {
 } from 'evergreen-ui'
 import Nav from '../components/nav'
 import {
+  Logo,
+  HorizontalMenu,
   BackButton,
   Loader,
   Login,
@@ -139,6 +141,48 @@ class Home extends React.Component {
       return (({ name, position, id }) => ({ name, position, visibleId: id, id }))(item);
     })
 
+    const primaryMenu = [
+      {
+        name: 'Table',
+        icon: 'applications',
+        props: {
+          onClick: () => console.log('table clicked'),
+          paddingTop: 10
+        },
+        active: true
+      },
+      {
+        name: 'Circular Progress',
+        icon: 'doughnut-chart',
+        props: {
+          onClick: () => console.log('Circular clicked'),
+          paddingTop: 10
+        },
+        active: false
+      },
+    ];
+
+    const secondaryMenu = [
+      {
+        name: 'Sticky Menu',
+        icon: 'list-detail-view',
+        props: {
+          onClick: () => console.log('Sticky clicked'),
+          paddingTop: 10
+        },
+        active: false
+      },
+      {
+        name: 'Stepper',
+        icon: 'exchange',
+        props: {
+          onClick: () => console.log('Stepper clicked'),
+          paddingTop: 10
+        },
+        active: false
+      },
+    ]
+
     return (
       <>
         <Pane
@@ -148,10 +192,8 @@ class Home extends React.Component {
             <title>Evermut components</title>
           </Head>
           <Nav />
-
           <Pane
             style={{
-              width: 'calc(100% - 80px)',
               display: 'inline-block',
               verticalAlign: 'top',
               padding: '20px'
@@ -179,6 +221,23 @@ class Home extends React.Component {
               >Back Button</Link>
               <Paragraph {...extraStyle}>Back Button</Paragraph>
               <BackButton goBack={() => this.goBack()} />
+            </Pane>
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#horizontalMenu"
+                name="horizontalMenu"
+              >Horizontal Menu</Link>
+              <Paragraph {...extraStyle}>This menu is more convenient to use in mobile views.</Paragraph>
+              <HorizontalMenu
+                logo={<Logo src={logo} style={{ height: 40 }}/>}
+                listLogo={<Logo src={logoDark} style={{ height: 40, margin: 15 }}/>}
+                primaryMenu={primaryMenu}
+                secondaryMenu={secondaryMenu}
+                selectedColor='#f5f6f7'
+              />
             </Pane>
             <Pane
               paddingTop={30}
