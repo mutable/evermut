@@ -1,6 +1,6 @@
 {
   "name": "example",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,7 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "evergreen-ui": "^4.24.0",
-    "evermut": "^1.4.0-beta1",
+    "evermut": "^1.6.0-beta1",
     "next": "^9.3.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",

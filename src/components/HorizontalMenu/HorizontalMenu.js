@@ -146,8 +146,8 @@ HorizontalMenu.propTypes = {
   primaryMenu: PropTypes.arrayOf(PropTypes.object).isRequired,
   secondaryMenu: PropTypes.arrayOf(PropTypes.object),
   selectedColor: PropTypes.string,
-  logo: PropTypes.elementType,
-  listLogo: PropTypes.elementType
+  logo: PropTypes.element,
+  listLogo: PropTypes.element
 }
 
 export default HorizontalMenu;
