@@ -4,10 +4,15 @@ import {
   Pane,
   Paragraph,
   Heading,
-  Link
+  Link,
+  Button,
+  Text,
+  Tooltip,
+  Icon
 } from 'evergreen-ui'
 import Nav from '../components/nav'
 import {
+  LeftSideList,
   Logo,
   HorizontalMenu,
   BackButton,
@@ -26,6 +31,13 @@ import {
 import testJson from '../Test/test';
 import logo from "../logo-light.svg";
 import logoDark from "../logo-dark.svg";
+
+
+const FONT_SIZE = 14;
+const FONT_SIZE_SMALL = 10;
+const BUTTON_HEIGHT = 22;
+const MARGIN = 22;
+const SECONDARY = 'rgba(66,90,112,0.5)';
 
 class Home extends React.Component {
   constructor() {
@@ -98,6 +110,53 @@ class Home extends React.Component {
 
   goBack = () => {
     console.log('back button clicked');
+  }
+
+  _getLeftSideListHeader = (item) =>  {
+    return (
+      <Pane display="flex" justifyContent="space-between">
+        <Pane>
+          <Heading fontSize={FONT_SIZE}>{item.name}</Heading>
+          <Paragraph color={SECONDARY} fontSize={FONT_SIZE_SMALL}>{item.id}</Paragraph>
+        </Pane>
+        <Button
+          iconBefore="settings"
+          fontSize={FONT_SIZE_SMALL}
+          height={BUTTON_HEIGHT}
+          appearance='minimal'
+          color='default'
+          onClick={(e) => this._settingOpen(e, item)}
+        >Settings</Button>
+      </Pane>
+    );
+  }
+
+  _getLeftSideListBody(item) {
+    return <Text>{item.email}</Text>;
+  }
+
+  _getLeftSideListFooter(item) {
+    return (
+      <Pane display='flex' justifyContent='space-between' marginTop={MARGIN}>
+        <Tooltip content="Country">
+          <Text
+            fontSize={FONT_SIZE-2}
+            display="flex"
+            alignItems="center"
+          ><Icon icon="heat-grid" marginRight={MARGIN} />{item.country}</Text>
+        </Tooltip>
+      </Pane>
+    );
+  }
+
+  selectItem(id) {
+    console.log('left side list click with ', id);
+  }
+
+  _settingOpen(e, item) {
+    if(e) e.stopPropagation();
+
+    console.log('_settingOPen clicked with ', item)
   }
 
   render() {
@@ -183,6 +242,11 @@ class Home extends React.Component {
       },
     ]
 
+    const leftList = filteredArray.map(item => {
+      return (({ name, email, id, country }) => ({ name, email, id, country }))(item);
+    })
+    const leftLoading = false;
+
     return (
       <>
         <Pane
@@ -222,6 +286,29 @@ class Home extends React.Component {
               <Paragraph {...extraStyle}>Back Button</Paragraph>
               <BackButton goBack={() => this.goBack()} />
             </Pane>
+
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#leftSideList"
+                name="leftSideList"
+              >Left Side List</Link>
+              <Paragraph {...extraStyle}>This component can be used as a list on the left with relevant Content on the right</Paragraph>
+              <LeftSideList
+                list={leftList}
+                selected={1}
+                loading={leftLoading}
+                header={(item) => this._getLeftSideListHeader(item)}
+                body={(item) => this._getLeftSideListBody(item)}
+                footer={(item) => this._getLeftSideListFooter(item)}
+                selectItem={(id) => this.selectItem(id)}
+                backButtonName='Back to prev page'
+                backButtonClick={() => this.goBack()}
+              />
+            </Pane>
+
             <Pane
               paddingTop={30}
             >
