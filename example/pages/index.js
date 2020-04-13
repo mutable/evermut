@@ -12,6 +12,7 @@ import {
 } from 'evergreen-ui'
 import Nav from '../components/nav'
 import {
+  Logs,
   LeftSideList,
   Logo,
   HorizontalMenu,
@@ -260,7 +261,8 @@ class Home extends React.Component {
             style={{
               display: 'inline-block',
               verticalAlign: 'top',
-              padding: '20px'
+              padding: '20px',
+              width: '100%'
             }}
           >
             <Link
@@ -284,9 +286,19 @@ class Home extends React.Component {
                 name="backButton"
               >Back Button</Link>
               <Paragraph {...extraStyle}>Back Button</Paragraph>
-              <BackButton goBack={() => this.goBack()} />
+              <BackButton goBack={() => this.goBack()} marginBottom={0} />
             </Pane>
-
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#logs"
+                name="logs"
+              >Logs</Link>
+              <Paragraph {...extraStyle}>Component that can show logs</Paragraph>
+              <Logs logs={[]} />
+            </Pane>
             <Pane
               paddingTop={30}
             >

@@ -11,6 +11,7 @@ export { default as LeftSideList } from './LeftSideList';
 export { default as Loader } from './Loader';
 export { default as Login } from './Login';
 export { default as Logo } from './Logo';
+export { default as Logs } from './LogsComponent';
 
 export { default as Pagination } from './Pagination';
 

@@ -1,0 +1,57 @@
+/* ansi */
+.ansi {
+  color: #cccccc;
+  font-size: 12px;
+}
+.ansi .ansi-resetall {
+  font-weight: normal;
+  opacity: 1;
+}
+.ansi .ansi-bold {
+  font-weight: bold;
+}
+.ansi .ansi-dim {
+  opacity: 0.8;
+}
+.ansi .ansi-italic {
+  font-style: italic;
+}
+.ansi .ansi-underline {
+  text-decoration: underline;
+}
+.ansi .ansi-blink {
+  text-decoration: blink;
+}
+.ansi .ansi-reverse {
+  color: #555;
+}
+.ansi .ansi-hidden {
+  display: none;
+}
+.ansi .ansi-black {
+  color: 555;
+}
+.ansi .ansi-red {
+  color: #f00;
+}
+.ansi .ansi-green {
+  color: #209805;
+}
+.ansi .ansi-yellow {
+  color: #e8bf03;
+}
+.ansi .ansi-blue {
+  color: #0000ff;
+}
+.ansi .ansi-magenta {
+  color: #ff00ff;
+}
+.ansi .ansi-cyan {
+  color: #00ffee;
+}
+.ansi .ansi-lightgrey {
+  color: #f0f0f0;
+}
+.ansi .ansi-darkgrey {
+  color: #888;
+}
