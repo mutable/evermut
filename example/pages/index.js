@@ -248,6 +248,13 @@ class Home extends React.Component {
     })
     const leftLoading = false;
 
+    const logs = [
+      {timestamp: {low: 730188057, high: 369, unsigned: true}, message: "?Step 1/8 : FROM node:12.14.0↵"},
+      {timestamp: {low: 730189080, high: 369, unsigned: true}, message: "?"},
+      {timestamp: {low: 730189085, high: 369, unsigned: true}, message: "? ---> Running in e821954cbb3e↵"},
+      {timestamp: {low: 730189085, high: 369, unsigned: true}, message: "?"},
+    ];
+
     return (
       <>
         <Pane
@@ -297,7 +304,7 @@ class Home extends React.Component {
                 name="logs"
               >Logs</Link>
               <Paragraph {...extraStyle}>Component that can show logs</Paragraph>
-              <Logs logs={[]} />
+              <Logs logs={logs} />
             </Pane>
             <Pane
               paddingTop={30}
