@@ -160,6 +160,10 @@ class Home extends React.Component {
     console.log('_settingOPen clicked with ', item)
   }
 
+  uploadFormClick(state, data, fileName) {
+    console.log('uploadFormClick', state, data, fileName)
+  }
+
   render() {
     const companies = [
       {id: 1, title: "title 1", description: "description 1", tags: ['some', 'tags'], actions: [<StateAction key='stateActionkey' actions={['running']} onClick={this.click} tooltip />, 'waiting'], menu: { list: [{name: 'Something', link: '/some'}, {name: 'Logs', link: '/logs'}], onClick: this.selectedMenuItem }},
@@ -297,7 +301,10 @@ class Home extends React.Component {
                 name="uploadForm"
               >Upload Form</Link>
               <Paragraph {...extraStyle}>Upload form that also supports Drag-n-drop feature.</Paragraph>
-              <UploadForm />
+              <UploadForm
+                acceptedFileTypes={[".tar", ".zip", ".jpg"]}
+                onChange={(state, data, fileName) => this.uploadFormClick(state, data, fileName)}
+              />
             </Pane>
             <Pane
               paddingTop={30}
