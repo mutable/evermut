@@ -12,6 +12,7 @@ import {
 } from 'evergreen-ui'
 import Nav from '../components/nav'
 import {
+  ResponsiveSideSheet,
   UploadForm,
   LeftSideList,
   Logo,
@@ -56,7 +57,8 @@ class Home extends React.Component {
       filteredArray: _dataArray,
       limit: _limit,
       offset: _offset,
-      overallCount: testJson.data.length
+      overallCount: testJson.data.length,
+      sideSheetOpen: false,
     }
   }
 
@@ -164,6 +166,21 @@ class Home extends React.Component {
     console.log('uploadFormClick', state, data, fileName)
   }
 
+  openSideSheet() {
+    this.setState({ sideSheetOpen: true })
+  }
+
+  closeSideSheet() {
+    this.setState({ sideSheetOpen: false })
+  }
+
+  sideSheetComponent() {
+    return (
+      <Pane padding={45}>
+        Responsive Side Sheet
+      </Pane>
+    );
+  }
   render() {
     const companies = [
       {id: 1, title: "title 1", description: "description 1", tags: ['some', 'tags'], actions: [<StateAction key='stateActionkey' actions={['running']} onClick={this.click} tooltip />, 'waiting'], menu: { list: [{name: 'Something', link: '/some'}, {name: 'Logs', link: '/logs'}], onClick: this.selectedMenuItem }},
@@ -178,7 +195,7 @@ class Home extends React.Component {
       {link: {name: 'File', path: '#file'}, component: 'File Component', func: this.stepFunc},
       {link: {name: 'You have finished', path: '#finsih'}, component: 'Successfully finished', func: this.stepFunc},
     ];
-    const { dataArray, limit, offset, filteredArray, overallCount } = this.state;
+    const { dataArray, limit, offset, filteredArray, overallCount, sideSheetOpen } = this.state;
 
     const loading = false;
 
@@ -292,6 +309,27 @@ class Home extends React.Component {
               <Paragraph {...extraStyle}>Back Button</Paragraph>
               <BackButton goBack={() => this.goBack()} />
             </Pane>
+
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#responsiveSideSheet"
+                name="responsiveSideSheet"
+              >ResponsiveSideSheet</Link>
+              <Paragraph {...extraStyle}>Responsive Side Sheet, when isFullWidth property is true then side sheet has 100% width with close button inside.</Paragraph>
+              <Button onClick={() => this.openSideSheet()}>
+                Open SideSheet
+              </Button>
+              <ResponsiveSideSheet
+                onClose={() => this.closeSideSheet()}
+                isOpen={sideSheetOpen}
+                component={this.sideSheetComponent()}
+                isFullWidth
+              />
+            </Pane>
+
             <Pane
               paddingTop={30}
             >
