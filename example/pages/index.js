@@ -12,6 +12,7 @@ import {
 } from 'evergreen-ui'
 import Nav from '../components/nav'
 import {
+  UploadForm,
   LeftSideList,
   Logo,
   HorizontalMenu,
@@ -78,7 +79,7 @@ class Home extends React.Component {
   breadCrumbsClick(item) {
     console.log('breadCrumbsClick', item)
   }
-  
+
   stepperFunc(item) {
     console.log('stepperFunc', item)
   }
@@ -157,6 +158,10 @@ class Home extends React.Component {
     if(e) e.stopPropagation();
 
     console.log('_settingOPen clicked with ', item)
+  }
+
+  uploadFormClick(state, data, fileName) {
+    console.log('uploadFormClick', state, data, fileName)
   }
 
   render() {
@@ -260,7 +265,8 @@ class Home extends React.Component {
             style={{
               display: 'inline-block',
               verticalAlign: 'top',
-              padding: '20px'
+              padding: '20px',
+              width: '100%'
             }}
           >
             <Link
@@ -286,7 +292,20 @@ class Home extends React.Component {
               <Paragraph {...extraStyle}>Back Button</Paragraph>
               <BackButton goBack={() => this.goBack()} />
             </Pane>
-
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#uploadForm"
+                name="uploadForm"
+              >Upload Form</Link>
+              <Paragraph {...extraStyle}>Upload form that also supports Drag-n-drop feature.</Paragraph>
+              <UploadForm
+                acceptedFileTypes={[".tar", ".zip", ".jpg"]}
+                onChange={(state, data, fileName) => this.uploadFormClick(state, data, fileName)}
+              />
+            </Pane>
             <Pane
               paddingTop={30}
             >

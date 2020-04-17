@@ -30,6 +30,7 @@ class HorizontalMenu extends React.Component {
           const { name, props, icon, active } = item;
           return (
             <Text
+              key={`prim-menu-${index}`}
               cursor="pointer"
               fontSize={FONT_SIZE}
               display='flex'
@@ -49,6 +50,7 @@ class HorizontalMenu extends React.Component {
           const { name, props, icon, active } = item;
           return (
             <Text
+              key={`second-menu-${index}`}
               cursor="pointer"
               fontSize={FONT_SIZE}
               display='flex'

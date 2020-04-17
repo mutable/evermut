@@ -23,3 +23,5 @@ export { default as Table } from './Table';
 export { default as TableWithSingle } from './TableWithSingle';
 export { default as ToggleMenu } from './ToggleMenu';
 
+export { default as UploadForm } from './UploadForm';
+
