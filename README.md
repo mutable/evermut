@@ -26,9 +26,35 @@ ReactDOM.render(
 ### Components
 
 
+#### BackButton
+
+###### name
+
+Type: `string`
+
+Default: `Back`
+
+Basic structure: `Back to somewhere`
+
+###### goBack
+
+Type: `func`, required
+
+Basic structure: () => {}
+
+<br />
+
 #### BreadCrumbs
 
 ###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
+###### disable
 
 Type: `bool`
 
@@ -194,6 +220,185 @@ Example:
 
 <br />
 
+#### HorizontalMenu
+
+###### primaryMenu
+
+Type: `array`, required
+
+Basic structure:
+```
+[
+  {
+    name: 'Name',
+    icon: 'icon-name', # based on ui-box, not required
+    props: {
+      href: '#',
+      target: '_blanket',
+      onSelect: () => {}, # not required
+      ...style # style props based on ui-box
+    }
+  },
+  ...
+]
+```
+###### secondaryMenu
+
+Type: `array`
+
+Default: `[]`
+
+Basic structure: Same as `primaryMenu`
+
+###### selectedColor
+
+Type: `string`
+
+Default: `#f5f6f7`
+
+Basic structure: `#f5f6f7`
+
+###### logo
+
+Type: `elementType`
+
+Default: none
+
+Basic structure: <Logo src={logo} />
+
+###### listLogo
+
+Type: `elementType`
+
+Default: none
+
+Basic structure: <Logo src={logo-dark} />
+
+<br />
+
+#### LeftSideList
+
+###### list
+
+Type: `array`, required
+
+Basic structure:
+
+```
+[
+  {
+    name: 'Sam',
+    id: '123',
+    ... # anything that is neccessary
+  },
+  ...
+]
+```
+
+###### selected
+
+Type: `number`  or `string`, required
+
+Basic struncture: `123`
+
+###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
+###### header
+
+Type: `function`
+
+Default: none
+
+Basic structure: () => {} # some function that will return a view
+
+###### body
+
+Type: `function`
+
+Default: none
+
+Basic structure: () => {} # some function that will return a view
+
+###### footer
+
+Type: `function`
+
+Default: none
+
+Basic structure: () => {} # some function that will return a view
+
+###### selectItem
+
+Type: `function`
+
+Default: none
+
+Basic structure: () => {}
+
+###### backButtonName
+
+Type: `string`
+
+Default: `Back`
+
+Basic structure: `Back to somewhere`
+
+###### backButtonClick
+
+Type: `function`
+
+Default: none
+
+Basic structure: () => {}
+
+###### selectedColor
+
+Type: `string`
+
+Default: `#f5f6f7`
+
+Basic structure: `#f5f6f7`
+
+###### defaultBackground
+
+Type: `string`
+
+Default: `white`
+
+Basic structure: `white`
+
+###### backButtonStyle
+
+Type: `object`
+
+Default: {}
+
+Basic structure: `{ margin: 10 }`
+
+###### itemStyle
+
+Type: `object`
+
+Default: {}
+
+Basic structure: `{ margin: 10 }`
+
+###### containerStyle
+
+Type: `object`
+
+Default: {}
+
+Basic structure: `{ margin: 10 }`
+
+
+<br />
 
 #### Loader
 
@@ -215,11 +420,6 @@ you can add other styles regarding the Loader container other than `height` prop
 
 
 #### Login
-
-###### logoBackground
-
-Type: `string`
-Default: `#f7f8fa`
 
 ###### logo
 
@@ -335,6 +535,185 @@ Basic structure: () => {}
 
 <br />
 
+#### ResponsiveMenu
+
+###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
+###### isHorizontal
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
+###### stickBottom
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
+###### primaryMenuSticky
+
+Type: `array`, required
+
+Basic structure: 
+```
+[
+  {
+    logo: <Component />,
+    props: {
+      href: '#',
+      target: '_blanket',
+      onSelect: () => {}, # not required
+      ...style # style props based on ui-box
+    }
+  },
+  # or
+  {
+    name: 'Name',
+    icon: 'icon-name', # based on ui-box, not required
+    props: {
+      href: '#',
+      target: '_blanket',
+      onSelect: () => {}, # not required
+      ...style # style props based on ui-box
+    }
+  },
+  ...
+]
+```
+
+###### secondaryMenuSticky
+
+Type: `array`
+
+Default: `[]`
+
+Basic structure: Same as `primaryMenuSticky`
+
+###### primaryMenuHorizontal
+
+Type: `array`, required
+
+Basic structure: 
+```
+[
+  {
+    name: 'Name',
+    icon: 'icon-name', # based on ui-box, not required
+    props: {
+      href: '#',
+      target: '_blanket',
+      onSelect: () => {}, # not required
+      ...style # style props based on ui-box
+    }
+  },
+  ...
+]
+```
+
+###### secondaryMenuHorizontal
+
+Type: `array`
+
+Default: `[]`
+
+Basic structure: Same as `primaryMenuHorizontal`
+
+###### selectedColorSticky
+
+Type: `string`
+
+Default: `#f5f6f7`
+
+Basic structure: `#f5f6f7`
+
+###### selectedColorHorizontal
+
+Type: `string`
+
+Default: `#f5f6f7`
+
+Basic structure: `#f5f6f7`
+
+###### logo
+
+Type: `elementType`
+
+Default: none
+
+Basic structure: <Logo src={logo} />
+
+###### listLogo
+
+Type: `elementType`
+
+Default: none
+
+Basic structure: <Logo src={logo-dark} />
+
+###### stickyStyle
+
+Type: `object`
+
+Basic structure: `{ margin: 10 }`
+
+###### horizontalStyle
+
+Type: `object`
+
+Basic structure: `{ margin: 10 }`
+
+
+<br />
+
+#### ResponsiveSideSheet
+
+###### isFullWidth
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
+###### component
+
+Type: `elementType`, required
+
+Basic structure: () => {} # function that will return a view
+
+###### onClose
+
+Type: `func`, required
+
+Basic structure: () => {}
+
+###### isOpen
+
+Type: `bool`, required
+
+Basic structure: `true` or `false`
+
+###### closeButtonStyle
+
+Type: `object`, required
+
+Default: `{}`
+
+Basic structure: { margin: 10 }
+
+
+<br  />
 
 #### StateAction
 
@@ -579,10 +958,9 @@ Type: `function`, required
 
 Basic structure: () => {}
 
-
+<br />
 
 #### TableWithSingle
-
 
 ###### basis
 
@@ -668,6 +1046,65 @@ Basic structure:
 Type: `func`, required
 
 Basic structure: () => {}
+
+
+<br />
+
+#### ToggleMenu
+
+###### loading
+
+Type: `bool`
+
+Default: `false`
+
+Basic structure: `true` or `false`
+
+###### disabledColor
+
+Type: `string`
+
+Default: `#edf0f2`
+
+Basic structure: `#edf0f2`
+
+###### defaultBackground
+
+Type: `string`
+
+Default: `white`
+
+Basic structure: `white`
+
+###### buttonColor
+
+Type: `string`
+
+Default: `#1070ca`
+
+Basic structure: `#1070ca`
+
+###### buttonName
+
+Type: `string`
+
+Default: `Choose file`
+
+Basic structure: `Any other button name`
+
+###### acceptedFileTypes
+
+Type: `array`
+
+Default: `[]`
+
+Basic structure: `[ '.tar', '.jpg' ]`
+
+###### onChange
+
+Type: `function`, required
+
+Basic structure: `() => {}`
 
 
 
