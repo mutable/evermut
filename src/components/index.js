@@ -14,6 +14,7 @@ export { default as Logo } from './Logo';
 
 export { default as Pagination } from './Pagination';
 
+export { default as ResponsiveMenu } from './ResponsiveMenu';
 export { default as ResponsiveSideSheet } from './ResponsiveSideSheet';
 
 export { default as StateAction } from './StateAction';

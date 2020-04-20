@@ -102,13 +102,14 @@ class StickyMenu extends React.Component {
 StickyMenu.defaultProps = {
   loading: false,
   stickBottom: false,
-  secondaryMenu: [],
+  secondaryMenu: []
 }
 
 StickyMenu.propTypes = {
   loading: PropTypes.bool,
   primaryMenu: PropTypes.arrayOf(PropTypes.object).isRequired,
   secondaryMenu: PropTypes.arrayOf(PropTypes.object),
+  selectedColor: PropTypes.string.isRequired,
   stickBottom: PropTypes.bool
 };
 
