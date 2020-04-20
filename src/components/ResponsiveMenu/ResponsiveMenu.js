@@ -11,7 +11,8 @@ class ResponsiveMenu extends React.Component {
       primaryMenuHorizontal,
       secondaryMenuHorizontal,
       isHorizontal,
-      selectedColor,
+      selectedColorSticky,
+      selectedColorHorizontal,
       loading,
       stickBottom,
       stickyStyle,
@@ -23,7 +24,7 @@ class ResponsiveMenu extends React.Component {
     return ((!isHorizontal && <StickyMenu
       primaryMenu={primaryMenuSticky}
       secondaryMenu={secondaryMenuSticky}
-      selectedColor={selectedColor}
+      selectedColor={selectedColorSticky}
       stickBottom={stickBottom}
       loading={loading}
       {...stickyStyle}
@@ -31,7 +32,7 @@ class ResponsiveMenu extends React.Component {
       || <HorizontalMenu
         primaryMenu={primaryMenuHorizontal}
         secondaryMenu={secondaryMenuHorizontal}
-        selectedColor={selectedColor}
+        selectedColor={selectedColorHorizontal}
         logo={logo}
         listLogo={listLogo}
         {...horizontalStyle}
@@ -40,10 +41,7 @@ class ResponsiveMenu extends React.Component {
 }
 
 ResponsiveMenu.defaultProps = {
-  loading: false,
-  isHorizontal: false,
-  stickBottom: false,
-  secondaryMenu: [],
+  isHorizontal: false
 }
 
 ResponsiveMenu.propTypes = {
@@ -54,8 +52,8 @@ ResponsiveMenu.propTypes = {
   isHorizontal: PropTypes.bool,
   loading: PropTypes.bool,
   stickBottom: PropTypes.bool,
-  selectedColorSticky: PropTypes.string.isRequired,
-  selectedColorHorizontal: PropTypes.string.isRequired,
+  selectedColorSticky: PropTypes.string,
+  selectedColorHorizontal: PropTypes.string,
   stickyStyle: PropTypes.object,
   horizontalStyle: PropTypes.object,
   logo: PropTypes.element,
