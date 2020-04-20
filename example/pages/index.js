@@ -1,4 +1,5 @@
 import React from 'react'
+import MediaQuery from 'react-responsive'
 import Head from 'next/head'
 import {
   Pane,
@@ -12,6 +13,7 @@ import {
 } from 'evergreen-ui'
 import Nav from '../components/nav'
 import {
+  ResponsiveMenu,
   ResponsiveSideSheet,
   UploadForm,
   LeftSideList,
@@ -40,6 +42,77 @@ const FONT_SIZE_SMALL = 10;
 const BUTTON_HEIGHT = 22;
 const MARGIN = 22;
 const SECONDARY = 'rgba(66,90,112,0.5)';
+
+const primaryMenuH = [
+  {
+    name: 'Table',
+    icon: 'applications',
+    props: {
+      onClick: () => console.log('table clicked'),
+      paddingTop: 10
+    },
+    active: true
+  },
+  {
+    name: 'Circular Progress',
+    icon: 'doughnut-chart',
+    props: {
+      onClick: () => console.log('Circular clicked'),
+      paddingTop: 10
+    },
+    active: false
+  },
+];
+
+const primaryMenuS = [
+  {
+    logo: <Logo src={logo} />,
+    props: {
+      href: '#index',
+      paddingTop: 10
+    },
+    active: false
+  },
+  {
+    name: 'Table',
+    icon: 'applications',
+    props: {
+      onClick: () => console.log('table clicked'),
+      paddingTop: 10
+    },
+    active: true
+  },
+  {
+    name: 'Circular Progress',
+    icon: 'doughnut-chart',
+    props: {
+      onClick: () => console.log('Circular clicked'),
+      paddingTop: 10
+    },
+    active: false
+  },
+];
+
+const secondaryMenu = [
+  {
+    name: 'Sticky Menu',
+    icon: 'list-detail-view',
+    props: {
+      onClick: () => console.log('Sticky clicked'),
+      paddingTop: 10
+    },
+    active: false
+  },
+  {
+    name: 'Stepper',
+    icon: 'exchange',
+    props: {
+      onClick: () => console.log('Stepper clicked'),
+      paddingTop: 10
+    },
+    active: false
+  },
+]
 
 class Home extends React.Component {
   constructor() {
@@ -181,6 +254,37 @@ class Home extends React.Component {
       </Pane>
     );
   }
+
+  getResponsiveMenu(isHorizontal) {
+    return (
+      <ResponsiveMenu
+        logo={<Logo src={logo} style={{ height: 40 }}/>}
+        listLogo={<Logo src={logoDark} style={{ height: 40, margin: 15 }}/>}
+        primaryMenuSticky={primaryMenuS}
+        secondaryMenuSticky={secondaryMenu}
+        primaryMenuHorizontal={primaryMenuH}
+        secondaryMenuHorizontal={secondaryMenu}
+        selectedColorSticky='#6c7896'
+        selectedColorHorizontal='#f5f6f7'
+        stickBottom
+        isHorizontal={isHorizontal}
+      />
+    );
+  }
+
+  getResponsiveSideSheet(isFullWidth) {
+    const { sideSheetOpen } = this.state;
+
+    return (
+      <ResponsiveSideSheet
+        onClose={() => this.closeSideSheet()}
+        isOpen={sideSheetOpen}
+        component={this.sideSheetComponent()}
+        isFullWidth={isFullWidth}
+      />
+    );
+  }
+
   render() {
     const companies = [
       {id: 1, title: "title 1", description: "description 1", tags: ['some', 'tags'], actions: [<StateAction key='stateActionkey' actions={['running']} onClick={this.click} tooltip />, 'waiting'], menu: { list: [{name: 'Something', link: '/some'}, {name: 'Logs', link: '/logs'}], onClick: this.selectedMenuItem }},
@@ -195,7 +299,7 @@ class Home extends React.Component {
       {link: {name: 'File', path: '#file'}, component: 'File Component', func: this.stepFunc},
       {link: {name: 'You have finished', path: '#finsih'}, component: 'Successfully finished', func: this.stepFunc},
     ];
-    const { dataArray, limit, offset, filteredArray, overallCount, sideSheetOpen } = this.state;
+    const { dataArray, limit, offset, filteredArray, overallCount } = this.state;
 
     const loading = false;
 
@@ -221,48 +325,6 @@ class Home extends React.Component {
     const list = filteredArray.map(item => {
       return (({ name, position, id }) => ({ name, position, visibleId: id, id }))(item);
     })
-
-    const primaryMenu = [
-      {
-        name: 'Table',
-        icon: 'applications',
-        props: {
-          onClick: () => console.log('table clicked'),
-          paddingTop: 10
-        },
-        active: true
-      },
-      {
-        name: 'Circular Progress',
-        icon: 'doughnut-chart',
-        props: {
-          onClick: () => console.log('Circular clicked'),
-          paddingTop: 10
-        },
-        active: false
-      },
-    ];
-
-    const secondaryMenu = [
-      {
-        name: 'Sticky Menu',
-        icon: 'list-detail-view',
-        props: {
-          onClick: () => console.log('Sticky clicked'),
-          paddingTop: 10
-        },
-        active: false
-      },
-      {
-        name: 'Stepper',
-        icon: 'exchange',
-        props: {
-          onClick: () => console.log('Stepper clicked'),
-          paddingTop: 10
-        },
-        active: false
-      },
-    ]
 
     const leftList = filteredArray.map(item => {
       return (({ name, email, id, country }) => ({ name, email, id, country }))(item);
@@ -309,7 +371,22 @@ class Home extends React.Component {
               <Paragraph {...extraStyle}>Back Button</Paragraph>
               <BackButton goBack={() => this.goBack()} />
             </Pane>
-
+            <Pane
+              paddingTop={30}
+            >
+              <Link
+                style={linkStyle}
+                href="#responsiveMenu"
+                name="responsiveMenu"
+              >ResponsiveMenu</Link>
+              <Paragraph {...extraStyle}>Responsive Menu, when isHorizontal property is true then menu is vertical, else horizotnal. Resize the screen to see the magic!</Paragraph>
+              <MediaQuery maxWidth='760px'>
+                {this.getResponsiveMenu(true)}
+              </MediaQuery>
+              <MediaQuery minWidth='761px'>
+                {this.getResponsiveMenu(false)}
+              </MediaQuery>
+            </Pane>
             <Pane
               paddingTop={30}
             >
@@ -318,18 +395,17 @@ class Home extends React.Component {
                 href="#responsiveSideSheet"
                 name="responsiveSideSheet"
               >ResponsiveSideSheet</Link>
-              <Paragraph {...extraStyle}>Responsive Side Sheet, when isFullWidth property is true then side sheet has 100% width with close button inside.</Paragraph>
+              <Paragraph {...extraStyle}>Responsive Side Sheet, when isFullWidth property is true then side sheet has 100% width with close button inside. Resize the screen to see the magic!</Paragraph>
               <Button onClick={() => this.openSideSheet()}>
                 Open SideSheet
               </Button>
-              <ResponsiveSideSheet
-                onClose={() => this.closeSideSheet()}
-                isOpen={sideSheetOpen}
-                component={this.sideSheetComponent()}
-                isFullWidth
-              />
+              <MediaQuery maxWidth='760px'>
+                {this.getResponsiveSideSheet(true)}
+              </MediaQuery>
+              <MediaQuery minWidth='761px'>
+                {this.getResponsiveSideSheet(false)}
+              </MediaQuery>
             </Pane>
-
             <Pane
               paddingTop={30}
             >
@@ -378,7 +454,7 @@ class Home extends React.Component {
               <HorizontalMenu
                 logo={<Logo src={logo} style={{ height: 40 }}/>}
                 listLogo={<Logo src={logoDark} style={{ height: 40, margin: 15 }}/>}
-                primaryMenu={primaryMenu}
+                primaryMenu={primaryMenuH}
                 secondaryMenu={secondaryMenu}
                 selectedColor='#f5f6f7'
               />
