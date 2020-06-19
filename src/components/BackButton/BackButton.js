@@ -13,7 +13,7 @@ class BackButton extends React.Component {
   }
 
   render() {
-    const { name, ...style } = this.props;
+    const { name, goBack, ...style } = this.props;
 
     return (
       <Button

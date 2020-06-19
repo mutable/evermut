@@ -80,7 +80,7 @@ class HorizontalMenu extends React.Component {
 
   render() {
     const { openMenu } = this.state;
-    const { logo, listLogo, ...style } = this.props;
+    const { logo, primaryMenu, secondaryMenu, selectedColor, listLogo, ...style } = this.props;
 
     return (
       <>

@@ -48,7 +48,7 @@ const primaryMenuH = [
     name: 'Table',
     icon: 'applications',
     props: {
-      onClick: () => console.log('table clicked'),
+      onSelect: () => console.log('table clicked'),
       paddingTop: 10
     },
     active: true
@@ -57,7 +57,7 @@ const primaryMenuH = [
     name: 'Circular Progress',
     icon: 'doughnut-chart',
     props: {
-      onClick: () => console.log('Circular clicked'),
+      onSelect: () => console.log('Circular clicked'),
       paddingTop: 10
     },
     active: false
@@ -77,7 +77,7 @@ const primaryMenuS = [
     name: 'Table',
     icon: 'applications',
     props: {
-      onClick: () => console.log('table clicked'),
+      onSelect: () => console.log('table clicked'),
       paddingTop: 10
     },
     active: true
@@ -86,7 +86,7 @@ const primaryMenuS = [
     name: 'Circular Progress',
     icon: 'doughnut-chart',
     props: {
-      onClick: () => console.log('Circular clicked'),
+      onSelect: () => console.log('Circular clicked'),
       paddingTop: 10
     },
     active: false
@@ -98,7 +98,7 @@ const secondaryMenu = [
     name: 'Sticky Menu',
     icon: 'list-detail-view',
     props: {
-      onClick: () => console.log('Sticky clicked'),
+      onSelect: () => console.log('Sticky clicked'),
       paddingTop: 10
     },
     active: false
@@ -107,7 +107,7 @@ const secondaryMenu = [
     name: 'Stepper',
     icon: 'exchange',
     props: {
-      onClick: () => console.log('Stepper clicked'),
+      onSelect: () => console.log('Stepper clicked'),
       paddingTop: 10
     },
     active: false
