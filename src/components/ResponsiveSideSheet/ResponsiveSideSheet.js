@@ -48,7 +48,7 @@ ResponsiveSideSheet.defaultProps = {
 }
 
 ResponsiveSideSheet.propTypes = {
-  component: PropTypes.elementType.isRequired,
+  component: PropTypes.element.isRequired,
   onClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   isFullWidth: PropTypes.bool,
